@@ -14,6 +14,6 @@ public class Publisher : MonoBehaviour {
 	protected void Broadcast(string methodName, object data)
     {
         foreach (GameObject subscriber in subscribers)
-            subscriber.SendMessage(methodName, data);
+            subscriber.SendMessage(methodName, data, SendMessageOptions.DontRequireReceiver);
     }
 }

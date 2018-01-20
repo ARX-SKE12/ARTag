@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore;
 using GoogleARCore.HelloAR;
@@ -7,17 +6,28 @@ using GoogleARCore.HelloAR;
 public class EnvironmentController : Publisher
 {
 
+#region Camera
     public Camera firstPersonCamera;
+#endregion
 
+#region Prototype Object
     public GameObject trackedPlanePrefab;
+#endregion
 
+#region Planes
     List<TrackedPlane> newPlanes;
     List<TrackedPlane> allPlanes;
+#endregion
 
+#region Status
     bool previousSearchingStatus;
+    #endregion
 
+#region Constants
     const int SLEEP_TRACKING_TIMEOUT = 15;
+    #endregion
 
+#region Unity
     void Awake()
     {
         newPlanes = new List<TrackedPlane>();
@@ -31,12 +41,14 @@ public class EnvironmentController : Publisher
             PreventSleep();
             EnvironmentUpdate();
             CheckSearchingPlanesStatus();
+            CheckHittingPlanesStatus();
         }
         else
         {
             SetLostTrackingTimeout();
         }
     }
+#endregion
 
 #region Plane Construct
     void GetNewPlanes()
@@ -104,8 +116,28 @@ public class EnvironmentController : Publisher
         if (isSearching != previousSearchingStatus)
             UpdateNewSearchingStatus(isSearching);
     }
+    #endregion
+
+#region Hitting Plane Status
+    bool IsTouch(Touch touch)
+    {
+        return Input.touchCount < 1 || touch.phase != TouchPhase.Began;
+    }
+
+    void CheckHittingPlanesStatus()
+    {
+        Touch touch = Input.GetTouch(0);
+        if (IsTouch(touch))
+        {
+            TrackableHit hit;
+            TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
+
+            if (Session.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+            {
+                Broadcast("OnHitPlanes", hit);
+            }
+        }
+    }
 #endregion
-
-
 
 }
