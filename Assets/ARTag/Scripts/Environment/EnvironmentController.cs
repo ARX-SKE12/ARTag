@@ -63,7 +63,7 @@ public class EnvironmentController : Publisher
     void CreateNewPlane(TrackedPlane plane)
     {
         GameObject planeObject = Instantiate(trackedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
-        planeObject.GetComponent<TrackedPlaneVisualizer>().Initialize(plane);
+        planeObject.GetComponent<EnvironmentPlane>().Initialize(plane);
     }
 
     void EnvironmentUpdate()
