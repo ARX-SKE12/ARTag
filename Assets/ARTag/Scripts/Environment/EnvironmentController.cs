@@ -21,7 +21,8 @@ public class EnvironmentController : Publisher
 
 #region Status
     bool previousSearchingStatus;
-    #endregion
+    public bool isPause = false;
+#endregion
 
 #region Constants
     const int SLEEP_TRACKING_TIMEOUT = 15;
@@ -36,16 +37,19 @@ public class EnvironmentController : Publisher
 	
 	// Update is called once per frame
 	void Update () {
-        if (IsTracking())
+        if (!isPause)
         {
-            PreventSleep();
-            EnvironmentUpdate();
-            CheckSearchingPlanesStatus();
-            CheckHittingPlanesStatus();
-        }
-        else
-        {
-            SetLostTrackingTimeout();
+            if (IsTracking())
+            {
+                PreventSleep();
+                EnvironmentUpdate();
+                CheckSearchingPlanesStatus();
+                CheckHittingPlanesStatus();
+            }
+            else
+            {
+                SetLostTrackingTimeout();
+            }
         }
     }
 #endregion
@@ -138,6 +142,12 @@ public class EnvironmentController : Publisher
             }
         }
     }
-#endregion
+    #endregion
 
+#region Environment Contoller Status
+    public void SwitchStatus()
+    {
+        isPause = !isPause;
+    }
+#endregion
 }
