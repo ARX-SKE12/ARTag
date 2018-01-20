@@ -149,5 +149,15 @@ public class EnvironmentController : Publisher
     {
         isPause = !isPause;
     }
+
+    public void ForcePause()
+    {
+        isPause = true;
+    }
+
+    public void ForceTracking()
+    {
+        isPause = false;
+    }
 #endregion
 }
