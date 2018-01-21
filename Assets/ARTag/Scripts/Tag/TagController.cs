@@ -6,33 +6,20 @@ using GoogleARCore;
 
 public class TagController : MonoBehaviour {
     
-    enum State
-    {
-        ACTIVE,
-        TAGGING
-    }
-
-    State currentState;
-
-    public GameObject activePanel, taggingPanel, switchButton, tagName, camera;
+    public GameObject activePanel, taggingPanel, switchButton, tagName, firstPersonCamera;
 
     public GameObject tagPrefab;
-    
-    void Awake () {
-        currentState = State.ACTIVE;    	
-	}
 
     public void SwitchToTag()
     {
         activePanel.SetActive(false);
         switchButton.SetActive(false);
         taggingPanel.SetActive(true);
-        currentState = State.TAGGING;
     }
 
     public void PlaceTag()
     {
-        GameObject tag = Instantiate(tagPrefab, camera.transform.position+camera.transform.forward, Quaternion.identity, transform);
+        GameObject tag = Instantiate(tagPrefab, firstPersonCamera.transform.position+ firstPersonCamera.transform.forward, Quaternion.identity, transform);
 
         tag.GetComponentInChildren<TagBehaviour>().SetText(tagName.GetComponent<Text>().text);
         tagName.GetComponent<Text>().text = "";
@@ -40,6 +27,5 @@ public class TagController : MonoBehaviour {
         activePanel.SetActive(true);
         switchButton.SetActive(true);
         taggingPanel.SetActive(false);
-        currentState = State.ACTIVE;
     }
 }
