@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore;
-using GoogleARCore.HelloAR;
 
 public class EnvironmentController : Publisher
 {
@@ -125,7 +124,7 @@ public class EnvironmentController : Publisher
 #region Hitting Plane Status
     bool IsTouch(Touch touch)
     {
-        return Input.touchCount < 1 || touch.phase != TouchPhase.Began;
+        return !(Input.touchCount < 1 || touch.phase != TouchPhase.Began);
     }
 
     void CheckHittingPlanesStatus()
@@ -148,6 +147,16 @@ public class EnvironmentController : Publisher
     public void SwitchStatus()
     {
         isPause = !isPause;
+    }
+
+    public void ForcePause()
+    {
+        isPause = true;
+    }
+
+    public void ForceTracking()
+    {
+        isPause = false;
     }
 #endregion
 }
