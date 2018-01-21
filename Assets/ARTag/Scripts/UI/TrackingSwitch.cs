@@ -3,15 +3,14 @@ using UnityEngine.UI;
 
 public class TrackingSwitch : MonoBehaviour {
 
-    const string CONTINUE_TRACKING_LABEL = "Continue Tracking";
-    const string STOP_TRACKING_LABEL = "Stop Tracking";
-
+    public Sprite pauseIcon, trackingIcon;
+    
     public GameObject environmentController;
 	
 	public void ActionTrackingStatus()
     {
         environmentController.GetComponent<EnvironmentController>().SwitchStatus();
-        if (!environmentController.GetComponent<EnvironmentController>().isPause) GetComponentInChildren<Text>().text = STOP_TRACKING_LABEL;
-        else GetComponentInChildren<Text>().text = CONTINUE_TRACKING_LABEL;
+        if (!environmentController.GetComponent<EnvironmentController>().isPause) GetComponentInChildren<Image>().sprite = pauseIcon;
+        else GetComponentInChildren<Image>().sprite = trackingIcon;
     }
 }
