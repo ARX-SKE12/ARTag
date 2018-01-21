@@ -15,8 +15,7 @@ public class ModeSwitch : MonoBehaviour {
 
     public GameObject trackingPanel, taggingPanel, environmentController;
 
-    const string TAGGING_LABEL = "Tag";
-    const string TRACKKING_LABEL = "Scan";
+    public Sprite trackingIcon, taggingIcon;
 
     void Awake()
     {
@@ -29,13 +28,13 @@ public class ModeSwitch : MonoBehaviour {
         {
             case Mode.TRACKING:
                 currentMode = Mode.TAGGING;
-                GetComponentInChildren<Text>().text = TRACKKING_LABEL;
+                GetComponent<Image>().sprite = trackingIcon;               
                 taggingPanel.SetActive(true);
                 trackingPanel.SetActive(false);
                 break;
             case Mode.TAGGING:
                 currentMode = Mode.TRACKING;
-                GetComponentInChildren<Text>().text = TAGGING_LABEL;
+                GetComponent<Image>().sprite = taggingIcon;
                 taggingPanel.SetActive(false);
                 trackingPanel.SetActive(true);
                 break;
