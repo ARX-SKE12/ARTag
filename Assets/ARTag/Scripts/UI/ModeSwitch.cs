@@ -32,14 +32,12 @@ public class ModeSwitch : MonoBehaviour {
                 GetComponentInChildren<Text>().text = TRACKKING_LABEL;
                 taggingPanel.SetActive(true);
                 trackingPanel.SetActive(false);
-                environmentController.GetComponent<EnvironmentController>().ForcePause();
                 break;
             case Mode.TAGGING:
                 currentMode = Mode.TRACKING;
                 GetComponentInChildren<Text>().text = TAGGING_LABEL;
                 taggingPanel.SetActive(false);
                 trackingPanel.SetActive(true);
-                environmentController.GetComponent<EnvironmentController>().ForceTracking();
                 break;
         }
     }

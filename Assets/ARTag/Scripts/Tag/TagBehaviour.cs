@@ -8,7 +8,7 @@ public class TagBehaviour : MonoBehaviour {
 	
 	void Update () {
         transform.LookAt(GameObject.Find("First Person Camera").transform);
-	}
+    }
 
     public void SetText(string text)
     {
