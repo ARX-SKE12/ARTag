@@ -35,6 +35,7 @@ public class TagController : MonoBehaviour {
         GameObject tag = Instantiate(tagPrefab, camera.transform.position+camera.transform.forward, Quaternion.identity, transform);
 
         tag.GetComponentInChildren<TagBehaviour>().SetText(tagName.GetComponent<Text>().text);
+        tagName.GetComponent<Text>().text = "";
 
         activePanel.SetActive(true);
         switchButton.SetActive(true);
