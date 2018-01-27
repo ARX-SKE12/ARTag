@@ -1265,7 +1265,7 @@ MonoBehaviour:
   taggingPanel: {fileID: 1751991903}
   switchButton: {fileID: 2044903784}
   tagName: {fileID: 424999893}
-  camera: {fileID: 219821374}
+  firstPersonCamera: {fileID: 219821374}
   tagPrefab: {fileID: 1357795326963744, guid: 68c734aedbbc78a4fbe62997710022b2, type: 2}
 --- !u!1 &1705062233
 GameObject:
