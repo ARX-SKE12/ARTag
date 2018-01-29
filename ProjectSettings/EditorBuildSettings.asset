@@ -4,7 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/ARTag/Scenes/Experiments/FacebookAuth.unity
-    guid: 1e6fd684bcc459b448b7af0a2d5f8dcb
+  m_Scenes: []
