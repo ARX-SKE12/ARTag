@@ -159,3 +159,49 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b58f1f87dc68947dfb9766f0cb9ec1fc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &289806763
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 488580, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488580, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488580, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488580, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488580, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488580, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488580, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 488580, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427236, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+      propertyPath: _targetCollectionResource._targetPath
+      value: Wikitude/By0JQPhrM.wtc
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+  m_IsPrefabParent: 0
