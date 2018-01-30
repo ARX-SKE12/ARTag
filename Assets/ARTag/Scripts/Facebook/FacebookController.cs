@@ -23,12 +23,16 @@ public class FacebookController : MonoBehaviour {
     void InitFacebookSDKConnection()
     {
         if (!FB.IsInitialized) FB.Init(OnInitSuccess, OnHideUnity);
-        FB.ActivateApp();
+        else FB.ActivateApp();
     }
 
     void OnInitSuccess()
     {
-        if (FB.IsInitialized) Debug.Log("Facebook SDK Initialization Successful!");
+        if (FB.IsInitialized)
+        {
+            Debug.Log("Facebook SDK Initialization Successful!");
+            FB.ActivateApp();
+        }
         else Debug.Log("Failed to Initialize the Facebook SDK");
     }
 
@@ -36,5 +40,23 @@ public class FacebookController : MonoBehaviour {
     {
         if (!isGameShown) Time.timeScale = 0;
         else Time.timeScale = 1;
+    }
+
+    public void Auth()
+    {
+        List<string> permissions = new List<string>() { "public_profile" };
+        FB.LogInWithReadPermissions(permissions, AuthCallback);
+    }
+
+    void AuthCallback(ILoginResult result)
+    {
+        if (FB.IsLoggedIn)
+        {
+            AccessToken token = Facebook.Unity.AccessToken.CurrentAccessToken;
+            Debug.Log(token.UserId);
+        } else
+        {
+            Debug.Log("Cancelled");
+        }
     }
 }
