@@ -5,20 +5,12 @@ using Facebook.Unity;
 
 public class FacebookController : MonoBehaviour {
 
+    public GameObject spinner, loginButton;
+
     void Awake()
     {
         InitFacebookSDKConnection();
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void InitFacebookSDKConnection()
     {
@@ -30,10 +22,9 @@ public class FacebookController : MonoBehaviour {
     {
         if (FB.IsInitialized)
         {
-            Debug.Log("Facebook SDK Initialization Successful!");
             FB.ActivateApp();
         }
-        else Debug.Log("Failed to Initialize the Facebook SDK");
+        else GetComponent<ApplicationController>().ToastMessage("Failed to Initialize the Facebook SDK");
     }
 
     void OnHideUnity (bool isGameShown)
@@ -45,18 +36,21 @@ public class FacebookController : MonoBehaviour {
     public void Auth()
     {
         List<string> permissions = new List<string>() { "public_profile" };
+        spinner.SetActive(true);
+        loginButton.SetActive(false);
         FB.LogInWithReadPermissions(permissions, AuthCallback);
     }
 
     void AuthCallback(ILoginResult result)
     {
+        spinner.SetActive(false);
         if (FB.IsLoggedIn)
         {
             AccessToken token = Facebook.Unity.AccessToken.CurrentAccessToken;
             Debug.Log(token.UserId);
         } else
         {
-            Debug.Log("Cancelled");
+            loginButton.SetActive(true);
         }
     }
 }

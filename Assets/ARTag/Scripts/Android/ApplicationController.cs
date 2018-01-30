@@ -69,7 +69,7 @@ public class ApplicationController : MonoBehaviour {
 #endregion
 
 #region Android Method
-    void ToastMessage(string message)
+    public void ToastMessage(string message)
     {
         AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
         AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
