@@ -5,13 +5,18 @@ using Facebook.Unity;
 
 public class FacebookController : MonoBehaviour {
 
+#region Attributes
     public GameObject spinner, loginButton;
+#endregion
 
+#region Unity Behaviour
     void Awake()
     {
         InitFacebookSDKConnection();
     }
+#endregion
 
+#region Initialize SDK
     void InitFacebookSDKConnection()
     {
         if (!FB.IsInitialized) FB.Init(OnInitSuccess, OnHideUnity);
@@ -37,7 +42,9 @@ public class FacebookController : MonoBehaviour {
         if (!isGameShown) Time.timeScale = 0;
         else Time.timeScale = 1;
     }
+#endregion
 
+#region Auth
     public void Auth()
     {
         List<string> permissions = new List<string>() { "public_profile" };
@@ -45,7 +52,7 @@ public class FacebookController : MonoBehaviour {
         loginButton.SetActive(false);
         FB.LogInWithReadPermissions(permissions, AuthCallback);
     }
-
+    
     void AuthCallback(ILoginResult result)
     {
         StartCoroutine(HideSpinner());
@@ -58,10 +65,14 @@ public class FacebookController : MonoBehaviour {
             loginButton.SetActive(true);
         }
     }
+    #endregion
 
+#region UI Controller
     IEnumerator HideSpinner()
     {
         yield return new WaitForSeconds(1);
         spinner.SetActive(false);
     }
+#endregion
+
 }
