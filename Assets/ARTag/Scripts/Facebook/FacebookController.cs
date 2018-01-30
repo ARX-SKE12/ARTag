@@ -15,7 +15,11 @@ public class FacebookController : MonoBehaviour {
     void InitFacebookSDKConnection()
     {
         if (!FB.IsInitialized) FB.Init(OnInitSuccess, OnHideUnity);
-        else FB.ActivateApp();
+        else
+        {
+            FB.ActivateApp();
+            loginButton.SetActive(true);
+        }
     }
 
     void OnInitSuccess()
@@ -23,6 +27,7 @@ public class FacebookController : MonoBehaviour {
         if (FB.IsInitialized)
         {
             FB.ActivateApp();
+            loginButton.SetActive(true);
         }
         else GetComponent<ApplicationController>().ToastMessage("Failed to Initialize the Facebook SDK");
     }
@@ -43,7 +48,7 @@ public class FacebookController : MonoBehaviour {
 
     void AuthCallback(ILoginResult result)
     {
-        spinner.SetActive(false);
+        StartCoroutine(HideSpinner());
         if (FB.IsLoggedIn)
         {
             AccessToken token = Facebook.Unity.AccessToken.CurrentAccessToken;
@@ -52,5 +57,11 @@ public class FacebookController : MonoBehaviour {
         {
             loginButton.SetActive(true);
         }
+    }
+
+    IEnumerator HideSpinner()
+    {
+        yield return new WaitForSeconds(1);
+        spinner.SetActive(false);
     }
 }
