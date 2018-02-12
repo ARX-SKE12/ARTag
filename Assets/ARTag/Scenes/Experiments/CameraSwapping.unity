@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &270321332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 270321334}
+  - component: {fileID: 270321333}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &270321333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 270321332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b8c26d26035c64aa49831e68732e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wikitudeObject: {fileID: 0}
+  arCoreObject: {fileID: 0}
+--- !u!4 &270321334
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 270321332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494353611
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +241,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -318,7 +360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1524478027
 Prefab:
@@ -357,7 +399,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4892153982037908, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1905656715913530, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
       propertyPath: m_IsActive
@@ -409,6 +451,10 @@ Prefab:
       propertyPath: _targetCollectionResource._targetPath
       value: ARTag/tracker.wtc
       objectReference: {fileID: 0}
+    - target: {fileID: 130916, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11416608, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
@@ -439,7 +485,18 @@ MonoBehaviour:
   _targetsForExtendedTracking: []
   OnImageRecognized:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 270321333}
+        m_MethodName: OnImageRecognized
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Wikitude.ImageTrackable+OnImageRecognizedEvent, WikitudeUnityPlugin,
       Version=7.1.0.0, Culture=neutral, PublicKeyToken=null
   OnImageLost:
@@ -475,5 +532,52 @@ Transform:
   - {fileID: 517862530}
   - {fileID: 1781926244}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1894485938
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4694911891804940, guid: 0fe4e885bffadd54b868ffcb58db38e6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694911891804940, guid: 0fe4e885bffadd54b868ffcb58db38e6, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694911891804940, guid: 0fe4e885bffadd54b868ffcb58db38e6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694911891804940, guid: 0fe4e885bffadd54b868ffcb58db38e6, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694911891804940, guid: 0fe4e885bffadd54b868ffcb58db38e6, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694911891804940, guid: 0fe4e885bffadd54b868ffcb58db38e6, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694911891804940, guid: 0fe4e885bffadd54b868ffcb58db38e6, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694911891804940, guid: 0fe4e885bffadd54b868ffcb58db38e6, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114713290935249470, guid: 0fe4e885bffadd54b868ffcb58db38e6,
+        type: 2}
+      propertyPath: url
+      value: ws://192.168.100.2:999/socket.io/?EIO=4&transport=websocket
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 0fe4e885bffadd54b868ffcb58db38e6, type: 2}
+  m_IsPrefabParent: 0
