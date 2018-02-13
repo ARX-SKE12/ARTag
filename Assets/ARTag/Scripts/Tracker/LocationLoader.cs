@@ -18,7 +18,8 @@ public class LocationLoader : MonoBehaviour {
             LogClient.instance.Log("Location Name", recognizedTarget.Name);
             LogClient.instance.Log("Location ID", recognizedTarget.ID.ToString());
             LogClient.instance.Log("Distance", recognizedTarget.ComputeCameraDistanceToTarget().ToString());
-            LogClient.instance.Log("Diff", (wikiCam.transform.position - refPoint.transform.position).ToString());
+            LogClient.instance.Log("Ref", ((refPoint.transform.position)).ToString());
+            LogClient.instance.Log("Cam", ((wikiCam.transform.position)).ToString());
         }
 	}
 
