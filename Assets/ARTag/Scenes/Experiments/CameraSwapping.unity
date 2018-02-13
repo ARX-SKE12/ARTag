@@ -142,6 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wikitudeObject: {fileID: 0}
   arCoreObject: {fileID: 0}
+  refPoint: {fileID: 1292293843}
+  wikiCam: {fileID: 608989133}
 --- !u!4 &270321334
 Transform:
   m_ObjectHideFlags: 0
@@ -300,6 +302,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4766394983403116, guid: 71bcff46228f1764fac645d1d16f3b58,
     type: 2}
   m_PrefabInternal: {fileID: 517862528}
+--- !u!1 &608989133 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1423124719572620, guid: 71bcff46228f1764fac645d1d16f3b58,
+    type: 2}
+  m_PrefabInternal: {fileID: 517862528}
 --- !u!1 &1196443731
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +368,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1292293843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1292293844}
+  m_Layer: 0
+  m_Name: RefPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1292293844
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1292293843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1781926247}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1524478027
 Prefab:
@@ -501,9 +536,24 @@ MonoBehaviour:
       Version=7.1.0.0, Culture=neutral, PublicKeyToken=null
   OnImageLost:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 270321333}
+        m_MethodName: OnImageLost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Wikitude.ImageTrackable+OnImageLostEvent, WikitudeUnityPlugin, Version=7.1.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!4 &1781926247 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 494530, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+  m_PrefabInternal: {fileID: 1781926243}
 --- !u!1 &1820303889
 GameObject:
   m_ObjectHideFlags: 0
