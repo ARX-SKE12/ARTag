@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69b8c26d26035c64aa49831e68732e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wikitudeObject: {fileID: 0}
-  arCoreObject: {fileID: 0}
+  wikitudeObject: {fileID: 450461863}
+  arCoreObject: {fileID: 2134910997}
   refPoint: {fileID: 1017720295}
   wikiCam: {fileID: 608989133}
 --- !u!4 &270321334
@@ -157,6 +157,10 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &450461863 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130916, guid: 5d47068e592f24de68efe2fc00b2e73b, type: 2}
+  m_PrefabInternal: {fileID: 1781926243}
 --- !u!1 &494353611
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,3 +624,8 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fe4e885bffadd54b868ffcb58db38e6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2134910997 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1905656715913530, guid: c10877f7cd5764de18d46d7b777d1faa,
+    type: 2}
+  m_PrefabInternal: {fileID: 1524478027}
