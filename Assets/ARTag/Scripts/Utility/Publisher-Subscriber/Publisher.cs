@@ -6,7 +6,7 @@ public class Publisher : MonoBehaviour {
 
     List<GameObject> subscribers = new List<GameObject>();
 
-    public void register(GameObject subscriber)
+    public void Register(GameObject subscriber)
     {
         subscribers.Add(subscriber);
     }
