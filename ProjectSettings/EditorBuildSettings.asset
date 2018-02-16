@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ARTag/Scenes/Experiments/WikitudeDistance.unity
-    guid: 0b59353268937e84b8f2ea08db44a47f
+    path: Assets/ARTag/Scenes/ARTag/PositionLoadBack.unity
+    guid: 80eb10c7cf537b348a9f3ec1e7bf472b
+  - enabled: 1
+    path: Assets/ARTag/Scenes/Experiments/ARCore.unity
+    guid: 6639968151d58a54993fa0057cc07c34

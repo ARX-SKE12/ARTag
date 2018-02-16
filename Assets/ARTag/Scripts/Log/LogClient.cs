@@ -6,6 +6,8 @@ public class LogClient : MonoBehaviour {
 
 #region Attribute
     SocketIOComponent socket;
+    bool isReady;
+    List<string> logQueue;
 #endregion
 
 #region Constants
@@ -19,6 +21,7 @@ public class LogClient : MonoBehaviour {
     {
         if (!instance) instance = this;
         else if (instance != this) Destroy(gameObject);
+        logQueue = new List<string>();
         DontDestroyOnLoad(gameObject);
     }
     #endregion
@@ -27,18 +30,31 @@ public class LogClient : MonoBehaviour {
     void Start()
     {
         socket = GameObject.FindObjectOfType<SocketIOComponent>();
+        socket.On("open", OnSocketOpen);
     }
-
     #endregion
 
-#region Log
+    #region Log
+    public void OnSocketOpen(SocketIOEvent e)
+    {
+        isReady = true;
+        Log("Client Status", "Connection to Log Server is successful.");
+    }
+
     public void Log(string tag, string msg)
     {
-        Dictionary<string, string> data = new Dictionary<string, string>();
-        data["msg"] = tag + ": " + msg;
-        Debug.Log(socket);
-        socket.Emit(SOCKET_TAG, new JSONObject(data));
-        socket.Emit(SOCKET_TAG);
+        string logData = tag + ": " + msg;
+        logQueue.Add(logData);
+        if (isReady)
+        {
+            foreach (string logMsg in logQueue)
+            {
+                Dictionary<string, string> data = new Dictionary<string, string>();
+                data["msg"] = logMsg;
+                socket.Emit(SOCKET_TAG, new JSONObject(data));
+            }
+            logQueue.Clear();
+        }
     }
     #endregion
 
