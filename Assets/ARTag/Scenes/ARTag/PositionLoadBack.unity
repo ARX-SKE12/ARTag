@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114274558171160154, guid: 51c8d62066452cc45a879e9227a3cdeb,
+        type: 2}
+      propertyPath: _targetCollectionResource._targetPath
+      value: ARTag/tracker.wtc
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51c8d62066452cc45a879e9227a3cdeb, type: 2}
   m_IsPrefabParent: 0
