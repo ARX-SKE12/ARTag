@@ -20,6 +20,9 @@ public class TrackingQualityVisualizer : MonoBehaviour {
     void OnQualityTrackingFinish(Location location)
     {
         GetComponent<Text>().text = location.target.Name + " " + location.position.ToString();
+        PlayerPrefs.SetFloat("x", location.position.x);
+        PlayerPrefs.SetFloat("y", location.position.y);
+        PlayerPrefs.SetFloat("z", location.position.z);
     }
 
     void OnQualityTrackingLost()
