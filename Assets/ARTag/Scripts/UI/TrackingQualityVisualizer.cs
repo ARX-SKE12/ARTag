@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TrackingQualityVisualizer : MonoBehaviour {
 
-    public GameObject locationController;
+    public GameObject locationController, camera;
 
     void Start()
     {
@@ -14,7 +15,7 @@ public class TrackingQualityVisualizer : MonoBehaviour {
 
     void OnQualityTracking(int progress)
     {
-        GetComponent<Text>().text = progress.ToString();
+        GetComponent<Text>().text = progress.ToString()+" "+camera.transform.position;
     }
 
     void OnQualityTrackingFinish(Location location)
@@ -23,6 +24,7 @@ public class TrackingQualityVisualizer : MonoBehaviour {
         PlayerPrefs.SetFloat("x", location.position.x);
         PlayerPrefs.SetFloat("y", location.position.y);
         PlayerPrefs.SetFloat("z", location.position.z);
+        SceneManager.LoadScene("ARCore");
     }
 
     void OnQualityTrackingLost()

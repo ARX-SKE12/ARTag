@@ -27,7 +27,7 @@ public class LocationLoader : MonoBehaviour {
                 wikiCam.SetActive(false);
                 wikitudeObject.SetActive(false);
                 arCoreObject.SetActive(true);
-                arCoreObject.transform.GetChild(0).position = avg / 10;
+                arCoreObject.transform.GetChild(0).position = avg;
             }
             else
             {
