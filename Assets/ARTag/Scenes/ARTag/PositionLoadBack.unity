@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationController: {fileID: 604430711}
+  camera: {fileID: 1071530429}
 --- !u!114 &72915408
 MonoBehaviour:
   m_ObjectHideFlags: 0

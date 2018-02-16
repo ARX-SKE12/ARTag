@@ -14,7 +14,7 @@ public class LocationDetector : Publisher {
     #endregion
 
 #region Constants
-    const int MAXIMUM_QUALITY = 100;
+    const int MAXIMUM_QUALITY = 50;
     #endregion
 
 #region Unity Behaviours
