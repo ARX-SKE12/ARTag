@@ -8,7 +8,7 @@ public class SearchingUIController : MonoBehaviour {
 
     void Start()
     {
-        environmentController.GetComponent<EnvironmentController>().register(gameObject);
+        environmentController.GetComponent<EnvironmentController>().Register(gameObject);
     }
 
 	void OnSearchingStateChange(bool isSearching)

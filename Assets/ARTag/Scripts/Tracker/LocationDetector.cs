@@ -30,12 +30,12 @@ public class LocationDetector : Publisher {
     #endregion
 
 #region Tracking
-    void OnTargetRecognized(ImageTarget target)
+    public void OnTargetRecognized(ImageTarget target)
     {
         if (ShouldTracking(target)) recognizedTarget = target;
     }
 
-    void OnTargetLost()
+    public void OnTargetLost()
     {
         recognizedTarget = null;
     }
