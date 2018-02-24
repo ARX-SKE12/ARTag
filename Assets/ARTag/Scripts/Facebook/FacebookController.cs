@@ -1,13 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
 
-public class FacebookController : MonoBehaviour {
-
-#region Attributes
-    public GameObject spinner, loginButton;
-#endregion
+public class FacebookController : Publisher {
 
 #region Unity Behaviour
     void Awake()
@@ -23,17 +18,13 @@ public class FacebookController : MonoBehaviour {
         else
         {
             FB.ActivateApp();
-            loginButton.SetActive(true);
+            Broadcast("OnAuthSuccess", AccessToken.CurrentAccessToken.TokenString);
         }
     }
 
     void OnInitSuccess()
     {
-        if (FB.IsInitialized)
-        {
-            FB.ActivateApp();
-            loginButton.SetActive(true);
-        }
+        if (FB.IsInitialized) FB.ActivateApp();
         else GetComponent<ApplicationController>().ToastMessage("Failed to Initialize the Facebook SDK");
     }
 
@@ -48,31 +39,21 @@ public class FacebookController : MonoBehaviour {
     public void Auth()
     {
         List<string> permissions = new List<string>() { "public_profile" };
-        spinner.SetActive(true);
-        loginButton.SetActive(false);
+        Broadcast("OnAuthRequest");
         FB.LogInWithReadPermissions(permissions, AuthCallback);
     }
     
     void AuthCallback(ILoginResult result)
     {
-        StartCoroutine(HideSpinner());
         if (FB.IsLoggedIn)
         {
-            AccessToken token = Facebook.Unity.AccessToken.CurrentAccessToken;
-            Debug.Log(token.UserId);
+            AccessToken token = AccessToken.CurrentAccessToken;
+            Broadcast("OnAuthSuccess", token.TokenString);
         } else
         {
-            loginButton.SetActive(true);
+            Broadcast("OnAuthFailure");
         }
     }
     #endregion
-
-#region UI Controller
-    IEnumerator HideSpinner()
-    {
-        yield return new WaitForSeconds(1);
-        spinner.SetActive(false);
-    }
-#endregion
 
 }
