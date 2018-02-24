@@ -490,6 +490,8 @@ GameObject:
   m_Component:
   - component: {fileID: 796372415}
   - component: {fileID: 796372414}
+  - component: {fileID: 796372417}
+  - component: {fileID: 796372416}
   m_Layer: 0
   m_Name: NetworkController
   m_TagString: Untagged
@@ -527,6 +529,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &796372416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 796372413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a4f1eed053cdc4083555dd960e0651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facebookController: {fileID: 1407748725}
+--- !u!114 &796372417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 796372413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72afc753dc5dabe49af742ffe1aa8d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &973527654
 GameObject:
   m_ObjectHideFlags: 0
