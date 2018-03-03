@@ -510,6 +510,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 327658664}
+--- !u!1 &376551547 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1637996540812124, guid: c10877f7cd5764de18d46d7b777d1faa,
+    type: 2}
+  m_PrefabInternal: {fileID: 95095677}
 --- !u!1 &424999893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1151,7 @@ MonoBehaviour:
   taggingPanel: {fileID: 1751991903}
   switchButton: {fileID: 2044903784}
   tagName: {fileID: 424999893}
-  firstPersonCamera: {fileID: 0}
+  firstPersonCamera: {fileID: 376551547}
   tagPrefab: {fileID: 1357795326963744, guid: 68c734aedbbc78a4fbe62997710022b2, type: 2}
 --- !u!1 &1705062233
 GameObject:
