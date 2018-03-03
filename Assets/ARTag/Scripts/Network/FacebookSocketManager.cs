@@ -1,11 +1,10 @@
-﻿using System.Collections;
+﻿using Facebook.Unity;
 using System.Collections.Generic;
 using UnityEngine;
 using SocketIO;
+using FBAuthKit;
 
 public class FacebookSocketManager : MonoBehaviour {
-
-    public GameObject facebookController;
 
     SocketManager socket;
 
@@ -20,7 +19,7 @@ public class FacebookSocketManager : MonoBehaviour {
 
     void BindFacebook()
     {
-        facebookController.GetComponent<FacebookController>().Register(gameObject);
+        GameObject.FindObjectOfType<FacebookAuthController>().Register(gameObject);
     }
 	
     void BindSocket()
@@ -30,10 +29,10 @@ public class FacebookSocketManager : MonoBehaviour {
         socket.On(AUTH_ERROR_EVENT, OnAuthError);
     }
 
-    void OnAuthSuccess(string token)
+    void OnAuthSuccess(AccessToken token)
     {
         Dictionary<string, string> data = new Dictionary<string, string>();
-        data["token"] = token;
+        data["token"] = token.TokenString;
         socket.Emit("auth", new JSONObject(data));
     }
 

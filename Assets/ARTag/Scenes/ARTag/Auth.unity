@@ -354,7 +354,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1407748726}
+      - m_Target: {fileID: 0}
         m_MethodName: Auth
         m_Mode: 1
         m_Arguments:
@@ -540,7 +540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a4f1eed053cdc4083555dd960e0651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facebookController: {fileID: 1407748725}
 --- !u!114 &796372417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,34 +687,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 973700316}
---- !u!1 &1232511181
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1232511182}
-  m_Layer: 0
-  m_Name: Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1232511182
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1232511181}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 90}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1244634619
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +761,52 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1244634619}
+--- !u!1001 &1303856593
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4057528847387298, guid: 4aea5758bd7da7a4bab6eaea49fe991e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057528847387298, guid: 4aea5758bd7da7a4bab6eaea49fe991e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057528847387298, guid: 4aea5758bd7da7a4bab6eaea49fe991e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057528847387298, guid: 4aea5758bd7da7a4bab6eaea49fe991e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057528847387298, guid: 4aea5758bd7da7a4bab6eaea49fe991e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057528847387298, guid: 4aea5758bd7da7a4bab6eaea49fe991e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057528847387298, guid: 4aea5758bd7da7a4bab6eaea49fe991e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4057528847387298, guid: 4aea5758bd7da7a4bab6eaea49fe991e, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948237790205874, guid: 4aea5758bd7da7a4bab6eaea49fe991e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 4aea5758bd7da7a4bab6eaea49fe991e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1407748725
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +815,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1407748727}
-  - component: {fileID: 1407748726}
   - component: {fileID: 1407748728}
   - component: {fileID: 1407748729}
   m_Layer: 0
@@ -808,17 +824,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1407748726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1407748725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c76042d5930f87042bd4993f9c9436cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1407748727
 Transform:
   m_ObjectHideFlags: 0
