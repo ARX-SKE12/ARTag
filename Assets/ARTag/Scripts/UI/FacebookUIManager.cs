@@ -3,39 +3,46 @@ using FBAuthKit;
 using Facebook.Unity;
 using UnityEngine;
 
-public class FacebookUIManager : MonoBehaviour {
+namespace ARTag
+{
 
-    public GameObject spinner, loginButton;
-
-	// Use this for initialization
-	void Start () {
-        BindFacebookController();
-	}
-
-    void BindFacebookController()
+    public class FacebookUIManager : MonoBehaviour
     {
-        GameObject.FindObjectOfType<FacebookAuthController>().Register(gameObject);
+
+        public GameObject spinner, loginButton;
+
+        // Use this for initialization
+        void Start()
+        {
+            BindFacebookController();
+        }
+
+        void BindFacebookController()
+        {
+            GameObject.FindObjectOfType<FacebookAuthController>().Register(gameObject);
+        }
+
+        void OnAuthRequest()
+        {
+            spinner.SetActive(true);
+            loginButton.SetActive(false);
+        }
+
+        void OnAuthSuccess(AccessToken token)
+        {
+            StartCoroutine(HideSpinner());
+        }
+
+        void OnAuthFailure()
+        {
+            loginButton.SetActive(true);
+        }
+
+        IEnumerator HideSpinner()
+        {
+            yield return new WaitForSeconds(1);
+            spinner.SetActive(false);
+        }
     }
 
-    void OnAuthRequest()
-    {
-        spinner.SetActive(true);
-        loginButton.SetActive(false);
-    }
-
-    void OnAuthSuccess(AccessToken token)
-    {
-        StartCoroutine(HideSpinner());
-    }
-
-    void OnAuthFailure()
-    {
-        loginButton.SetActive(true);
-    }
-
-    IEnumerator HideSpinner()
-    {
-        yield return new WaitForSeconds(1);
-        spinner.SetActive(false);
-    }
 }
