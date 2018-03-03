@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using LoggingClient;
 using UnityEngine;
 using Wikitude;
 public class LocationLoader : MonoBehaviour {
