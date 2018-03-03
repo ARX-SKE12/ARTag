@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/ARTag/Scenes/ARTag/PositionLoadBack.unity
     guid: 80eb10c7cf537b348a9f3ec1e7bf472b
-  - enabled: 1
+  - enabled: 0
     path: Assets/ARTag/Scenes/Experiments/ARCore.unity
     guid: 6639968151d58a54993fa0057cc07c34
+  - enabled: 1
+    path: Assets/ARTag/Scenes/ARTag/ARTag.unity
+    guid: 1f09ebf04e878ae4292dcf440080816c
