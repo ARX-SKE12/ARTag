@@ -41,15 +41,15 @@ public class ApplicationController : MonoBehaviour {
 
 #region Error Check
 
-    bool IsPermissionDenied()
+    /*bool IsPermissionDenied()
     {
-        return Session.ConnectionState == SessionConnectionState.UserRejectedNeededPermission;
+       // return Session.ConnectionState == SessionConnectionState.UserRejectedNeededPermission;
     }
 
     bool IsConnectionFailed()
     {
-        return Session.ConnectionState == SessionConnectionState.ConnectToServiceFailed;
-    }
+       // return Session.ConnectionState == SessionConnectionState.ConnectToServiceFailed;
+    }*/
 
     void ExitAndNotify(string messege)
     {
@@ -62,8 +62,8 @@ public class ApplicationController : MonoBehaviour {
     {
         if (!isExitting)
         {
-            if (IsPermissionDenied()) ExitAndNotify(NEED_PERMISSION_MESSEGE);
-            else if (IsConnectionFailed()) ExitAndNotify(CONNECTION_FAILED_MESSEGE);
+     /*       if (IsPermissionDenied()) ExitAndNotify(NEED_PERMISSION_MESSEGE);
+            else if (IsConnectionFailed()) ExitAndNotify(CONNECTION_FAILED_MESSEGE); */
         }
     }
 #endregion

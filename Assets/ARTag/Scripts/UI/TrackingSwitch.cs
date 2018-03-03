@@ -9,8 +9,8 @@ public class TrackingSwitch : MonoBehaviour {
 	
 	public void ActionTrackingStatus()
     {
-        environmentController.GetComponent<EnvironmentController>().SwitchStatus();
+    /*    environmentController.GetComponent<EnvironmentController>().SwitchStatus();
         if (!environmentController.GetComponent<EnvironmentController>().isPause) GetComponentInChildren<Image>().sprite = pauseIcon;
-        else GetComponentInChildren<Image>().sprite = trackingIcon;
+        else GetComponentInChildren<Image>().sprite = trackingIcon; */
     }
 }
