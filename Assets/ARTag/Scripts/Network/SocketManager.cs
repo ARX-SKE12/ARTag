@@ -1,48 +1,53 @@
 ﻿
 using SocketIO;
 using PublisherKit;
+namespace ARTag
+{
 
-public class SocketManager : Publisher {
-
-    SocketIOComponent socket;
-
-    void Awake()
+    public class SocketManager : Publisher
     {
-        InitSocket();    
-    }
-    
-    void InitSocket()
-    {
-        socket = GetComponent<SocketIOComponent>();
-        socket.On("open", OnConnectionOpen);
-        socket.On("error", OnConnectionError);
-        socket.On("close", OnConnectionClose);
-    }
 
-    public void Emit(string tag, JSONObject data = null)
-    {
-        if (data) socket.Emit(tag, data);
-        else socket.Emit(tag);
-    }
+        SocketIOComponent socket;
 
-    public void On(string tag, System.Action<SocketIOEvent> method)
-    {
-        socket.On(tag, method);
-    }
+        void Awake()
+        {
+            InitSocket();
+        }
 
-    public void OnConnectionOpen(SocketIOEvent e)
-    {
-        Broadcast("OnConnectionOpen");
-    }
+        void InitSocket()
+        {
+            socket = GetComponent<SocketIOComponent>();
+            socket.On("open", OnConnectionOpen);
+            socket.On("error", OnConnectionError);
+            socket.On("close", OnConnectionClose);
+        }
 
-    public void OnConnectionClose(SocketIOEvent e)
-    {
-        Broadcast("OnConnectionClose");
-    }
+        public void Emit(string tag, JSONObject data = null)
+        {
+            if (data) socket.Emit(tag, data);
+            else socket.Emit(tag);
+        }
 
-    public void OnConnectionError(SocketIOEvent e)
-    {
-        Broadcast("OnConnectionError");
+        public void On(string tag, System.Action<SocketIOEvent> method)
+        {
+            socket.On(tag, method);
+        }
+
+        public void OnConnectionOpen(SocketIOEvent e)
+        {
+            Broadcast("OnConnectionOpen");
+        }
+
+        public void OnConnectionClose(SocketIOEvent e)
+        {
+            Broadcast("OnConnectionClose");
+        }
+
+        public void OnConnectionError(SocketIOEvent e)
+        {
+            Broadcast("OnConnectionError");
+        }
+
     }
 
 }
