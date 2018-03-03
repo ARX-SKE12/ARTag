@@ -1,5 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using FBAuthKit;
+using Facebook.Unity;
 using UnityEngine;
 
 public class FacebookUIManager : MonoBehaviour {
@@ -13,7 +14,7 @@ public class FacebookUIManager : MonoBehaviour {
 
     void BindFacebookController()
     {
-        GetComponent<FacebookController>().Register(gameObject);
+        GameObject.FindObjectOfType<FacebookAuthController>().Register(gameObject);
     }
 
     void OnAuthRequest()
@@ -22,7 +23,7 @@ public class FacebookUIManager : MonoBehaviour {
         loginButton.SetActive(false);
     }
 
-    void OnAuthSuccess()
+    void OnAuthSuccess(AccessToken token)
     {
         StartCoroutine(HideSpinner());
     }

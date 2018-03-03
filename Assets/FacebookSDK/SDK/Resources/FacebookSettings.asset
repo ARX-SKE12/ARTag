@@ -15,7 +15,7 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 1948953898757653
+  - '1948953898757653 '
   appLabels:
   - ARTag
   cookie: 1
