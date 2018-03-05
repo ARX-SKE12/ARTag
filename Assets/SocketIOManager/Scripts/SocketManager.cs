@@ -1,7 +1,7 @@
-﻿
-using SocketIO;
+﻿using SocketIO;
 using PublisherKit;
-namespace ARTag
+
+namespace SocketIOManager
 {
 
     public class SocketManager : Publisher

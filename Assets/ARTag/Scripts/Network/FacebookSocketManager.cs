@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SocketIO;
 using FBAuthKit;
+using SocketIOManager;
 namespace ARTag
 {
     public class FacebookSocketManager : MonoBehaviour
@@ -27,7 +28,7 @@ namespace ARTag
 
         void BindSocket()
         {
-            socket = GetComponent<SocketManager>();
+            socket = GameObject.FindObjectOfType<SocketManager>();
             socket.On(AUTH_SUCCESS_EVENT, OnAuthSuccess);
             socket.On(AUTH_ERROR_EVENT, OnAuthError);
         }
