@@ -1,90 +1,95 @@
 ﻿using UnityEngine;
 using GoogleARCore;
-
-public class ApplicationController : MonoBehaviour {
-
-#region Status
-    bool isExitting;
-#endregion
-
-#region Constants
-    const string NEED_PERMISSION_MESSEGE = "Camera permission is needed to run this application.";
-    const string CONNECTION_FAILED_MESSEGE = "ARCore encountered a problem connecting.  Please start the app again.";
-#endregion
-
-#region Unity
-    // Update is called once per frame
-    void Update () {
-        CheckForceExit();
-        CheckConnectionError();
-    }
-#endregion
-
-#region Force Exit Check
-
-    bool IsForceExit()
+namespace ARTag
+{
+    public class ApplicationController : MonoBehaviour
     {
-        return Input.GetKey(KeyCode.Escape);
-    }
 
-    void CheckForceExit()
-    {
-        if (IsForceExit())
-            Exit();
-    }
+        #region Status
+        bool isExitting;
+        #endregion
 
-    void Exit()
-    {
-        Application.Quit();
-    }
-#endregion
+        #region Constants
+        const string NEED_PERMISSION_MESSEGE = "Camera permission is needed to run this application.";
+        const string CONNECTION_FAILED_MESSEGE = "ARCore encountered a problem connecting.  Please start the app again.";
+        #endregion
 
-#region Error Check
-
-    bool IsPermissionDenied()
-    {
-        return Session.ConnectionState == SessionConnectionState.UserRejectedNeededPermission;
-    }
-
-    bool IsConnectionFailed()
-    {
-        return Session.ConnectionState == SessionConnectionState.ConnectToServiceFailed;
-    }
-
-    void ExitAndNotify(string messege)
-    {
-        ToastMessage(messege);
-        isExitting = true;
-        Invoke("Exit", 0.5f);
-    }
-
-    void CheckConnectionError()
-    {
-        if (!isExitting)
+        #region Unity
+        // Update is called once per frame
+        void Update()
         {
-            if (IsPermissionDenied()) ExitAndNotify(NEED_PERMISSION_MESSEGE);
-            else if (IsConnectionFailed()) ExitAndNotify(CONNECTION_FAILED_MESSEGE);
+            CheckForceExit();
+            CheckConnectionError();
         }
-    }
-#endregion
+        #endregion
 
-#region Android Method
-    public void ToastMessage(string message)
-    {
-        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+        #region Force Exit Check
 
-        if (unityActivity != null)
+        bool IsForceExit()
         {
-            AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
-            unityActivity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
+            return Input.GetKey(KeyCode.Escape);
+        }
+
+        void CheckForceExit()
+        {
+            if (IsForceExit())
+                Exit();
+        }
+
+        void Exit()
+        {
+            Application.Quit();
+        }
+        #endregion
+
+        #region Error Check
+
+        /*bool IsPermissionDenied()
+        {
+           // return Session.ConnectionState == SessionConnectionState.UserRejectedNeededPermission;
+        }
+
+        bool IsConnectionFailed()
+        {
+           // return Session.ConnectionState == SessionConnectionState.ConnectToServiceFailed;
+        }*/
+
+        void ExitAndNotify(string messege)
+        {
+            ToastMessage(messege);
+            isExitting = true;
+            Invoke("Exit", 0.5f);
+        }
+
+        void CheckConnectionError()
+        {
+            if (!isExitting)
             {
-                AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText", unityActivity,
-                    message, 0);
-                toastObject.Call("show");
-            }));
+                /*       if (IsPermissionDenied()) ExitAndNotify(NEED_PERMISSION_MESSEGE);
+                       else if (IsConnectionFailed()) ExitAndNotify(CONNECTION_FAILED_MESSEGE); */
+            }
         }
+        #endregion
+
+        #region Android Method
+        public void ToastMessage(string message)
+        {
+            AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject unityActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+
+            if (unityActivity != null)
+            {
+                AndroidJavaClass toastClass = new AndroidJavaClass("android.widget.Toast");
+                unityActivity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
+                {
+                    AndroidJavaObject toastObject = toastClass.CallStatic<AndroidJavaObject>("makeText", unityActivity,
+                        message, 0);
+                    toastObject.Call("show");
+                }));
+            }
+        }
+        #endregion
+
     }
-#endregion
 
 }

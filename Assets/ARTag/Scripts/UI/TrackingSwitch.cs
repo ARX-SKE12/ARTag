@@ -1,16 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using GoogleARCore;
+using ARCoreToolkit;
+namespace ARTag
+{
 
-public class TrackingSwitch : MonoBehaviour {
-
-    public Sprite pauseIcon, trackingIcon;
-    
-    public GameObject environmentController;
-	
-	public void ActionTrackingStatus()
+    public class TrackingSwitch : MonoBehaviour
     {
-        environmentController.GetComponent<EnvironmentController>().SwitchStatus();
-        if (!environmentController.GetComponent<EnvironmentController>().isPause) GetComponentInChildren<Image>().sprite = pauseIcon;
-        else GetComponentInChildren<Image>().sprite = trackingIcon;
+
+        public Sprite pauseIcon, trackingIcon;
+
+        public void ActionTrackingStatus()
+        {
+            GameObject.FindObjectOfType<PlaneController>().ChangePlaneTrackingState();
+            if (!GameObject.FindObjectOfType<ARCoreSession>().SessionConfig.EnablePlaneFinding) GetComponentInChildren<Image>().sprite = pauseIcon;
+            else GetComponentInChildren<Image>().sprite = trackingIcon;
+        }
     }
+
 }
