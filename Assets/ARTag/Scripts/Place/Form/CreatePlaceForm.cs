@@ -14,6 +14,7 @@ namespace ARTag
     {
 
         SocketManager socketManager;
+        TemporaryDataManager tempManager;
 
         string imageType;
 
@@ -55,6 +56,7 @@ namespace ARTag
         void Start()
         {
             socketManager = GameObject.Find(ObjectsCollector.SOCKETIO_MANAGER_OBJECT).GetComponent<SocketManager>();
+            tempManager = GameObject.FindObjectOfType<TemporaryDataManager>();
             socketManager.On(EventsCollector.PLACE_CREATE_SUCCESS, OnPlaceCreateSuccess);
             socketManager.On(EventsCollector.PLACE_CREATE_ERROR, OnPlaceCreateError);
         }
@@ -139,8 +141,8 @@ namespace ARTag
         public void OnPlaceCreateSuccess(SocketIOEvent e)
         {
             GameObject.Find(ObjectsCollector.ERROR_TEXT).GetComponent<Text>().color = new Color(1, 0, 0, 0);
-            PlayerPrefs.SetString("target", e.data.GetField("place").GetField("marker").str);
-            PlayerPrefs.SetInt("mode", (int) MarkerRecognizer.TrackingMode.EDITOR);
+            tempManager.Put("target", e.data.GetField("place").GetField("marker").str);
+            tempManager.Put("mode", MarkerRecognizer.TrackingMode.EDITOR);
             SceneManager.LoadScene("Draft Marker Detection");
         }
 

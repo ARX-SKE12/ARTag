@@ -17,6 +17,7 @@ namespace ARTag
         public static readonly string FORM_STATUS_TEXT = "Form Status Text";
         public static readonly string CLOUD_STATUS_TEXT = "Cloud Status Text";
         public static readonly string QUALITY_TRACKING_TEXT = "Quality Tracking Text";
+        public static readonly string CAMERA_POSITION_TEXT = "Camera Position Text";
     }
 
 }

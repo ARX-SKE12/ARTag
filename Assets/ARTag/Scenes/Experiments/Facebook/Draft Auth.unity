@@ -580,7 +580,7 @@ Prefab:
     - target: {fileID: 114248708360744048, guid: 0dbfe07edc9ea6642b4083ad95c7da43,
         type: 2}
       propertyPath: url
-      value: ws://192.168.100.4:3000/socket.io/?EIO=4&transport=websocket
+      value: ws://10.2.29.232:3000/socket.io/?EIO=4&transport=websocket
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dbfe07edc9ea6642b4083ad95c7da43, type: 2}
@@ -599,6 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 804046892}
   - component: {fileID: 804046893}
+  - component: {fileID: 804046894}
   m_Layer: 0
   m_Name: Engine
   m_TagString: Untagged
@@ -630,6 +631,57 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb3b794e4f1ccce48b971144ea7951c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &804046894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804046891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6b9057b5e0c884db64ba490f57b6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &870083813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 870083814}
+  - component: {fileID: 870083815}
+  m_Layer: 0
+  m_Name: Temporary Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &870083814
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 870083813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1419540828}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &870083815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 870083813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a7b4d4c829cda41b230c28ea30ab19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &923968871
@@ -802,6 +854,7 @@ Transform:
   m_Children:
   - {fileID: 465183357}
   - {fileID: 588442800}
+  - {fileID: 870083814}
   m_Father: {fileID: 804046892}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

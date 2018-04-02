@@ -9,6 +9,7 @@ namespace ARTag
 
     public class MarkerRecognizer : MonoBehaviour
     {
+        TemporaryDataManager tempManager;
         bool isTracking;
         List<Vector3> positions;
         ImageTarget currentTarget;
@@ -26,9 +27,10 @@ namespace ARTag
 
         void Awake()
         {
+            tempManager = GameObject.FindObjectOfType<TemporaryDataManager>();
             positions = new List<Vector3>();
-            if (PlayerPrefs.HasKey("mode")) mode = (TrackingMode)PlayerPrefs.GetInt("mode");
-            if (PlayerPrefs.HasKey("target")) targetName = PlayerPrefs.GetString("target");
+            if (tempManager.Has("mode")) mode = (TrackingMode) tempManager.Get("mode");
+            if (tempManager.Has("target")) targetName = (string) tempManager.Get("target");
         }
 
         void Update()
@@ -40,7 +42,7 @@ namespace ARTag
         {
             currentTarget = target;
             GameObject.Find(ObjectsCollector.CLOUD_STATUS_TEXT).GetComponent<Text>().text = target.Name+" Found!";
-            if (mode == TrackingMode.ANY || targetName == target.Name) StartQualityTracking();
+            StartQualityTracking();
         }
 
         public void OnTargetLost(ImageTarget target)
@@ -72,10 +74,8 @@ namespace ARTag
                 if (positions.Count > 20)
                 {
                     // Note: Position of Wikitude is different from ARCore
-                    PlayerPrefs.SetFloat("x", position.x / 100f);
-                    PlayerPrefs.SetFloat("y", position.y / 100f);
-                    PlayerPrefs.SetFloat("z", position.z / 100f);
-                    SceneManager.LoadScene("HelloAR");
+                    tempManager.Put("position", new Vector3(position.x/100f, position.z/100f, position.y/100f));
+                    SceneManager.LoadScene("Draft Editor");
                 }
                 GameObject.Find(ObjectsCollector.QUALITY_TRACKING_TEXT).GetComponent<Text>().text = position.ToString()+"\n"+currentTarget.Name + "\n" + positions.Count;
             }
