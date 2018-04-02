@@ -18,5 +18,8 @@ EditorBuildSettings:
     path: Assets/ARTag/Scenes/Experiments/Marker/Draft Marker Detection.unity
     guid: 3a3b114ce7f9b294d871916b11133b53
   - enabled: 1
+    path: Assets/ARTag/Scenes/Experiments/Tag/Draft Editor.unity
+    guid: dcb7985c4d6ce664da7581350969f8e5
+  - enabled: 1
     path: Assets/GoogleARCore/Examples/HelloAR/Scenes/HelloAR.unity
     guid: e6a6fa04348cb45c9b0221eb19c946da
