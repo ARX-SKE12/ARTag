@@ -15,9 +15,9 @@ namespace ARTag
             GetComponent<ImageTracker>().CloudRecognitionService.StartContinuousRecognition(recognitionInterval);
         }
 
-        public void OnError()
+        public void OnError(int code, string err)
         {
-            GameObject.Find(ObjectsCollector.CLOUD_STATUS_TEXT).GetComponent<Text>().text = "Cloud Error!";
+            GameObject.Find(ObjectsCollector.CLOUD_STATUS_TEXT).GetComponent<Text>().text = code+" "+err;
         }
 
         public void OnRecognitionResponse(CloudRecognitionServiceResponse response)

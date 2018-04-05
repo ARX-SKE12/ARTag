@@ -625,7 +625,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451924, guid: 1a6fa3831730b4a23b8aa9a7bc0cd7d7, type: 2}
       propertyPath: _cloudRecognitionService.OnInitializationError.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11451924, guid: 1a6fa3831730b4a23b8aa9a7bc0cd7d7, type: 2}
       propertyPath: _cloudRecognitionService.OnInitializationError.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -633,7 +633,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451924, guid: 1a6fa3831730b4a23b8aa9a7bc0cd7d7, type: 2}
       propertyPath: _cloudRecognitionService.OnRecognitionError.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11451924, guid: 1a6fa3831730b4a23b8aa9a7bc0cd7d7, type: 2}
       propertyPath: _cloudRecognitionService.OnRecognitionError.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -641,7 +641,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11451924, guid: 1a6fa3831730b4a23b8aa9a7bc0cd7d7, type: 2}
       propertyPath: OnErrorLoadingTargets.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11451924, guid: 1a6fa3831730b4a23b8aa9a7bc0cd7d7, type: 2}
       propertyPath: OnErrorLoadingTargets.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
