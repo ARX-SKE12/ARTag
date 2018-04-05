@@ -90,16 +90,6 @@ namespace ARTag
                 ImageStruct imgStruct = new ImageStruct(imageBase64, image.width, image.height);
                 switch (imageType)
                 {
-                    case MARKER:
-                        if (new FileInfo(path).Length > MAX_UPLOAD_FILE_SIZE)
-                        {
-                            GameObject.Find(ObjectsCollector.ERROR_TEXT).GetComponent<Text>().text = "Oversize";
-                            GameObject.Find(ObjectsCollector.ERROR_TEXT).GetComponent<Text>().color = new Color(1, 0, 0, 1);
-                            break;
-                        }
-                        marker = imgStruct;
-                        GameObject.Find(ObjectsCollector.MARKER_IMAGE).GetComponent<Image>().sprite = imageSprite;
-                        break;
                     case THUMBNAIL:
                         thumbnail = imgStruct;
                         GameObject.Find(ObjectsCollector.THUMBNAIL_IMAGE).GetComponent<Image>().sprite = imageSprite;
@@ -117,18 +107,11 @@ namespace ARTag
         {
             string name = GameObject.Find(ObjectsCollector.PLACE_NAME_FIELD).GetComponent<InputField>().text;
             string description = GameObject.Find(ObjectsCollector.PLACE_DESCRIPTION_FIELD).GetComponent<InputField>().text;
-            int markerSize = int.Parse(GameObject.Find(ObjectsCollector.MARKER_SIZE_FIELD).GetComponent<InputField>().text);
             bool isPublic = GameObject.Find(ObjectsCollector.PUBLIC_CHECK_BOX).GetComponent<Toggle>().isOn;
             JSONObject data = new JSONObject();
             data.AddField(FIELD_NAME, name);
             data.AddField(FIELD_DESCRIPTOPN, description);
             data.AddField(FIELD_IS_PUBLIC, isPublic);
-            JSONObject markerData = new JSONObject();
-            markerData.SetField(FIELD_SIZE, markerSize);
-            markerData.SetField(FIELD_WIDTH, marker.width);
-            markerData.SetField(FIELD_HEIGHT, marker.height);
-            markerData.AddField(FIELD_IMAGE, marker.data);
-            data.AddField(FIELD_MARKER, markerData);
             JSONObject thumbnailData = new JSONObject();
             thumbnailData.SetField(FIELD_WIDTH, thumbnail.width);
             thumbnailData.SetField(FIELD_HEIGHT, thumbnail.height);
@@ -141,9 +124,12 @@ namespace ARTag
         public void OnPlaceCreateSuccess(SocketIOEvent e)
         {
             GameObject.Find(ObjectsCollector.ERROR_TEXT).GetComponent<Text>().color = new Color(1, 0, 0, 0);
-            tempManager.Put("target", e.data.GetField("place").GetField("marker").str);
+            int timestamp = (int) e.data.GetField("place").GetField("timestamp").n;
+            string name = e.data.GetField("place").GetField("name").str;
+            string significant = timestamp + "-" + name;
+            tempManager.Put("significant", significant);
             tempManager.Put("mode", MarkerRecognizer.TrackingMode.EDITOR);
-            SceneManager.LoadScene("Draft Marker Detection");
+            SceneManager.LoadScene("Draft QR Loader");
         }
 
         public void OnPlaceCreateError(SocketIOEvent e)
