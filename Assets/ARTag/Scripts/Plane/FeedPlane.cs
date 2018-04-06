@@ -2,29 +2,17 @@
 namespace ARTag
 {
 
-    using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
     using ARCoreToolkit;
     using SocketIOManager;
-
+    
     public class FeedPlane : MonoBehaviour
     {
 
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         public void UpdatePlaneData()
         {
+            string id = ((Place) GameObject.FindObjectOfType<TemporaryDataManager>().Get("place")).id;
             PlaneBehaviour[] planes = GameObject.FindObjectsOfType<PlaneBehaviour>();
             JSONObject data = new JSONObject();
             JSONObject[] planesData = new JSONObject[planes.Length];
@@ -54,7 +42,8 @@ namespace ARTag
                 planeData.AddField("vertices", new JSONObject(verticesData));
                 planesData[i] = planeData;
             }
-            data.SetField("planes", new JSONObject(planesData));
+            data.AddField("id", id);
+            data.SetField("data", new JSONObject(planesData));
             GameObject.FindObjectOfType<SocketManager>().Emit(EventsCollector.PLANE_UPDATE, data);
         }
         
