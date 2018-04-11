@@ -467,6 +467,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f9d20d42932244793856c6ed4e6241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPosition: {x: 0, y: 0, z: 0}
+  currentRotation: {x: 0, y: 0, z: 0, w: 0}
+  offsetPosition: {x: 0, y: 0, z: 0}
+  offsetRotation: {x: 0, y: 0, z: 0, w: 1}
 --- !u!4 &1061276572
 Transform:
   m_ObjectHideFlags: 0

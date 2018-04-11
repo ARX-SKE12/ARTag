@@ -1,59 +1,58 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using GoogleARCore;
+﻿
+namespace ARTag {
 
-public class Calibration : MonoBehaviour {
+    using UnityEngine;
+    using GoogleARCore;
 
-    public Vector3 currentPosition;
-    public Quaternion currentRotation;
-    Vector3 offsetPosition = Vector3.zero;
-    Quaternion offsetRotation = Quaternion.identity;
-    bool isTracked = false;
+    public class Calibration : MonoBehaviour
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        currentPosition = Camera.main.transform.position;
-        currentRotation = Camera.main.transform.rotation;
-        if (isTracked)
+        public Vector3 currentPosition;
+        public Quaternion currentRotation;
+        public Vector3 offsetPosition = Vector3.zero;
+        public Quaternion offsetRotation = Quaternion.identity;
+        bool isCalibrated;
+
+        // Update is called once per frame
+        void Update()
         {
-            currentPosition = offsetPosition - Camera.main.transform.position;
-            currentRotation = offsetRotation * Quaternion.Inverse(Camera.main.transform.rotation);
+            currentPosition = Camera.main.transform.position;
+            currentRotation = Camera.main.transform.rotation;
+            if (isCalibrated)
+            {
+                currentPosition = offsetPosition - Camera.main.transform.position;
+                currentRotation = offsetRotation * Quaternion.Inverse(Camera.main.transform.rotation);
+            } else
+            {
+                Touch touch;
+                if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began) return;
+
+                TrackableHit hit;
+                TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon | TrackableHitFlags.FeaturePointWithSurfaceNormal;
+
+                if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+                {
+                    offsetPosition = hit.Pose.position;
+                    offsetRotation = hit.Pose.rotation * Quaternion.Inverse(Quaternion.Euler(0, 0, 90));
+                    isCalibrated = true;
+                }
+            }
         }
-        string pos = currentPosition.ToString() + "\n" + currentRotation.eulerAngles.ToString();
-
-        GameObject.Find("Pos").GetComponent<Text>().text = pos;
-
-        // If the player has not touched the screen, we are done with this update.
-        Touch touch;
-        if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
+        
+        public void Recalibrate()
         {
-            return;
+            isCalibrated = false;
         }
 
-        // Raycast against the location the player touched to search for planes.
-        TrackableHit hit;
-        TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
-            TrackableHitFlags.FeaturePointWithSurfaceNormal;
-
-        if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+        public Vector3 GetVirtualPosition(Vector3 position)
         {
-            Quaternion decrease = hit.Pose.rotation * Quaternion.Inverse(Quaternion.Euler(0, 0, 90));
-            //Vector3 diff = hit.Pose.position-Camera.main.transform.position;
-            string stat = Camera.main.transform.rotation.eulerAngles.ToString()+"\n";
-            stat += hit.Pose.rotation.eulerAngles.ToString()+"\n";
-            stat += decrease.eulerAngles.ToString();
-            //stat += diff.ToString();
-            offsetPosition = hit.Pose.position;
-            offsetRotation = hit.Pose.rotation * Quaternion.Inverse(Quaternion.Euler(0, 0, 90));
-            isTracked = true;
-            GameObject.Find("Status").GetComponent<Text>().text = stat;
+            return position - offsetPosition;
+        }
+
+        public Quaternion GetVirtualRotation(Quaternion rotation)
+        {
+            return rotation * Quaternion.Inverse(offsetRotation);
         }
     }
+
 }

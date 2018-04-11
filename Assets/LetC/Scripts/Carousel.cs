@@ -2,8 +2,9 @@
 namespace LetC
 {
     using UnityEngine;
+    using PublisherKit;
 
-    public class Carousel : MonoBehaviour
+    public class Carousel : Publisher
     {
         class Side
         {
@@ -69,6 +70,7 @@ namespace LetC
                     }
                 }
                 lerpTimer = 0;
+                Broadcast("OnEnd");
             }
         }
 
