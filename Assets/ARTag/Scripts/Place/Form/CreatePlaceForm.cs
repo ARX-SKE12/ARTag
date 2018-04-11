@@ -128,7 +128,6 @@ namespace ARTag
             string name = e.data.GetField("place").GetField("name").str;
             string significant = timestamp + "-" + name;
             tempManager.Put("significant", significant);
-            tempManager.Put("mode", MarkerRecognizer.TrackingMode.EDITOR);
             SceneManager.LoadScene("Draft QR Loader");
         }
 

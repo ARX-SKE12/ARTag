@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/ARTag/Scenes/Experiments/Facebook/Draft Auth.unity
     guid: b55aee005d080cd4e8d17a22e56a3ce1
-  - enabled: 1
+  - enabled: 0
     path: Assets/ARTag/Scenes/Experiments/Place/Draft Select Place.unity
     guid: 013e206fcadd2e843a37600e2ad0df34
-  - enabled: 1
+  - enabled: 0
     path: Assets/ARTag/Scenes/Experiments/Place/Draft Create Place.unity
     guid: 28491d28947e9994a85ac7e320581755
   - enabled: 0
@@ -29,3 +29,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/ARTag/Scenes/Experiments/Tag/Draft User.unity
     guid: c0e072e176014dc4b9f161b6a906ffad
+  - enabled: 1
+    path: Assets/ARTag/Scenes/Experiments/Calibrations/Calibrations.unity
+    guid: 6f3b480557fd8934eab7c420f7571bb7
