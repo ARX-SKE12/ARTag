@@ -17,6 +17,7 @@ namespace ARTag
         const string NAME = "name";
         const string PROFILE_PICTURE = "profilePictureURL";
         const string ID = "id";
+        bool isInitialized;
 
 #region Unity Behavior
         void Start()
@@ -49,12 +50,14 @@ namespace ARTag
 
 #region Socket IO Authentication
         void OnBackendAuthSuccess(SocketIOEvent e) {
+            if (isInitialized) return;
             JSONObject data = e.data;
             GameObject.Find(ObjectsCollector.FACEBOOK_STATUS_TEXT).GetComponent<Text>().text = data.GetField(NAME).str;
             PlayerPrefs.SetString(NAME, data.GetField(NAME).str);
             PlayerPrefs.SetString(PROFILE_PICTURE, data.GetField(PROFILE_PICTURE).str);
             PlayerPrefs.SetString(ID, data.GetField(ID).str);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+            isInitialized = true;
         }
 
         void OnBackendAuthError(SocketIOEvent e)

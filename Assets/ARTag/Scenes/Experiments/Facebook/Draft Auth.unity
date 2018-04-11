@@ -176,7 +176,7 @@ Canvas:
   m_GameObject: {fileID: 216323654}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 466065752}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -580,7 +580,7 @@ Prefab:
     - target: {fileID: 114248708360744048, guid: 0dbfe07edc9ea6642b4083ad95c7da43,
         type: 2}
       propertyPath: url
-      value: ws://10.2.16.124:3000/socket.io/?EIO=4&transport=websocket
+      value: ws://192.168.100.4:3000/socket.io/?EIO=4&transport=websocket
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dbfe07edc9ea6642b4083ad95c7da43, type: 2}
