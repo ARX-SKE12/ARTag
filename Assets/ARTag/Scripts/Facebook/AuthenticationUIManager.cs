@@ -33,7 +33,7 @@ namespace ARTag {
 
         void OnBackendAuthSuccess(string name)
         {
-            GameObject.Find(ObjectsCollector.FACEBOOK_STATUS_TEXT).GetComponent<Text>().text = "Welcome, "+name+"!";
+            GameObject.Find(ObjectsCollector.FACEBOOK_STATUS_TEXT).GetComponent<Text>().text = "Welcome\n"+name+"!";
         }
     }
 
