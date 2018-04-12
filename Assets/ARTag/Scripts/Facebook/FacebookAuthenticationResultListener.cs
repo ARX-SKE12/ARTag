@@ -41,7 +41,8 @@ namespace ARTag
 #region Socket IO Authentication
         void OnBackendAuthSuccess(SocketIOEvent e) {
             JSONObject data = e.data;
-            Broadcast("OnBackendAuthSuccess", data.GetField(NAME).str);
+            string name = data.GetField(NAME).str;
+            Broadcast("OnBackendAuthSuccess", name);
             PlayerPrefs.SetString(NAME, data.GetField(NAME).str);
             PlayerPrefs.SetString(PROFILE_PICTURE, data.GetField(PROFILE_PICTURE).str);
             PlayerPrefs.SetString(ID, data.GetField(ID).str);

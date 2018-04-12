@@ -118,6 +118,7 @@ namespace LetC
 
         void UpdateSelectValue()
         {
+            if (selected == null && data.Length > 0) Broadcast("OnDataChange", data[0].gameObject);
             for (int i = 0; i < data.Length; i++)
             {
                 data[i].anchoredPosition = new Vector2(screenPosition + ((wide + space) * i), 0);
@@ -125,6 +126,7 @@ namespace LetC
                 {
                     if (i == pageCount - 1)
                     {
+                        if (selected != data[i].gameObject) Broadcast("OnDataChange", data[i].gameObject);
                         selected = data[i].gameObject;
                         data[i].localScale = Vector3.Lerp(data[i].localScale, new Vector3(selectSize, selectSize, selectSize), Time.deltaTime * speed);
                     }
@@ -134,6 +136,7 @@ namespace LetC
                 {
                     if (i == pageCount)
                     {
+                        if (selected != data[i].gameObject) Broadcast("OnDataChange", data[i].gameObject);
                         selected = data[i].gameObject;
                         data[i].localScale = Vector3.Lerp(data[i].localScale, new Vector3(selectSize, selectSize, selectSize), Time.deltaTime * speed);
                     }

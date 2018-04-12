@@ -3,6 +3,7 @@ namespace ARTag {
     using UnityEngine;
     using FBAuthKit;
     using UnityEngine.UI;
+    using UnityEngine.SceneManagement;
 
     public class AuthenticationUIManager : MonoBehaviour
     {
@@ -33,6 +34,10 @@ namespace ARTag {
 
         void OnBackendAuthSuccess(string name)
         {
+            if (SceneManager.GetActiveScene().name != "Draft Auth") return;
+            failPanel.SetActive(false);
+            loginButton.SetActive(false);
+            authPanel.SetActive(true);
             GameObject.Find(ObjectsCollector.FACEBOOK_STATUS_TEXT).GetComponent<Text>().text = "Welcome\n"+name+"!";
         }
     }
