@@ -1,22 +1,20 @@
 ﻿
 namespace ARTag
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
     using SocketIO;
     using SocketIOManager;
-    using FBAuthKit;
+    using LetC;
 
     public class ListPlace : MonoBehaviour
     {
         SocketManager manager;
-        List<Place> places;
+        public GameObject placeCard, content, carousel;
 
         // Use this for initialization
         void Start()
         {
-            places = new List<Place>();
+            carousel.GetComponent<Carousel>().Register(gameObject);
             manager = GameObject.Find(ObjectsCollector.SOCKETIO_MANAGER_OBJECT).GetComponent<SocketManager>();
             manager.On(EventsCollector.PLACE_LIST, LoadPlaces);
             manager.On(EventsCollector.PLACE_LIST_ERROR, OnPlaceListError);
@@ -28,9 +26,8 @@ namespace ARTag
             JSONObject data = e.data.GetField("places");
             for (int i = 0; i < data.Count; i++)
             {
-                places.Add(new Place(data[i]));
+                Instantiate(placeCard, content.transform).GetComponent<PlaceCard>().Initialize(new Place(data[i]));
             }
-            Debug.Log(places.Count);
         }
 
         public void OnPlaceListError(SocketIOEvent e)
@@ -43,6 +40,10 @@ namespace ARTag
             manager.Emit(EventsCollector.PLACE_LIST_REQUEST);
         }
         
+        void ShouldUpdateNextPage()
+        {
+            GetList();
+        }
     }
 
 }

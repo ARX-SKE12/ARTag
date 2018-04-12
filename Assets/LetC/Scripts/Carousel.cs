@@ -70,7 +70,6 @@ namespace LetC
                     }
                 }
                 lerpTimer = 0;
-                Broadcast("OnEnd");
             }
         }
 
@@ -106,7 +105,11 @@ namespace LetC
                 canSwipe = false;
                 lastScreenPosition = screenPosition;
                 if (pageCount < data.Length) OnSwipeComplete();
-                else if (pageCount == data.Length && dragAmount < 0) lerpTimer = 0;
+                else if (pageCount == data.Length && dragAmount < 0)
+                {
+                    lerpTimer = 0;
+                    Broadcast("ShouldUpdateNextPage");
+                }
                 else if (pageCount == data.Length && dragAmount > 0) OnSwipeComplete();
             }
 
@@ -141,9 +144,8 @@ namespace LetC
 
         void UpdateElements()
         {
-            RectTransform[] rects = content.GetComponentsInChildren<RectTransform>();
-            data = new RectTransform[rects.Length - 1];
-            for (int i = 1; i < rects.Length; i++) data[i - 1] = rects[i];
+            data = new RectTransform[content.transform.childCount];
+            for (int i = 0; i < content.transform.childCount; i++) data[i] = content.transform.GetChild(i).GetComponent<RectTransform>();
             wide = content.GetComponent<RectTransform>().rect.width;
             for (int i = 1; i < data.Length; i++) data[i].anchoredPosition = new Vector2(((wide + space) * i), 0);
         }
