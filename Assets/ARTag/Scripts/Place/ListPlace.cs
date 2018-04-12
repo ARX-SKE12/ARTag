@@ -50,17 +50,17 @@ namespace ARTag
 
         void OnDataChange(GameObject selected)
         {
-            Place place = selected.GetComponent<PlaceCard>().place;
-
-            StartCoroutine(UpdateBackground(baseUrl + place.timestamp + "-" + place.name + ".png"));
+            //Place place = selected.GetComponent<PlaceCard>().place;
+            //backgroundImage.GetComponent<Image>().sprite = selected.GetComponent<PlaceCard>().thumbnail.GetComponent<Image>().sprite;
+            //StartCoroutine(UpdateBackground(baseUrl + place.timestamp + "-" + place.name + ".png"));
+            StartCoroutine(UpdateBackground(selected));
         }
 
-        IEnumerator UpdateBackground(string url)
+        IEnumerator UpdateBackground(GameObject selected)
         {
-            WWW www = new WWW(url);
-            yield return www;
-            Texture2D thumbnailImage = www.texture;
-            backgroundImage.GetComponent<Image>().sprite = Sprite.Create(thumbnailImage, new Rect(0, 0, thumbnailImage.width, thumbnailImage.height), new Vector2(0.5f, 0.5f), 100);
+            yield return new WaitUntil(() => selected.GetComponent<PlaceCard>().isThumbnailLoaded);
+            Sprite sprite = selected.GetComponent<PlaceCard>().thumbnail.GetComponent<Image>().sprite;
+            backgroundImage.GetComponent<Image>().sprite = sprite;
         }
     }
 

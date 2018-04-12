@@ -10,6 +10,7 @@ namespace ARTag
     {
         public GameObject thumbnail, nameText, authorText;
         public Place place;
+        public bool isThumbnailLoaded = false;
         const string baseUrl = "https://storage.googleapis.com/artag-thumbnail/";
 
         public void Initialize(Place place)
@@ -26,6 +27,7 @@ namespace ARTag
             yield return www;
             Texture2D thumbnailImage = www.texture;
             thumbnail.GetComponent<Image>().sprite = Sprite.Create(thumbnailImage, new Rect(0, 0, thumbnailImage.width, thumbnailImage.height), new Vector2(0.5f, 0.5f), 100);
+            isThumbnailLoaded = true;
         }
     }
 
