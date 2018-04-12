@@ -3,14 +3,14 @@ namespace ARTag
 {
     using System.Collections.Generic;
     using UnityEngine;
-    using UnityEngine.UI;
     using UnityEngine.SceneManagement;
     using Facebook.Unity;
     using FBAuthKit;
     using SocketIOManager;
     using SocketIO;
+    using PublisherKit;
 
-    public class FacebookAuthenticationResultListener : MonoBehaviour
+    public class FacebookAuthenticationResultListener : Publisher
     {
         SocketManager socketManager;
         const string TOKEN = "token";
@@ -29,10 +29,6 @@ namespace ARTag
         #endregion
 
 #region Facebook SDK Authentication
-        void OnAuthRequest()
-        {
-            GameObject.Find(ObjectsCollector.FACEBOOK_STATUS_TEXT).GetComponent<Text>().text = "Authenticating...";
-        }
 
         void OnAuthSuccess(AccessToken token)
         {
@@ -40,26 +36,23 @@ namespace ARTag
             data[TOKEN] = token.TokenString;
             socketManager.Emit(EventsCollector.AUTH, new JSONObject(data));
         }
-
-        void OnAuthFailure()
-        {
-            GameObject.Find(ObjectsCollector.FACEBOOK_STATUS_TEXT).GetComponent<Text>().text = "Authentication Failure";
-        }
         #endregion
 
 #region Socket IO Authentication
         void OnBackendAuthSuccess(SocketIOEvent e) {
             JSONObject data = e.data;
-            GameObject.Find(ObjectsCollector.FACEBOOK_STATUS_TEXT).GetComponent<Text>().text = data.GetField(NAME).str;
+            string name = data.GetField(NAME).str;
+            Broadcast("OnBackendAuthSuccess", name);
             PlayerPrefs.SetString(NAME, data.GetField(NAME).str);
             PlayerPrefs.SetString(PROFILE_PICTURE, data.GetField(PROFILE_PICTURE).str);
             PlayerPrefs.SetString(ID, data.GetField(ID).str);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+            PlayerPrefs.SetString("prevScene", SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Draft Select Place");
         }
 
         void OnBackendAuthError(SocketIOEvent e)
         {
-            GameObject.Find(ObjectsCollector.FACEBOOK_STATUS_TEXT).GetComponent<Text>().text = "Authentication Failure";
+            Broadcast("OnAuthFailure");
         }
         #endregion
 

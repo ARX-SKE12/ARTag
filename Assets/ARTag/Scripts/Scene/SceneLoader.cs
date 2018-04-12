@@ -9,6 +9,7 @@ namespace ARTag
 
         public void LoadScene(string sceneName)
         {
+            PlayerPrefs.SetString("prevScene", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene(sceneName);
         }
     }
