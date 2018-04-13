@@ -2,8 +2,7 @@
 namespace ARTag
 {
     using System.Collections;
-    using System;
-    using System.IO;
+    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
     using UnityEngine.SceneManagement;
@@ -25,7 +24,7 @@ namespace ARTag
         const string FIELD_HEIGHT = "height";
         const string FIELD_IMAGE = "image";
 
-        public GameObject placeNameText, placeDescriptionText, publicToggle, thumbnailPicker, creatingPanel, preloader;
+        public GameObject placeNameText, placeDescriptionText, publicToggle, thumbnailPicker, creatingPanel, preloader, errorNotification;
 
         void Start()
         {
@@ -43,22 +42,35 @@ namespace ARTag
 
         IEnumerator CreatePlace()
         {
-            creatingPanel.SetActive(true);
-            yield return new WaitUntil(() => creatingPanel.activeSelf);
+            List<string> missing = new List<string>();
             string name = placeNameText.GetComponent<InputField>().text;
+            if (name == null || name == "") missing.Add("Place Name");
             string description = placeDescriptionText.GetComponent<TMP_InputField>().text;
             bool isPublic = publicToggle.GetComponent<Toggle>().isOn;
             ImageData thumbnail = thumbnailPicker.GetComponent<ImagePicker>().selectedImage;
-            JSONObject data = new JSONObject();
-            data.AddField(FIELD_NAME, name);
-            data.AddField(FIELD_DESCRIPTOPN, description);
-            data.AddField(FIELD_IS_PUBLIC, isPublic);
-            JSONObject thumbnailData = new JSONObject();
-            thumbnailData.SetField(FIELD_WIDTH, thumbnail.width);
-            thumbnailData.SetField(FIELD_HEIGHT, thumbnail.height);
-            thumbnailData.AddField(FIELD_IMAGE, thumbnail.data);
-            data.AddField(FIELD_THUMBNAIL, thumbnailData);
-            socketManager.Emit(EventsCollector.PLACE_CREATE, data);
+            if (thumbnail == null) missing.Add("Thumbnail");
+            if (missing.Count > 0)
+            {
+                string error = missing[0];
+                for (int i = 1; i < missing.Count; i++) error += ", " + missing[i];
+                error += " are required fields";
+                errorNotification.GetComponentInChildren<Text>().text = error;
+                errorNotification.SetActive(true);
+            } else
+            {
+                creatingPanel.SetActive(true);
+                yield return new WaitUntil(() => creatingPanel.activeSelf);
+                JSONObject data = new JSONObject();
+                data.AddField(FIELD_NAME, name);
+                data.AddField(FIELD_DESCRIPTOPN, description);
+                data.AddField(FIELD_IS_PUBLIC, isPublic);
+                JSONObject thumbnailData = new JSONObject();
+                thumbnailData.SetField(FIELD_WIDTH, thumbnail.width);
+                thumbnailData.SetField(FIELD_HEIGHT, thumbnail.height);
+                thumbnailData.AddField(FIELD_IMAGE, thumbnail.data);
+                data.AddField(FIELD_THUMBNAIL, thumbnailData);
+                socketManager.Emit(EventsCollector.PLACE_CREATE, data);
+            }
         }
 
         public void OnPlaceCreateSuccess(SocketIOEvent e)
@@ -74,6 +86,8 @@ namespace ARTag
         public void OnPlaceCreateError(SocketIOEvent e)
         {
             creatingPanel.SetActive(false);
+            errorNotification.GetComponentInChildren<Text>().text = e.data.GetField("error").str;
+            errorNotification.SetActive(true);
         }
 #endregion
     }
