@@ -75,12 +75,13 @@ namespace ARTag
 
         public void OnPlaceCreateSuccess(SocketIOEvent e)
         {
-            int timestamp = (int) e.data.GetField("place").GetField("timestamp").n;
+            string timestamp = e.data.GetField("place").GetField("timestamp").str;
             string name = e.data.GetField("place").GetField("name").str;
             string significant = timestamp + "-" + name;
             tempManager.Put("significant", significant);
             creatingPanel.GetComponentInChildren<Text>().text = "Place Creation Success!";
             preloader.SetActive(false);
+            SceneManager.LoadScene("QR Loader");
         }
 
         public void OnPlaceCreateError(SocketIOEvent e)
