@@ -8,9 +8,21 @@ namespace ARTag
     using UnityEngine;
     using UnityEngine.UI;
 
+    public struct ImageData
+    {
+        public int width, height;
+        public string data;
+        public ImageData(int width, int height, string data)
+        {
+            this.width = width;
+            this.height = height;
+            this.data = data;
+        }
+    }
+
     public class ImagePicker : MonoBehaviour
     {
-        public string selectedImage;
+        public ImageData selectedImage;
         public GameObject thumbnail, background;
         readonly Vector2 MIDDLE_POSITION = new Vector2(0.5f, 0.5f);
         Thread uploadThread;
@@ -39,7 +51,8 @@ namespace ARTag
         {
             Texture2D image = new Texture2D(1, 1);
             image.LoadImage(rawFile);
-            selectedImage = Convert.ToBase64String(image.EncodeToPNG());
+            string data = Convert.ToBase64String(image.EncodeToPNG());
+            selectedImage = new ImageData(image.width, image.height, data);
             Rect spriteRect = new Rect(Vector2.zero, new Vector2(image.width, image.height));
             Sprite imageSprite = Sprite.Create(image, spriteRect, MIDDLE_POSITION);
             thumbnail.GetComponent<Image>().sprite = imageSprite;
