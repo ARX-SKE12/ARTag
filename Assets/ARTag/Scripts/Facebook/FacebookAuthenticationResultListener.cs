@@ -47,7 +47,7 @@ namespace ARTag
             PlayerPrefs.SetString(PROFILE_PICTURE, data.GetField(PROFILE_PICTURE).str);
             PlayerPrefs.SetString(ID, data.GetField(ID).str);
             PlayerPrefs.SetString("prevScene", SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("Draft Select Place");
+            SceneManager.LoadScene("Select Place");
         }
 
         void OnBackendAuthError(SocketIOEvent e)
