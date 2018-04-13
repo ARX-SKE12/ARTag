@@ -2,10 +2,9 @@
 namespace ARTag
 {
     using UnityEngine;
-    using UnityEngine.UI;
     using JustAQRScanner;
 
-    public class ReadSignificantQR : MonoBehaviour
+    public class QRPlaceFinder : MonoBehaviour
     {
 
         // Use this for initialization
@@ -16,7 +15,7 @@ namespace ARTag
 
         void OnQRDetect(string result)
         {
-            GetComponent<Text>().text = result;
+            Debug.Log(result);
         }
     }
 
