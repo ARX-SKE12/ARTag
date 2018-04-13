@@ -17,8 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ARTag/Scenes/QR Loader.unity
     guid: e276bd08dbc7a6443887e18ca191dbcd
-  - enabled: 0
-    path: Assets/ARTag/Scenes/Experiments/QR/Draft QR Reader.unity
+  - enabled: 1
+    path: Assets/ARTag/Scenes/QR Reader.unity
     guid: 790f2f9f5c3d8014cafa55c6e6369088
   - enabled: 0
     path: Assets/ARTag/Scenes/Experiments/Tag/Draft Editor.unity
