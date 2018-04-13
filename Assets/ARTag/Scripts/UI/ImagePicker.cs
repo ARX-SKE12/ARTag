@@ -4,6 +4,7 @@ namespace ARTag
     using System;
     using System.IO;
     using System.Collections;
+    using System.Threading;
     using UnityEngine;
     using UnityEngine.UI;
 
@@ -12,6 +13,14 @@ namespace ARTag
         public string selectedImage;
         public GameObject thumbnail, background;
         readonly Vector2 MIDDLE_POSITION = new Vector2(0.5f, 0.5f);
+        Thread uploadThread;
+        byte[] rawFile;
+        bool isUploaded;
+
+        void Update()
+        {
+            if (isUploaded) UpdateImage();
+        }
 
         public void PickImage()
         {
@@ -20,22 +29,30 @@ namespace ARTag
 
         void OnPickImage(string path)
         {
-            StartCoroutine(LoadImage(path));
-           }
+            GetComponentInChildren<Text>().text = "Uploading...";
+            uploadThread = new Thread(new ThreadStart(() => Upload(path)));
+            uploadThread.IsBackground = true;
+            uploadThread.Start();
+        }
 
-        IEnumerator LoadImage(string path)
+        void UpdateImage()
         {
-            string url = path;
-            byte[] rawFile = File.ReadAllBytes(path);
-            yield return rawFile;
             Texture2D image = new Texture2D(1, 1);
             image.LoadImage(rawFile);
-            image.Compress(false);
             selectedImage = Convert.ToBase64String(image.EncodeToPNG());
             Rect spriteRect = new Rect(Vector2.zero, new Vector2(image.width, image.height));
             Sprite imageSprite = Sprite.Create(image, spriteRect, MIDDLE_POSITION);
             thumbnail.GetComponent<Image>().sprite = imageSprite;
             background.GetComponent<Image>().sprite = imageSprite;
+            GetComponentInChildren<Text>().text = "Upload Thumbnail";
+            isUploaded = false;
+            uploadThread.Abort();
+        }
+
+        void Upload(string path)
+        {
+            rawFile = File.ReadAllBytes(path);
+            isUploaded = true;
         }
     }
 
