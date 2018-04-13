@@ -716,7 +716,7 @@ Prefab:
     - target: {fileID: 114248708360744048, guid: 0dbfe07edc9ea6642b4083ad95c7da43,
         type: 2}
       propertyPath: url
-      value: ws://10.2.53.188:3000/socket.io/?EIO=4&transport=websocket
+      value: ws://192.168.100.7:3000 /socket.io/?EIO=4&transport=websocket
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dbfe07edc9ea6642b4083ad95c7da43, type: 2}
