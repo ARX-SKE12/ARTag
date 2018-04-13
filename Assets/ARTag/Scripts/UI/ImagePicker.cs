@@ -3,12 +3,11 @@ namespace ARTag
 {
     using System;
     using System.IO;
-    using System.Collections;
     using System.Threading;
     using UnityEngine;
     using UnityEngine.UI;
 
-    public struct ImageData
+    public class ImageData
     {
         public int width, height;
         public string data;
