@@ -50,9 +50,6 @@ namespace ARTag
 
         void OnDataChange(GameObject selected)
         {
-            //Place place = selected.GetComponent<PlaceCard>().place;
-            //backgroundImage.GetComponent<Image>().sprite = selected.GetComponent<PlaceCard>().thumbnail.GetComponent<Image>().sprite;
-            //StartCoroutine(UpdateBackground(baseUrl + place.timestamp + "-" + place.name + ".png"));
             StartCoroutine(UpdateBackground(selected));
         }
 
