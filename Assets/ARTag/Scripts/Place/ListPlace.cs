@@ -11,7 +11,7 @@ namespace ARTag
     public class ListPlace : MonoBehaviour
     {
         SocketManager manager;
-        public GameObject placeCard, content, carousel, backgroundImage;
+        public GameObject placeCard, content, carousel, backgroundImage, errorNotification;
         const string baseUrl = "https://storage.googleapis.com/artag-thumbnail/";
 
         // Use this for initialization
@@ -21,6 +21,7 @@ namespace ARTag
             manager = GameObject.Find(ObjectsCollector.SOCKETIO_MANAGER_OBJECT).GetComponent<SocketManager>();
             manager.On(EventsCollector.PLACE_LIST, LoadPlaces);
             manager.On(EventsCollector.PLACE_LIST_ERROR, OnPlaceListError);
+            manager.On(EventsCollector.PLACE_DATA_UPDATE, OnNewPageCome);
             GetList();
         }
 
@@ -35,7 +36,8 @@ namespace ARTag
 
         public void OnPlaceListError(SocketIOEvent e)
         {
-            Debug.Log(e.data.GetField("error").str);
+            errorNotification.GetComponentInChildren<Text>().text = e.data.GetField("error").str;
+            errorNotification.SetActive(true);
         }
 
         public void GetList()
@@ -58,6 +60,11 @@ namespace ARTag
             yield return new WaitUntil(() => selected.GetComponent<PlaceCard>().isThumbnailLoaded);
             Sprite sprite = selected.GetComponent<PlaceCard>().thumbnail.GetComponent<Image>().sprite;
             backgroundImage.GetComponent<Image>().sprite = sprite;
+        }
+
+        public void OnNewPageCome(SocketIOEvent e)
+        {
+            ShouldUpdateNextPage();
         }
     }
 

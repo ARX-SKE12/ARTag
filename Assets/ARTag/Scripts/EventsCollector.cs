@@ -18,6 +18,7 @@ namespace ARTag
         public static readonly string PLACE_LIST_ERROR = "place-list-error";
         public static readonly string PLANE_UPDATE = "plane-update";
         public static readonly string PLACE_CLEAR_PAGGING = "place-clear-pagging";
+        public static readonly string PLACE_DATA_UPDATE = "place-data-update";
     }
 
 }
