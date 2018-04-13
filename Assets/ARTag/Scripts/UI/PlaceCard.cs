@@ -2,9 +2,9 @@
 namespace ARTag
 {
     using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
+    using UnityEngine.SceneManagement;
 
     public class PlaceCard : MonoBehaviour
     {
@@ -28,6 +28,16 @@ namespace ARTag
             Texture2D thumbnailImage = www.texture;
             thumbnail.GetComponent<Image>().sprite = Sprite.Create(thumbnailImage, new Rect(0, 0, thumbnailImage.width, thumbnailImage.height), new Vector2(0.5f, 0.5f), 100);
             isThumbnailLoaded = true;
+        }
+
+        public void Select()
+        {
+            GameObject.FindObjectOfType<TemporaryDataManager>().Put("currentPlace", place);
+            string timestamp = place.timestamp.ToString();
+            string name = place.name;
+            string significant = timestamp + "-" + name;
+            GameObject.FindObjectOfType<TemporaryDataManager>().Put("significant", significant);
+            SceneManager.LoadScene("Detail Place");
         }
     }
 
