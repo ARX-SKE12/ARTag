@@ -40,6 +40,14 @@ namespace ARTag {
             authPanel.SetActive(true);
             GameObject.Find(ObjectsCollector.FACEBOOK_STATUS_TEXT).GetComponent<Text>().text = "Welcome\n"+name+"!";
         }
+
+        void OnAuthTimeout()
+        {
+            failPanel.SetActive(true);
+            loginButton.SetActive(true);
+            authPanel.SetActive(false);
+            GameObject.Find(ObjectsCollector.FACEBOOK_STATUS_TEXT).GetComponent<Text>().text = "Authentication Timeout";
+        }
     }
 
 }

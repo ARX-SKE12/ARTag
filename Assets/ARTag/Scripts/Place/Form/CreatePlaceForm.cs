@@ -78,7 +78,9 @@ namespace ARTag
             string timestamp = e.data.GetField("place").GetField("timestamp").str;
             string name = e.data.GetField("place").GetField("name").str;
             string significant = timestamp + "-" + name;
+            Place place = new Place(e.data.GetField("place"));
             tempManager.Put("significant", significant);
+            tempManager.Put("currentPlace", place);
             creatingPanel.GetComponentInChildren<Text>().text = "Place Creation Success!";
             preloader.SetActive(false);
             SceneManager.LoadScene("QR Loader");
