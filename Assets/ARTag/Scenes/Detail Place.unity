@@ -718,7 +718,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1132367822079100, guid: fd0c652c61e8cb944bbe01b0070ad53b, type: 2}
       propertyPath: m_Name
-      value: Back Button (1)
+      value: More Button
       objectReference: {fileID: 0}
     - target: {fileID: 114342110275296472, guid: fd0c652c61e8cb944bbe01b0070ad53b,
         type: 2}
@@ -771,6 +771,7 @@ MonoBehaviour:
   authorText: {fileID: 368818955}
   descriptionText: {fileID: 1481526180}
   background: {fileID: 960762279}
+  moreButton: {fileID: 0}
 --- !u!4 &659743415
 Transform:
   m_ObjectHideFlags: 0
@@ -1421,7 +1422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 7.252578e-15}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1481526182
