@@ -1038,7 +1038,7 @@ MonoBehaviour:
   selectSize: 1.2
   unselectSize: 0.7
   speed: 5
-  margin: 50
+  margin: 350
   content: {fileID: 829544671}
   selected: {fileID: 0}
 --- !u!222 &1534033919

@@ -17,6 +17,8 @@ namespace ARTag
         const string NAME = "name";
         const string PROFILE_PICTURE = "profilePictureURL";
         const string ID = "id";
+        bool isProcessStart;
+        float time;
 
 #region Unity Behavior
         void Start()
@@ -28,7 +30,22 @@ namespace ARTag
         }
         #endregion
 
-#region Facebook SDK Authentication
+        void Update()
+        {
+            if (isProcessStart)
+            {
+                time += Time.deltaTime;
+                if (time > 30) Broadcast("OnAuthTimeout");
+            }
+        }
+
+        #region Facebook SDK Authentication
+
+        void OnAuthRequest()
+        {
+            time = 0;
+            isProcessStart = true;
+        }
 
         void OnAuthSuccess(AccessToken token)
         {
