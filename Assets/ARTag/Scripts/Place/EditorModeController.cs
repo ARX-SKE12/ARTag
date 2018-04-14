@@ -1,8 +1,7 @@
 ﻿
 namespace ARTag
 {
-    using System.Collections;
-    using System.Collections.Generic;
+    using GoogleARCore;
     using UnityEngine;
 
     public class EditorModeController : MonoBehaviour
@@ -13,6 +12,8 @@ namespace ARTag
         void Start()
         {
             GameObject.FindObjectOfType<Calibration>().Register(gameObject);
+            GameObject.FindObjectOfType<ARCoreSession>().SessionConfig.EnablePlaneFinding = false;
+            GameObject.FindObjectOfType<ARCoreSession>().OnEnable();
         }
 
         // Update is called once per frame
