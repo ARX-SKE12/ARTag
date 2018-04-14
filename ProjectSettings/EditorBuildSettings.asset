@@ -32,3 +32,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/ARTag/Scenes/Experiments/Calibrations/Calibrations.unity
     guid: 6f3b480557fd8934eab7c420f7571bb7
+  - enabled: 0
+    path: Assets/ARTag/Scenes/Editor Mode.unity
+    guid: ea54c285002859f4c84182f29142f549
