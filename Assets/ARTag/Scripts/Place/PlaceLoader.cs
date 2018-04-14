@@ -8,7 +8,7 @@ namespace ARTag
 
     public class PlaceLoader : MonoBehaviour
     {
-        public GameObject background;
+        public GameObject background, placeName;
         string significant;
         Place place;
 
@@ -18,6 +18,8 @@ namespace ARTag
         void Start()
         {
             significant = (string)GameObject.FindObjectOfType<TemporaryDataManager>().Get("significant");
+            place = (Place)GameObject.FindObjectOfType<TemporaryDataManager>().Get("currentPlace");
+            placeName.GetComponent<Text>().text = place.name;
             StartCoroutine(LoadImage());
         }
 

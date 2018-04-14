@@ -7,7 +7,7 @@ namespace ARTag
 
     public class PlaceInfo : MonoBehaviour
     {
-        public GameObject thumbnail, nameText, authorText, descriptionText, background;
+        public GameObject thumbnail, nameText, authorText, descriptionText, background, moreButton;
         Place place;
 
         const string baseUrl = "https://storage.googleapis.com/artag-thumbnail/";
@@ -19,6 +19,7 @@ namespace ARTag
             nameText.GetComponent<Text>().text = place.name;
             authorText.GetComponent<Text>().text = place.user.name;
             descriptionText.GetComponent<Text>().text = place.description;
+            if (PlayerPrefs.GetString("id") != place.user.id) moreButton.SetActive(false);
             StartCoroutine(LoadThumbnail(baseUrl + place.timestamp + "-" + place.name + ".png"));
         }
 

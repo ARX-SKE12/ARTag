@@ -3,10 +3,10 @@ namespace ARTag {
 
     using UnityEngine;
     using GoogleARCore;
+    using PublisherKit;
 
-    public class Calibration : MonoBehaviour
+    public class Calibration : Publisher
     {
-
         public Vector3 currentPosition;
         public Quaternion currentRotation;
         public Vector3 offsetPosition = Vector3.zero;
@@ -35,6 +35,7 @@ namespace ARTag {
                     offsetPosition = hit.Pose.position;
                     offsetRotation = hit.Pose.rotation * Quaternion.Inverse(Quaternion.Euler(0, 0, 90));
                     isCalibrated = true;
+                    Broadcast("OnFinishCalibration");
                 }
             }
         }

@@ -20,6 +20,12 @@ namespace ARTag
         public static readonly string PLANE_UPDATE = "plane-update";
         public static readonly string PLACE_CLEAR_PAGGING = "place-clear-pagging";
         public static readonly string PLACE_DATA_UPDATE = "place-data-update";
+        public static readonly string ROOM_JOIN = "room-join";
+        public static readonly string ROOM_LEAVE = "room-leave";
+        public static readonly string ROOM_USER_ARRIVE = "room-arrive";
+        public static readonly string ROOM_USER_LEFT = "room-left";
+        public static readonly string ROOM_ERROR = "room-error";
+        public static readonly string DISCONNECT = "disconnect";
     }
 
 }
