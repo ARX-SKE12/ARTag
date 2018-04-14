@@ -6,7 +6,7 @@ namespace ARTag
     public class CalibrationUIManager : MonoBehaviour
     {
 
-        public GameObject calibrationCanvas;
+        public GameObject calibrationCanvas, pointCloud;
 
         // Use this for initialization
         void Start()
@@ -17,6 +17,7 @@ namespace ARTag
         void OnFinishCalibration()
         {
             calibrationCanvas.SetActive(false);
+            pointCloud.SetActive(false);
         }
 
     }
