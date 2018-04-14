@@ -6,7 +6,7 @@ namespace ARTag
 
     public class CalibrationInstruction : MonoBehaviour
     {
-        public GameObject thumbnail, instructionText, changeStepButton, pointCloud;
+        public GameObject thumbnail, instructionText, changeStepButton, pointCloud, scanUI;
         public Sprite finishButtonSprite;
         public Sprite[] stepThumbnail;
         int step = 0;
@@ -27,6 +27,7 @@ namespace ARTag
                     break;
                 case 3:
                     pointCloud.SetActive(true);
+                    scanUI.SetActive(true);
                     gameObject.SetActive(false);
                     break;
                 default:
