@@ -33,7 +33,7 @@ namespace ARTag {
                 if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
                 {
                     offsetPosition = hit.Pose.position;
-                    offsetRotation = hit.Pose.rotation * Quaternion.Inverse(Quaternion.Euler(0, 0, 90));
+                    offsetRotation = hit.Pose.rotation;
                     isCalibrated = true;
                     Broadcast("OnFinishCalibration");
                 }
