@@ -2667,6 +2667,7 @@ MonoBehaviour:
   creatingPanel: {fileID: 421526870}
   preloader: {fileID: 1978531019}
   errorNotification: {fileID: 736497969}
+  submitButton: {fileID: 32892938}
 --- !u!1 &1348722294
 GameObject:
   m_ObjectHideFlags: 0

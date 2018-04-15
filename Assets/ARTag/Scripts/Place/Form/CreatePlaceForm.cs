@@ -15,7 +15,9 @@ namespace ARTag
 
         SocketManager socketManager;
         TemporaryDataManager tempManager;
-        
+
+        const string FIELD_UPDATE_DATA = "updatedData";
+        const string FIELD_ID = "id";
         const string FIELD_NAME = "name";
         const string FIELD_DESCRIPTOPN = "description";
         const string FIELD_THUMBNAIL = "thumbnail";
@@ -23,8 +25,11 @@ namespace ARTag
         const string FIELD_WIDTH = "width";
         const string FIELD_HEIGHT = "height";
         const string FIELD_IMAGE = "image";
+        const string BASE_URL = "https://storage.googleapis.com/artag-thumbnail/";
 
-        public GameObject placeNameText, placeDescriptionText, publicToggle, thumbnailPicker, creatingPanel, preloader, errorNotification;
+        public GameObject placeNameText, placeDescriptionText, publicToggle, thumbnailPicker, creatingPanel, preloader, errorNotification, submitButton;
+
+        bool isUpdate;
 
         void Start()
         {
@@ -32,6 +37,19 @@ namespace ARTag
             tempManager = GameObject.FindObjectOfType<TemporaryDataManager>();
             socketManager.On(EventsCollector.PLACE_CREATE_SUCCESS, OnPlaceCreateSuccess);
             socketManager.On(EventsCollector.PLACE_CREATE_ERROR, OnPlaceCreateError);
+            socketManager.On(EventsCollector.PLACE_UPDATE_SUCCESS, OnPlaceCreateSuccess);
+            socketManager.On(EventsCollector.PLACE_UPDATE_ERROR, OnPlaceCreateError);
+            if (tempManager.Has("currentPlace"))
+            {
+                creatingPanel.GetComponentInChildren<Text>().text = "Updating";
+                submitButton.GetComponentInChildren<Text>().text = "Update";
+                Place place = (Place)tempManager.Get("currentPlace");
+                isUpdate = true;
+                thumbnailPicker.GetComponent<ImagePicker>().SetValue(BASE_URL + place.timestamp + "-" + place.name + ".png");
+                placeNameText.GetComponent<InputField>().text = place.name;
+                placeDescriptionText.GetComponent<TMP_InputField>().text = place.description;
+                publicToggle.GetComponent<Toggle>().isOn = place.isPublic;
+            }
         }
 
         #region Form
@@ -69,7 +87,14 @@ namespace ARTag
                 thumbnailData.SetField(FIELD_HEIGHT, thumbnail.height);
                 thumbnailData.AddField(FIELD_IMAGE, thumbnail.data);
                 data.AddField(FIELD_THUMBNAIL, thumbnailData);
-                socketManager.Emit(EventsCollector.PLACE_CREATE, data);
+                if (!isUpdate) socketManager.Emit(EventsCollector.PLACE_CREATE, data);
+                else
+                {
+                    JSONObject toSendData = new JSONObject();
+                    toSendData.AddField(FIELD_ID, ((Place)tempManager.Get("currentPlace")).id);
+                    toSendData.AddField(FIELD_UPDATE_DATA, data);
+                    socketManager.Emit(EventsCollector.PLACE_UPDATE, toSendData);
+                }
             }
         }
 
@@ -81,7 +106,8 @@ namespace ARTag
             Place place = new Place(e.data.GetField("place"));
             tempManager.Put("significant", significant);
             tempManager.Put("currentPlace", place);
-            creatingPanel.GetComponentInChildren<Text>().text = "Place Creation Success!";
+            if (isUpdate) creatingPanel.GetComponentInChildren<Text>().text = "Place Update Success!";
+            else creatingPanel.GetComponentInChildren<Text>().text = "Place Creation Success!";
             preloader.SetActive(false);
             SceneManager.LoadScene("QR Loader");
         }
