@@ -610,6 +610,16 @@ Prefab:
       propertyPath: pointCloud
       value: 
       objectReference: {fileID: 1237779344}
+    - target: {fileID: 224279779805522006, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224653607110217540, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 870
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 343b852ec177c634dacd7b1d57958a97, type: 2}
   m_IsPrefabParent: 0
