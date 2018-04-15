@@ -33,7 +33,14 @@ public class NavigationPather : MonoBehaviour {
 		path = seeker.StartPath(transform.position, target.transform.position);
 	}
 	public void OnPathEnd() {
-		Destroy(gameObject);
+		ParticleSystem ps = GetComponentInChildren<ParticleSystem>();
+		if(ps.isEmitting) {
+			ps.Stop();
+		}
+		else if(ps.particleCount == 0) {
+			Destroy(gameObject);
+		}
+		//Destroy(gameObject);
 	}
 	void FixedUpdate() {
 
