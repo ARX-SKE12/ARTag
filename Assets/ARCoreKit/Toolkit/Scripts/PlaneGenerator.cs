@@ -27,6 +27,7 @@ namespace ARCoreToolkit
                     GameObject planeObject = Instantiate(planePrefab, Vector3.zero, Quaternion.identity, transform);
                     planeObject.GetComponent<PlaneBehaviour>().InitializePlane(plane);
                     planeObject.GetComponent<MeshRenderer>().material = planeMaterial;
+                    planeObject.GetComponent<MeshRenderer>().material.SetColor("_GridColor", new Color(Random.Range(0f,1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 0.5f));
                 }
             }
         #endregion
