@@ -17,6 +17,7 @@ namespace ARTag
         // Use this for initialization
         void Start()
         {
+            GameObject.FindObjectOfType<TemporaryDataManager>().Delete("currentPlace");
             carousel.GetComponent<Carousel>().Register(gameObject);
             manager = GameObject.Find(ObjectsCollector.SOCKETIO_MANAGER_OBJECT).GetComponent<SocketManager>();
             manager.On(EventsCollector.PLACE_LIST, LoadPlaces);
