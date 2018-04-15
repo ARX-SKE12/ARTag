@@ -5,7 +5,7 @@ namespace ARTag
 
     public class UserModeController : MonoBehaviour
     {
-        public GameObject planeSpawner;
+        public GameObject planeSpawner, canvas;
 
         // Use this for initialization
         void Start()
@@ -17,6 +17,7 @@ namespace ARTag
         {
             planeSpawner.SetActive(true);
             planeSpawner.GetComponent<ServerPlaneGenerator>().GeneratePlane();
+            canvas.SetActive(true);
         }
     }
 
