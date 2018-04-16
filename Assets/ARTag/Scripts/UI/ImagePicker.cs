@@ -56,7 +56,7 @@ namespace ARTag
             Rect spriteRect = new Rect(Vector2.zero, new Vector2(image.width, image.height));
             Sprite imageSprite = Sprite.Create(image, spriteRect, MIDDLE_POSITION);
             thumbnail.GetComponent<Image>().sprite = imageSprite;
-            background.GetComponent<Image>().sprite = imageSprite;
+            if (background != null) background.GetComponent<Image>().sprite = imageSprite;
             GetComponentInChildren<Text>().text = "Upload Thumbnail";
             isUploaded = false;
             uploadThread.Abort();
@@ -83,7 +83,7 @@ namespace ARTag
             Rect spriteRect = new Rect(Vector2.zero, new Vector2(image.width, image.height));
             Sprite imageSprite = Sprite.Create(image, spriteRect, MIDDLE_POSITION);
             thumbnail.GetComponent<Image>().sprite = imageSprite;
-            background.GetComponent<Image>().sprite = imageSprite;
+            if (background != null) background.GetComponent<Image>().sprite = imageSprite;
         }
     }
 
