@@ -9,6 +9,7 @@ namespace ARTag
 
     public class PlaneEditor : MonoBehaviour
     {
+        public GameObject scanButton, pauseButton;
         Calibration calibration;
         bool isScanning;
 
@@ -21,6 +22,8 @@ namespace ARTag
         public void ChangeScanningState()
         {
             isScanning = !isScanning;
+            pauseButton.SetActive(isScanning);
+            scanButton.SetActive(!isScanning);
             GameObject.FindObjectOfType<ARCoreSession>().SessionConfig.EnablePlaneFinding = isScanning;
             GameObject.FindObjectOfType<ARCoreSession>().OnEnable();
         }
@@ -71,6 +74,15 @@ namespace ARTag
             data.SetField("origin", originData);
             data.SetField("origin_rotation", originRotationData);
             GameObject.FindObjectOfType<SocketManager>().Emit(EventsCollector.PLANE_UPDATE, data);
+        }
+
+        public void Disable()
+        {
+            isScanning = false;
+            pauseButton.SetActive(false);
+            scanButton.SetActive(true);
+            GameObject.FindObjectOfType<ARCoreSession>().SessionConfig.EnablePlaneFinding = isScanning;
+            GameObject.FindObjectOfType<ARCoreSession>().OnEnable();
         }
     }
 
