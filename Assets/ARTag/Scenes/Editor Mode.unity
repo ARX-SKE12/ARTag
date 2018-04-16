@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeMode: {fileID: 1800059109}
-  tagMode: {fileID: 0}
+  tagMode: {fileID: 1661102799}
 --- !u!1 &238456592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2193,6 +2193,12 @@ Prefab:
       propertyPath: m_BackGroundColor.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114451889682527732, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 2}
+      propertyPath: SessionConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ea1abeb6d4278048b56e20297d4d2eb,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
   m_IsPrefabParent: 0

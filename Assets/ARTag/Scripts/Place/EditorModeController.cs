@@ -9,7 +9,7 @@ namespace ARTag
         public GameObject planeMode, tagMode;
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
             GameObject.FindObjectOfType<Calibration>().Register(gameObject);
             GameObject.FindObjectOfType<ARCoreSession>().SessionConfig.EnablePlaneFinding = false;
