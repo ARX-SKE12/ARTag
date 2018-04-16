@@ -6,7 +6,7 @@ namespace ARTag
         
     public class TagInstruction : MonoBehaviour
     {
-        public GameObject thumbnail, instructionText, changeStepButton;
+        public GameObject thumbnail, instructionText, changeStepButton, actionPanel;
         public Sprite finishButtonSprite;
         public Sprite[] stepThumbnail;
         int step = 0;
@@ -34,6 +34,7 @@ namespace ARTag
                     changeStepButton.GetComponentInChildren<Text>().text = "I got it!";
                     break;
                 case 5:
+                    actionPanel.SetActive(true);
                     gameObject.SetActive(false);
                     break;
                 default:
