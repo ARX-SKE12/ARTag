@@ -75,6 +75,15 @@ namespace ARTag
             data.SetField("origin_rotation", originRotationData);
             GameObject.FindObjectOfType<SocketManager>().Emit(EventsCollector.PLANE_UPDATE, data);
         }
+
+        public void Disable()
+        {
+            isScanning = false;
+            pauseButton.SetActive(false);
+            scanButton.SetActive(true);
+            GameObject.FindObjectOfType<ARCoreSession>().SessionConfig.EnablePlaneFinding = isScanning;
+            GameObject.FindObjectOfType<ARCoreSession>().OnEnable();
+        }
     }
 
 }
