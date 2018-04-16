@@ -16,12 +16,6 @@ namespace ARTag
             GameObject.FindObjectOfType<ARCoreSession>().OnEnable();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         void OnFinishCalibration()
         {
             planeMode.SetActive(true);
