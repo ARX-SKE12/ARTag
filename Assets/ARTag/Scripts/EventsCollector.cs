@@ -29,6 +29,14 @@ namespace ARTag
         public static readonly string ROOM_USER_LEFT = "room-left";
         public static readonly string ROOM_ERROR = "room-error";
         public static readonly string DISCONNECT = "disconnect";
+        public static readonly string TAG_CREATE= "tag-create";
+        public static readonly string TAG_CREATE_SUCCESS= "tag-create-success";
+        public static readonly string TAG_UPDATE= "tag-update";
+        public static readonly string TAG_UPDATE_SUCCESS= "tag-update-success";
+        public static readonly string TAG_LIST_REQUEST= "tag-list-request";
+        public static readonly string TAG_LIST= "tag-list";
+        public static readonly string TAG_ERROR= "tag-error";
+        public static readonly string TAG_DATA_UPDATE = "tag-data-update";
     }
 
 }

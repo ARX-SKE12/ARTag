@@ -11,9 +11,9 @@ namespace ARTag
         public void ShowForm()
         {
             tagForm.SetActive(true);
-            Debug.Log(tagForm);
             tagForm.GetComponent<TagFormController>().SelectType(type);
             selectModal.SetActive(false);
+            
         }
 
     }

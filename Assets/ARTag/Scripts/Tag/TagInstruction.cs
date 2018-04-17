@@ -20,7 +20,7 @@ namespace ARTag
                     thumbnail.GetComponent<Image>().sprite = stepThumbnail[0];
                     break;
                 case 2:
-                    instructionText.GetComponent<Text>().text = "Select Tag Button";
+                    instructionText.GetComponent<Text>().text = "Select Tag Type";
                     thumbnail.GetComponent<Image>().sprite = stepThumbnail[1];
                     break;
                 case 3:

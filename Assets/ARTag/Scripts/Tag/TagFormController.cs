@@ -54,12 +54,14 @@ namespace ARTag
 
         public void Create()
         {
-            TagBehaviour tag = Instantiate(tagPrefabs[type - 1], Camera.main.transform.position + Camera.main.transform.forward, Quaternion.identity, GameObject.Find("Tag Editor").transform).GetComponent<TagBehaviour>();
+            GameObject tagObj = Instantiate(tagPrefabs[type - 1], Camera.main.transform.position + Camera.main.transform.forward * 0.15f, Quaternion.identity, GameObject.Find("Tag Editor").transform);
+            TagBehaviour tag = tagObj.GetComponent<TagBehaviour>();
             float sizeVal = (int)int.Parse(size.GetComponentInChildren<InputField>().text);
-            tag.transform.localScale = new Vector3(sizeVal, sizeVal, tag.transform.localScale.z);
             tag.transform.LookAt(Camera.main.transform);
+            tag.transform.Rotate(new Vector3(0, 180, 0));
             Dictionary<string, object> data = new Dictionary<string, object>();
             data["title"] = title.GetComponentInChildren<InputField>().text;
+            data["size"] = sizeVal;
             tag.Initialize(data);
             gameObject.SetActive(false);
         }
