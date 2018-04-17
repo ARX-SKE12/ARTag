@@ -783,10 +783,10 @@ MonoBehaviour:
   cursor: {fileID: 785329939}
   finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
   stepThumbnail:
-  - {fileID: 21300000, guid: e0c6a59642673554897dc8301a154d27, type: 3}
-  - {fileID: 21300000, guid: 919397fe3972df745b62c90290cf0d7b, type: 3}
-  - {fileID: 21300000, guid: c05dc13096f84344dac08150f3effda4, type: 3}
-  - {fileID: 21300000, guid: 9f978233c303b9f4688bdcd9121ff7ca, type: 3}
+  - {fileID: 21300000, guid: 414d51ef4176218488cd1ea1ea0a7ded, type: 3}
+  - {fileID: 21300000, guid: ecca219b3de2c1f4683a41bf4999b81f, type: 3}
+  - {fileID: 21300000, guid: cd452e1e413c39245b36ebe284c69200, type: 3}
+  - {fileID: 21300000, guid: ae02cbd5685ee7148bc81c859b6aecc1, type: 3}
 --- !u!114 &238456595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4047,6 +4047,24 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114606590116175796, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 511c932dc3dc1bd469c0bc47fb9fdf00,
+        type: 3}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: stepThumbnail.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 93f9250c58f3bad4ebf6777307e77ed2,
+        type: 3}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: stepThumbnail.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b29e3f24691c4d4fa441d277567f967,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 343b852ec177c634dacd7b1d57958a97, type: 2}
   m_IsPrefabParent: 0
@@ -4452,7 +4470,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ded5e09445fb3054ab84f3acd8c7cd79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5bb3ba04b41d4c34fa11b2a7decae37e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
