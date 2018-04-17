@@ -63,6 +63,15 @@ namespace ARTag
                 transform.localScale = new Vector3(sizeVal, sizeVal, transform.localScale.z);
                 string title = paddingStr + data.GetField("title").str + paddingStr;
                 GetComponentInChildren<Text>().text = title;
+                float x = e.data.GetField("position").GetField("position").GetField("x").f;
+                float y = e.data.GetField("position").GetField("position").GetField("y").f;
+                float z = e.data.GetField("position").GetField("position").GetField("z").f;
+                transform.localPosition = new Vector3(x, y, z);
+                float xr = e.data.GetField("position").GetField("position").GetField("x").f;
+                float yr = e.data.GetField("position").GetField("position").GetField("y").f;
+                float zr = e.data.GetField("position").GetField("position").GetField("z").f;
+                float wr = e.data.GetField("position").GetField("position").GetField("w").f;
+                transform.localRotation = new Quaternion(xr, yr, zr, wr);
             }
             
         }
