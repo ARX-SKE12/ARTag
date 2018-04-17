@@ -23,7 +23,6 @@ namespace ARTag
         // Update is called once per frame
         void Update()
         {
-            GameObject.Find("Log").GetComponent<Text>().text = Camera.main.transform.position.ToString() + "\n" + transform.localPosition.ToString();
         }
 
         public void Initialize(Dictionary<string, object> data)
@@ -37,7 +36,6 @@ namespace ARTag
 
         protected JSONObject PrepareTagData(Dictionary<string, object> data)
         {
-            GameObject.Find("Log (2)").GetComponent<Text>().text = transform.localPosition.ToString()+"\n"+transform.position.ToString();
             JSONObject jsonData = new JSONObject();
             Place place = (Place)GameObject.FindObjectOfType<TemporaryDataManager>().Get("currentPlace");
             jsonData.AddField("placeId", place.id);
