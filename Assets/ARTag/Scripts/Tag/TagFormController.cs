@@ -54,6 +54,7 @@ namespace ARTag
 
         public void Create()
         {
+            GameObject.Find("Log (1)").GetComponent<Text>().text = Camera.main.transform.forward.ToString()+"\n"+ Camera.main.transform.position + Camera.main.transform.forward * 0.15f;
             GameObject tagObj = Instantiate(tagPrefabs[type - 1], Camera.main.transform.position + Camera.main.transform.forward * 0.15f, Quaternion.identity, GameObject.Find("Tag Editor").transform);
             TagBehaviour tag = tagObj.GetComponent<TagBehaviour>();
             float sizeVal = (int)int.Parse(size.GetComponentInChildren<InputField>().text);
