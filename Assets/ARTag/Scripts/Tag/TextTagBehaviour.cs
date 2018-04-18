@@ -5,7 +5,7 @@ namespace ARTag {
     using UnityEngine;
     using UnityEngine.UI;
 
-    public class TextTagBehaviour : TagBehaviour
+    public class TextTagBehaviour : TitleTagBehaviour
     {
 
         public GameObject description;

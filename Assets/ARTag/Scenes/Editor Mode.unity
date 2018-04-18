@@ -1920,7 +1920,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 378120873}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 378120875}
+        m_MethodName: PickImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &378120873
@@ -5646,6 +5657,7 @@ MonoBehaviour:
   tagPrefabs:
   - {fileID: 1581157888042792, guid: 7fd56c6e625328246985f6f901e06fd7, type: 2}
   - {fileID: 1120747236237740, guid: 53e7bb74d722f0a448296cc7bcde65c5, type: 2}
+  - {fileID: 1262863096847368, guid: 4b55a6a438d737b4fb0d6b129034a04b, type: 2}
 --- !u!1001 &1410720161
 Prefab:
   m_ObjectHideFlags: 0
