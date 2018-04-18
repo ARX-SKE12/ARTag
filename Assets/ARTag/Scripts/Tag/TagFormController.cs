@@ -5,6 +5,7 @@ namespace ARTag
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
+    using TMPro;
 
     public class TagFormController : MonoBehaviour
     {
@@ -26,6 +27,9 @@ namespace ARTag
 
         public void SelectType(int type)
         {
+            title.SetActive(true);
+            thumbnail.SetActive(true);
+            description.SetActive(true);
             this.type = type;
             switch (type)
             {
@@ -35,6 +39,13 @@ namespace ARTag
                     break;
                 case 2:
                     thumbnail.SetActive(false);
+                    break;
+                case 3:
+                    description.SetActive(false);
+                    title.SetActive(false);
+                    break;
+                case 4:
+                    description.SetActive(false);
                     break;
                 default:
                     break;
@@ -60,9 +71,11 @@ namespace ARTag
             tag.transform.LookAt(Camera.main.transform);
             tag.transform.Rotate(new Vector3(0, 180, 0));
             Dictionary<string, object> data = new Dictionary<string, object>();
-            data["title"] = TextProcessor.ConvertFromNewLine(title.GetComponentInChildren<InputField>().text);
-            Debug.LogWarning(data["title"]);
+            if (type != 3 ) data["title"] = title.GetComponentInChildren<InputField>().text;
             data["size"] = sizeVal;
+            data["type"] = type;
+            if (type == 2 || type ==5 || type == 6) data["description"] = description.GetComponentInChildren<TMP_InputField>().text;
+            if (type == 3 || type == 4 || type == 5) data["image"] = thumbnail.GetComponentInChildren<ImagePicker>().selectedImage;
             tag.Initialize(data);
             gameObject.SetActive(false);
         }
