@@ -14,16 +14,15 @@ namespace ARTag {
         {
             JSONObject jsonData = base.PrepareTagData(data);
             JSONObject detail = jsonData.GetField("detail");
-            detail.AddField("description", ((string) data["description"]));
+            detail.AddField("description", TextProcessor.ConvertFromNewLine(((string) data["description"])));
             jsonData.SetField("detail", detail);
-            Debug.Log(((string)data["description"]).IndexOf("\n"));
             return jsonData;
         }
 
         protected override void ConstructTag(JSONObject data)
         {
             base.ConstructTag(data);
-            description.GetComponent<Text>().text = data.GetField("tag").GetField("detail").GetField("description").str;
+            description.GetComponent<Text>().text = TextProcessor.ConvertToNewLine(data.GetField("tag").GetField("detail").GetField("description").str);
         }
     }
 
