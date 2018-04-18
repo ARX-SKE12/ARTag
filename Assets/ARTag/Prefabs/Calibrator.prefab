@@ -575,7 +575,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ded5e09445fb3054ab84f3acd8c7cd79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 511c932dc3dc1bd469c0bc47fb9fdf00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -602,8 +602,8 @@ MonoBehaviour:
   calibrator: {fileID: 1576888939412498}
   finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
   stepThumbnail:
-  - {fileID: 21300000, guid: c05dc13096f84344dac08150f3effda4, type: 3}
-  - {fileID: 21300000, guid: e0c6a59642673554897dc8301a154d27, type: 3}
+  - {fileID: 21300000, guid: 93f9250c58f3bad4ebf6777307e77ed2, type: 3}
+  - {fileID: 21300000, guid: 4b29e3f24691c4d4fa441d277567f967, type: 3}
 --- !u!114 &114720347401921420
 MonoBehaviour:
   m_ObjectHideFlags: 1

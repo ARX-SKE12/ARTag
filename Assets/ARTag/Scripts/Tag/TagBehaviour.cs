@@ -11,18 +11,13 @@ namespace ARTag
     public class TagBehaviour : MonoBehaviour
     {
         public GameObject title;
-        string id = "";
+        protected string id = "";
         SocketManager manager;
 
         void Awake()
         {
             manager = GameObject.FindObjectOfType<SocketManager>();
             manager.On(EventsCollector.TAG_CREATE_SUCCESS, OnCreateSuccess);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
         }
 
         public void Initialize(Dictionary<string, object> data)
@@ -34,7 +29,7 @@ namespace ARTag
             transform.localScale = new Vector3(sizeVal, sizeVal, transform.localScale.z);
         }
 
-        protected JSONObject PrepareTagData(Dictionary<string, object> data)
+        protected virtual JSONObject PrepareTagData(Dictionary<string, object> data)
         {
             JSONObject jsonData = new JSONObject();
             Place place = (Place)GameObject.FindObjectOfType<TemporaryDataManager>().Get("currentPlace");
@@ -45,7 +40,6 @@ namespace ARTag
             jsonData.AddField("detail", tagDetail);
             JSONObject posData = new JSONObject();
             Vector3 currentPos = transform.position - GameObject.FindObjectOfType<Calibration>().offsetPosition;
-            Debug.Log(currentPos);
             posData.AddField("x", currentPos.x);
             posData.AddField("y", currentPos.y);
             posData.AddField("z", currentPos.z);
@@ -66,7 +60,7 @@ namespace ARTag
             
         }
 
-        protected void ConstructTag(JSONObject data)
+        protected virtual void ConstructTag(JSONObject data)
         {
             Calibration calibration = GameObject.FindObjectOfType<Calibration>();
             JSONObject tagData = data.GetField("tag");
@@ -80,9 +74,7 @@ namespace ARTag
             float x = tagPosition.GetField("x").f;
             float y = tagPosition.GetField("y").f;
             float z = tagPosition.GetField("z").f;
-            Debug.Log(transform.localPosition);
             transform.position = new Vector3(x, y, z) + calibration.offsetPosition;
-            Debug.Log(transform.localPosition);
             JSONObject tagRotation = tagData.GetField("rotation");
             float xr = tagRotation.GetField("x").f;
             float yr = tagRotation.GetField("y").f;

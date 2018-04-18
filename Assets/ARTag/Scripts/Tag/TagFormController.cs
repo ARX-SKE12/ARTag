@@ -5,6 +5,7 @@ namespace ARTag
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
+    using TMPro;
 
     public class TagFormController : MonoBehaviour
     {
@@ -63,6 +64,7 @@ namespace ARTag
             data["title"] = TextProcessor.ConvertFromNewLine(title.GetComponentInChildren<InputField>().text);
             Debug.LogWarning(data["title"]);
             data["size"] = sizeVal;
+            if (type == 2) data["description"] = description.GetComponentInChildren<TMP_InputField>().text;
             tag.Initialize(data);
             gameObject.SetActive(false);
         }
