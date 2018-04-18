@@ -60,7 +60,8 @@ namespace ARTag
             tag.transform.LookAt(Camera.main.transform);
             tag.transform.Rotate(new Vector3(0, 180, 0));
             Dictionary<string, object> data = new Dictionary<string, object>();
-            data["title"] = title.GetComponentInChildren<InputField>().text;
+            data["title"] = TextProcessor.ConvertFromNewLine(title.GetComponentInChildren<InputField>().text);
+            Debug.LogWarning(data["title"]);
             data["size"] = sizeVal;
             tag.Initialize(data);
             gameObject.SetActive(false);
