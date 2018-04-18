@@ -8,6 +8,7 @@ public class EffectSpawner : MonoBehaviour {
 	public GameObject target;
 	// Use this for initialization
 	void Start () {
+		//target = GameObject.Find("Target");
 		StartCoroutine(SpawnEffect());
 	}
 	
@@ -17,9 +18,11 @@ public class EffectSpawner : MonoBehaviour {
 	}
 	IEnumerator SpawnEffect() {
 		while(true) {
-			NavigationPather particle = Instantiate(effect).GetComponent<NavigationPather>();
-			particle.target = target;
-			yield return new WaitForSeconds(spawnInterval);
+			if(target != null) {
+				NavigationPather particle = Instantiate(effect).GetComponent<NavigationPather>();
+				particle.target = target;
+				yield return new WaitForSeconds(spawnInterval);
+			}
 		}
 	}
 }
