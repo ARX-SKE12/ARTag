@@ -529,6 +529,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 224301624314921414, guid: 0520cea59dcf2b24eb398a6642a40fcb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 224301624314921414, guid: 0520cea59dcf2b24eb398a6642a40fcb,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 1600
+      objectReference: {fileID: 0}
+    - target: {fileID: 224830683057619490, guid: 0520cea59dcf2b24eb398a6642a40fcb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 224108947620157174, guid: 0520cea59dcf2b24eb398a6642a40fcb,
         type: 2}
       propertyPath: m_AnchorMin.y
@@ -561,12 +576,32 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 224830683057619490, guid: 0520cea59dcf2b24eb398a6642a40fcb,
         type: 2}
-      propertyPath: m_AnchoredPosition.x
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224830683057619490, guid: 0520cea59dcf2b24eb398a6642a40fcb,
         type: 2}
-      propertyPath: m_AnchoredPosition.y
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224301624314921414, guid: 0520cea59dcf2b24eb398a6642a40fcb,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224301624314921414, guid: 0520cea59dcf2b24eb398a6642a40fcb,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224301624314921414, guid: 0520cea59dcf2b24eb398a6642a40fcb,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224757918872840322, guid: 0520cea59dcf2b24eb398a6642a40fcb,
+        type: 2}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
