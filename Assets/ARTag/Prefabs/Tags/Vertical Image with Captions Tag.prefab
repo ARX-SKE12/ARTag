@@ -55,6 +55,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4694484950030574}
+  - component: {fileID: 114135131330887576}
   m_Layer: 0
   m_Name: Vertical Image with Captions Tag
   m_TagString: Untagged
@@ -147,6 +148,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114135131330887576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1110294347612212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ccd4dab74d85d5418743b21fcc4ce5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 1045792410220862}
+  thumbnail: {fileID: 1694371197545330}
+  description: {fileID: 1922407332618656}
 --- !u!114 &114521770757061360
 MonoBehaviour:
   m_ObjectHideFlags: 1
