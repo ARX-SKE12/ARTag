@@ -19,10 +19,10 @@ namespace ARTag
             return jsonData;
         }
 
-        protected override void ConstructTag(JSONObject data)
+        public override void ConstructTag(JSONObject data)
         {
             base.ConstructTag(data);
-            string title = data.GetField("tag").GetField("detail").GetField("title").str;
+            string title = GetTagData(data).GetField("detail").GetField("title").str;
             GetComponentInChildren<Text>().text = title;
         }
     }

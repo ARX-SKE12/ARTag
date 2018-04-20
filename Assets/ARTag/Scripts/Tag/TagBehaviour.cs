@@ -56,13 +56,17 @@ namespace ARTag
 
         public void OnCreateSuccess(SocketIOEvent e)
         {
-            if (id == "") ConstructTag(e.data);
+            if (id == "")
+            {
+                GameObject.FindObjectOfType<TagLoader>().RegisterTag(GetTagData(e.data).GetField("id").str, this);
+                ConstructTag(e.data);
+            }
         }
 
-        protected virtual void ConstructTag(JSONObject data)
+        public virtual void ConstructTag(JSONObject data)
         {
             Calibration calibration = GameObject.FindObjectOfType<Calibration>();
-            JSONObject tagData = data.GetField("tag");
+            JSONObject tagData = GetTagData(data);
             id = tagData.GetField("id").str;
             JSONObject tagDetailData = tagData.GetField("detail");
             float sizeVal = tagDetailData.GetField("size").f * 0.05f;
@@ -80,6 +84,11 @@ namespace ARTag
             /**Debug.Log(transform.localRotation);
             transform.rotation = new Quaternion(xr, yr, zr, wr) * Quaternion.Inverse(calibration.offsetRotation) * Quaternion.Euler(new Vector3(180, 0, 0));
             Debug.Log(transform.localRotation);**/
+        }
+
+        protected JSONObject GetTagData(JSONObject data)
+        {
+            return data.HasField("tag") ? data.GetField("tag") : data;
         }
     }
 
