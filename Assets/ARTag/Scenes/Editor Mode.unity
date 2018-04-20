@@ -4974,8 +4974,8 @@ MonoBehaviour:
   modeBar: {fileID: 1927052675}
   finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
   stepThumbnail:
-  - {fileID: 21300000, guid: e0c6a59642673554897dc8301a154d27, type: 3}
-  - {fileID: 21300000, guid: 7435b0d2ae267334cb0f71b889246855, type: 3}
+  - {fileID: 21300000, guid: 8d108d828a598a34585f0210a91ca85f, type: 3}
+  - {fileID: 21300000, guid: abe42b306fb869d4aa3720eb9890d8df, type: 3}
 --- !u!114 &1301165476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5870,7 +5870,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ded5e09445fb3054ab84f3acd8c7cd79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df35ff5ee55f1514fad195c80e98179d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
