@@ -24,10 +24,10 @@ namespace ARTag
             return jsonData;
         }
 
-        protected override void ConstructTag(JSONObject data)
+        public override void ConstructTag(JSONObject data)
         {
             base.ConstructTag(data);
-            StartCoroutine(FetchThumbnail(BASE_URL + data.GetField("tag").GetField("timestamp").str + ".png"));
+            StartCoroutine(FetchThumbnail(BASE_URL + GetTagData(data).GetField("timestamp").str + ".png"));
             title.SetActive(false);
         }
 
