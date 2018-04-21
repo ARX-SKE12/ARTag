@@ -13,6 +13,7 @@ namespace ARTag
         public Sprite finishButtonSprite;
         public string finishButtonText = "I got it!";
         public int numStep;
+        public GameObject[] toActivateGameObjects;
 
         int step = 0;
 
@@ -47,6 +48,7 @@ namespace ARTag
 
         protected virtual void FinishAction()
         {
+            foreach (GameObject go in toActivateGameObjects) go.SetActive(true);
             gameObject.SetActive(false);
         }
 

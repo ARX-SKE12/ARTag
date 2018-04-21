@@ -5,13 +5,11 @@ namespace ARTag
     
     public class CalibrationInstruction : Instruction
     {
-        public GameObject pointCloud, scanUI, calibrator;
+        public GameObject calibrator;
 
         protected override void FinishAction()
         {
-            pointCloud.SetActive(false);
-            scanUI.SetActive(false);
-            calibrator.SetActive(false);
+            calibrator.GetComponent<Calibration>().enabled = true;
             base.FinishAction();
         }
         

@@ -761,20 +761,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 238456592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fee1139d82e4a94c8a1a56603f34447, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ae88954424744b4999a908ea9351b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 1132614040}
   instructionText: {fileID: 2043160242}
   changeStepButton: {fileID: 5091475}
-  actionPanel: {fileID: 641653963}
-  cursor: {fileID: 785329939}
-  finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
-  stepThumbnail:
+  thumbnails:
+  - {fileID: 21300000, guid: 5bb3ba04b41d4c34fa11b2a7decae37e, type: 3}
   - {fileID: 21300000, guid: 414d51ef4176218488cd1ea1ea0a7ded, type: 3}
   - {fileID: 21300000, guid: ecca219b3de2c1f4683a41bf4999b81f, type: 3}
   - {fileID: 21300000, guid: cd452e1e413c39245b36ebe284c69200, type: 3}
   - {fileID: 21300000, guid: ae02cbd5685ee7148bc81c859b6aecc1, type: 3}
+  guideTexts:
+  - Point Cursor to Your Target
+  - Press Tag Button
+  - Select Tag Type
+  - Fill the Form
+  - Tag Appear!
+  finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
+  finishButtonText: I got it!
+  numStep: 5
+  toActivateGameObjects:
+  - {fileID: 785329939}
+  - {fileID: 641653963}
 --- !u!114 &238456595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,6 +986,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 248118322}
+--- !u!1 &265034465 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1054629046811884, guid: 343b852ec177c634dacd7b1d57958a97,
+    type: 2}
+  m_PrefabInternal: {fileID: 1017412236}
 --- !u!1 &288604379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1154,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 249.1}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &303451600 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+    type: 2}
+  m_PrefabInternal: {fileID: 1017412236}
+  m_Script: {fileID: 11500000, guid: e8f0e2b1df62a3b489093a14db059ef6, type: 3}
 --- !u!1 &311470470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,6 +2138,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &531599028 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1474541668297500, guid: 343b852ec177c634dacd7b1d57958a97,
+    type: 2}
+  m_PrefabInternal: {fileID: 1017412236}
 --- !u!1 &555129035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3958,6 +3984,21 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: thumbnails.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: guideTexts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: toActivateGameObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4778255995591948, guid: 343b852ec177c634dacd7b1d57958a97, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4054,6 +4095,79 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: numStep
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: thumbnails.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 511c932dc3dc1bd469c0bc47fb9fdf00,
+        type: 3}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: thumbnails.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 93f9250c58f3bad4ebf6777307e77ed2,
+        type: 3}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: thumbnails.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b29e3f24691c4d4fa441d277567f967,
+        type: 3}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: guideTexts.Array.data[0]
+      value: Point Camera to ARTag Marker
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: guideTexts.Array.data[1]
+      value: Feature Point is shown on the marker
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: guideTexts.Array.data[2]
+      value: Tap On Center of Marker!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114796414315990126, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 303451600}
+    - target: {fileID: 114796414315990126, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextStep
+      objectReference: {fileID: 0}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: instructionText
+      value: 
+      objectReference: {fileID: 265034465}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: changeStepButton
+      value: 
+      objectReference: {fileID: 1279344492}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: thumbnail
+      value: 
+      objectReference: {fileID: 1618840073}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: toActivateGameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1855995870}
+    - target: {fileID: 114701656248418804, guid: 343b852ec177c634dacd7b1d57958a97,
+        type: 2}
+      propertyPath: toActivateGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 531599028}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 343b852ec177c634dacd7b1d57958a97, type: 2}
   m_IsPrefabParent: 0
@@ -4900,6 +5014,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1268565902}
+--- !u!1 &1279344492 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1308405759286756, guid: 343b852ec177c634dacd7b1d57958a97,
+    type: 2}
+  m_PrefabInternal: {fileID: 1017412236}
 --- !u!1 &1301165473
 GameObject:
   m_ObjectHideFlags: 0
@@ -4948,18 +5067,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1301165473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ca9412239ba815469e32f6c0b9284a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ae88954424744b4999a908ea9351b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 1487416439}
   instructionText: {fileID: 1002769107}
   changeStepButton: {fileID: 288604379}
-  actionBar: {fileID: 296185624}
-  modeBar: {fileID: 1927052675}
-  finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
-  stepThumbnail:
+  thumbnails:
+  - {fileID: 21300000, guid: df35ff5ee55f1514fad195c80e98179d, type: 3}
   - {fileID: 21300000, guid: 8d108d828a598a34585f0210a91ca85f, type: 3}
   - {fileID: 21300000, guid: abe42b306fb869d4aa3720eb9890d8df, type: 3}
+  guideTexts:
+  - Activate Room Scanning Mode for Create Room Map
+  - Pause Room Scanning Mode
+  - Upload Scanned Room to Server
+  finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
+  finishButtonText: I got it!
+  numStep: 3
+  toActivateGameObjects:
+  - {fileID: 296185624}
+  - {fileID: 1927052675}
 --- !u!114 &1301165476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6299,6 +6426,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1586380593}
+--- !u!1 &1618840073 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1559653821759860, guid: 343b852ec177c634dacd7b1d57958a97,
+    type: 2}
+  m_PrefabInternal: {fileID: 1017412236}
 --- !u!1 &1659541476
 GameObject:
   m_ObjectHideFlags: 0
@@ -7133,6 +7265,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1810032848}
+--- !u!1 &1855995870 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1126454187830924, guid: 343b852ec177c634dacd7b1d57958a97,
+    type: 2}
+  m_PrefabInternal: {fileID: 1017412236}
 --- !u!1 &1859908148
 GameObject:
   m_ObjectHideFlags: 0
