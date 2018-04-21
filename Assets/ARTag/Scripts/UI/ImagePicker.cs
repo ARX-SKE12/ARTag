@@ -7,6 +7,7 @@ namespace ARTag
     using System.Collections;
     using UnityEngine;
     using UnityEngine.UI;
+    using PublisherKit;
 
     public class ImageData
     {
@@ -20,10 +21,10 @@ namespace ARTag
         }
     }
 
-    public class ImagePicker : MonoBehaviour
+    public class ImagePicker : Publisher
     {
         public ImageData selectedImage;
-        public GameObject thumbnail, background;
+        public GameObject thumbnail;
         readonly Vector2 MIDDLE_POSITION = new Vector2(0.5f, 0.5f);
         Thread uploadThread;
         byte[] rawFile;
@@ -51,12 +52,7 @@ namespace ARTag
         {
             Texture2D image = new Texture2D(1, 1);
             image.LoadImage(rawFile);
-            string data = Convert.ToBase64String(image.EncodeToPNG());
-            selectedImage = new ImageData(image.width, image.height, data);
-            Rect spriteRect = new Rect(Vector2.zero, new Vector2(image.width, image.height));
-            Sprite imageSprite = Sprite.Create(image, spriteRect, MIDDLE_POSITION);
-            thumbnail.GetComponent<Image>().sprite = imageSprite;
-            if (background != null) background.GetComponent<Image>().sprite = imageSprite;
+            AssignImage(image);
             GetComponentInChildren<Text>().text = "Upload Thumbnail";
             isUploaded = false;
             uploadThread.Abort();
@@ -78,12 +74,17 @@ namespace ARTag
             WWW req = new WWW(url);
             yield return req;
             Texture2D image = req.texture;
+            AssignImage(image);    
+        }
+
+        void AssignImage(Texture2D image)
+        {
             string data = Convert.ToBase64String(image.EncodeToPNG());
             selectedImage = new ImageData(image.width, image.height, data);
             Rect spriteRect = new Rect(Vector2.zero, new Vector2(image.width, image.height));
             Sprite imageSprite = Sprite.Create(image, spriteRect, MIDDLE_POSITION);
             thumbnail.GetComponent<Image>().sprite = imageSprite;
-            if (background != null) background.GetComponent<Image>().sprite = imageSprite;
+            Broadcast("OnImageLoaded", imageSprite);
         }
     }
 
