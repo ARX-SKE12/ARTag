@@ -21,6 +21,8 @@ namespace ARTag
         public static readonly string PLACE_UPDATE_SUCCESS = "place-update-success";
         public static readonly string PLACE_UPDATE_ERROR = "place-update-error";
         public static readonly string PLANE_UPDATE = "plane-update";
+        public static readonly string PLANE_UPGRADE = "plane-upgrade";
+        public static readonly string PLANE_ERROR = "plane-error";
         public static readonly string PLACE_CLEAR_PAGGING = "place-clear-pagging";
         public static readonly string PLACE_DATA_UPDATE = "place-data-update";
         public static readonly string ROOM_JOIN = "room-join";

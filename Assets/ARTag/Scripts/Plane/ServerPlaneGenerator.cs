@@ -3,11 +3,18 @@ namespace ARTag
 {
     using System.Collections.Generic;
     using UnityEngine;
+    using SocketIO;
+    using SocketIOManager;
 
     public class ServerPlaneGenerator : MonoBehaviour
     {
 
         public GameObject planePrefab;
+
+        void Start()
+        {
+            GameObject.FindObjectOfType<SocketManager>().On(EventsCollector.PLANE_UPGRADE, OnPlaneUpdate);
+        }
 
         public void GeneratePlane()
         {
@@ -28,6 +35,13 @@ namespace ARTag
             }
         }
         
+        public void OnPlaneUpdate(SocketIOEvent e)
+        {
+            JSONObject placeData = e.data.GetField("place");
+            Place place = new Place(placeData);
+            GameObject.FindObjectOfType<TemporaryDataManager>().Put("currentPlace", place);
+            GeneratePlane();
+        }
     }
 
 }

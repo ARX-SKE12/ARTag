@@ -19,6 +19,7 @@ namespace ARTag
             planeSpawner.GetComponent<ServerPlaneGenerator>().GeneratePlane();
             canvas.SetActive(true);
         }
+
     }
 
 }

@@ -3,19 +3,23 @@ namespace ARTag
 {
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.UI;
     using GoogleARCore;
     using ARCoreToolkit;
     using SocketIOManager;
+    using SocketIO;
 
     public class PlaneEditor : MonoBehaviour
     {
-        public GameObject scanButton, pauseButton;
+        public GameObject scanButton, pauseButton, notification, errorNotification;
         Calibrator calibration;
         bool isScanning;
 
         // Use this for initialization
         void Start()
         {
+            GameObject.FindObjectOfType<SocketManager>().On(EventsCollector.PLANE_UPGRADE, OnPlaneUpdate);
+            GameObject.FindObjectOfType<SocketManager>().On(EventsCollector.PLANE_ERROR, OnPlaneUpdateError);
             calibration = GameObject.FindObjectOfType<Calibrator>();
         }
 
@@ -83,6 +87,18 @@ namespace ARTag
             scanButton.SetActive(true);
             GameObject.FindObjectOfType<ARCoreSession>().SessionConfig.EnablePlaneFinding = isScanning;
             GameObject.FindObjectOfType<ARCoreSession>().OnEnable();
+        }
+
+        public void OnPlaneUpdate(SocketIOEvent e)
+        {
+            notification.GetComponentInChildren<Text>().text = "Plane has updated!";
+            notification.SetActive(true);
+        }
+
+        public void OnPlaneUpdateError(SocketIOEvent e)
+        {
+            errorNotification.GetComponentInChildren<Text>().text = "Plane Updating Process is failure!";
+            errorNotification.SetActive(true);
         }
     }
 
