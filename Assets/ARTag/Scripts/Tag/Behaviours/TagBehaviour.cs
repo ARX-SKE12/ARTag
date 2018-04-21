@@ -1,7 +1,6 @@
 ﻿
 namespace ARTag
 {
-    using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
@@ -33,13 +32,13 @@ namespace ARTag
         {
             JSONObject jsonData = new JSONObject();
             JSONObject posData = new JSONObject();
-            Vector3 currentPos = transform.position - GameObject.FindObjectOfType<Calibration>().offsetPosition;
+            Vector3 currentPos = transform.position - GameObject.FindObjectOfType<Calibrator>().offsetPosition;
             posData.AddField("x", currentPos.x);
             posData.AddField("y", currentPos.y);
             posData.AddField("z", currentPos.z);
             jsonData.AddField("position", posData);
             JSONObject rotateData = new JSONObject();
-            Quaternion currentRotate = Quaternion.Inverse(GameObject.FindObjectOfType<Calibration>().offsetRotation) * transform.rotation;
+            Quaternion currentRotate = Quaternion.Inverse(GameObject.FindObjectOfType<Calibrator>().offsetRotation) * transform.rotation;
             rotateData.AddField("x", currentRotate.x);
             rotateData.AddField("y", currentRotate.y);
             rotateData.AddField("z", currentRotate.z);
@@ -58,14 +57,14 @@ namespace ARTag
         {
             if (id == "")
             {
-                GameObject.FindObjectOfType<TagLoader>().RegisterTag(GetTagData(e.data).GetField("id").str, this);
+                GameObject.FindObjectOfType<TagManager>().RegisterTag(GetTagData(e.data).GetField("id").str, this);
                 ConstructTag(e.data);
             }
         }
 
         public virtual void ConstructTag(JSONObject data)
         {
-            Calibration calibration = GameObject.FindObjectOfType<Calibration>();
+            Calibrator calibration = GameObject.FindObjectOfType<Calibrator>();
             JSONObject tagData = GetTagData(data);
             id = tagData.GetField("id").str;
             JSONObject tagDetailData = tagData.GetField("detail");

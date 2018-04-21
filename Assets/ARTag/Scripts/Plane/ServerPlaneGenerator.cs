@@ -12,8 +12,8 @@ namespace ARTag
         public void GeneratePlane()
         {
             Place place = (Place) GameObject.FindObjectOfType<TemporaryDataManager>().Get("currentPlace");
-            transform.localPosition = GameObject.FindObjectOfType<Calibration>().GetVirtualPosition(place.origin);
-            transform.localRotation = GameObject.FindObjectOfType<Calibration>().GetVirtualRotation(place.originRotation);
+            transform.localPosition = GameObject.FindObjectOfType<Calibrator>().GetVirtualPosition(place.origin);
+            transform.localRotation = GameObject.FindObjectOfType<Calibrator>().GetVirtualRotation(place.originRotation);
             RestorePlanes(place);
         }
 

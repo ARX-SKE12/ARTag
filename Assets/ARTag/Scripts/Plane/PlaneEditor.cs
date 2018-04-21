@@ -10,13 +10,13 @@ namespace ARTag
     public class PlaneEditor : MonoBehaviour
     {
         public GameObject scanButton, pauseButton;
-        Calibration calibration;
+        Calibrator calibration;
         bool isScanning;
 
         // Use this for initialization
         void Start()
         {
-            calibration = GameObject.FindObjectOfType<Calibration>();
+            calibration = GameObject.FindObjectOfType<Calibrator>();
         }
 
         public void ChangeScanningState()

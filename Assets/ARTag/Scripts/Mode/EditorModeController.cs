@@ -11,7 +11,7 @@ namespace ARTag
         // Use this for initialization
         void Awake()
         {
-            GameObject.FindObjectOfType<Calibration>().Register(gameObject);
+            GameObject.FindObjectOfType<Calibrator>().Register(gameObject);
             GameObject.FindObjectOfType<ARCoreSession>().SessionConfig.EnablePlaneFinding = false;
             GameObject.FindObjectOfType<ARCoreSession>().OnEnable();
         }
