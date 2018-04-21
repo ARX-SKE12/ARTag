@@ -5724,6 +5724,53 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1427299523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1427299524}
+  - component: {fileID: 1427299525}
+  m_Layer: 0
+  m_Name: Tag Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1427299524
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1427299523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1661102800}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1427299525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1427299523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79afb833e7963540ad8294638901a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagPrefabs:
+  - {fileID: 1581157888042792, guid: 7fd56c6e625328246985f6f901e06fd7, type: 2}
+  - {fileID: 1120747236237740, guid: 53e7bb74d722f0a448296cc7bcde65c5, type: 2}
+  - {fileID: 1262863096847368, guid: 4b55a6a438d737b4fb0d6b129034a04b, type: 2}
+  - {fileID: 1075386324356272, guid: 0520cea59dcf2b24eb398a6642a40fcb, type: 2}
+  - {fileID: 1110294347612212, guid: fc52ac3cbb393f94e9fe84cac8ed671a, type: 2}
+  distanceFromCam: 0.15
 --- !u!1 &1471663597
 GameObject:
   m_ObjectHideFlags: 0
@@ -6394,7 +6441,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1661102800}
-  - component: {fileID: 1661102801}
   m_Layer: 0
   m_Name: Tag Editor
   m_TagString: Untagged
@@ -6413,27 +6459,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 324451585}
+  - {fileID: 1427299524}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1661102801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1661102799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79afb833e7963540ad8294638901a9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagPrefabs:
-  - {fileID: 1581157888042792, guid: 7fd56c6e625328246985f6f901e06fd7, type: 2}
-  - {fileID: 1120747236237740, guid: 53e7bb74d722f0a448296cc7bcde65c5, type: 2}
-  - {fileID: 1262863096847368, guid: 4b55a6a438d737b4fb0d6b129034a04b, type: 2}
-  - {fileID: 1075386324356272, guid: 0520cea59dcf2b24eb398a6642a40fcb, type: 2}
-  - {fileID: 1110294347612212, guid: fc52ac3cbb393f94e9fe84cac8ed671a, type: 2}
-  distanceFromCam: 0.15
 --- !u!1 &1675851051
 GameObject:
   m_ObjectHideFlags: 0
