@@ -12,6 +12,9 @@ namespace ARTag
         int type;
         public GameObject thumbnail, title, range, size, description;
         public GameObject[] tagPrefabs;
+        public Sprite defaultThumbnail;
+        public int defaultSize = 30;
+        public float defaultRange = 1.5f;
 
         // Use this for initialization
         void Start()
@@ -77,7 +80,17 @@ namespace ARTag
             if (type == 2 || type ==5 || type == 6) data["description"] = description.GetComponentInChildren<TMP_InputField>().text;
             if (type == 3 || type == 4 || type == 5) data["image"] = thumbnail.GetComponentInChildren<ImagePicker>().selectedImage;
             tag.Initialize(data);
+            ClearForm();
             gameObject.SetActive(false);
+        }
+
+        void ClearForm()
+        {
+            thumbnail.GetComponent<Image>().sprite = defaultThumbnail;
+            title.GetComponent<InputField>().text = "";
+            description.GetComponent<TMP_InputField>().text = "";
+            range.GetComponent<InputField>().text = defaultRange.ToString();
+            size.GetComponent<InputField>().text = defaultSize.ToString();
         }
     }
 

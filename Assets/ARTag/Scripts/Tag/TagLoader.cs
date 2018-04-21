@@ -47,6 +47,11 @@ namespace ARTag
             tags[id] = tag;
         }
 
+        public void CreateTag(Dictionary<string, object> data)
+        {
+
+        }
+
     }
 
 }

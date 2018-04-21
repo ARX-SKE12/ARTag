@@ -5678,6 +5678,9 @@ MonoBehaviour:
   - {fileID: 1262863096847368, guid: 4b55a6a438d737b4fb0d6b129034a04b, type: 2}
   - {fileID: 1075386324356272, guid: 0520cea59dcf2b24eb398a6642a40fcb, type: 2}
   - {fileID: 1110294347612212, guid: fc52ac3cbb393f94e9fe84cac8ed671a, type: 2}
+  defaultThumbnail: {fileID: 21300000, guid: ded5e09445fb3054ab84f3acd8c7cd79, type: 3}
+  defaultSize: 30
+  defaultRange: 1.5
 --- !u!1001 &1410720161
 Prefab:
   m_ObjectHideFlags: 0
