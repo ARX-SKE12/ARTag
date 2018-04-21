@@ -411,7 +411,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 366608845}
-        m_MethodName: LoadScene
+        m_MethodName: JoinRoom
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 366608840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82ff3fdc66828c44a81a5b205adc84f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 61bfd1b8ed1690d4bae38b060a879664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &368818955
@@ -823,6 +823,11 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224825274323857870, guid: fd0c652c61e8cb944bbe01b0070ad53b,
     type: 2}
   m_PrefabInternal: {fileID: 563644926}
+--- !u!1 &563644928 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1132367822079100, guid: fd0c652c61e8cb944bbe01b0070ad53b,
+    type: 2}
+  m_PrefabInternal: {fileID: 563644926}
 --- !u!1 &659743413
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +860,7 @@ MonoBehaviour:
   authorText: {fileID: 368818955}
   descriptionText: {fileID: 1481526180}
   background: {fileID: 960762279}
-  moreButton: {fileID: 0}
+  moreButton: {fileID: 563644928}
 --- !u!4 &659743415
 Transform:
   m_ObjectHideFlags: 0
@@ -1516,7 +1521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: -0.000030517429}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1481526182
