@@ -597,13 +597,21 @@ MonoBehaviour:
   thumbnail: {fileID: 1559653821759860}
   instructionText: {fileID: 1054629046811884}
   changeStepButton: {fileID: 1308405759286756}
-  pointCloud: {fileID: 1474541668297500}
-  scanUI: {fileID: 1126454187830924}
-  calibrator: {fileID: 1576888939412498}
-  finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
-  stepThumbnail:
+  thumbnails:
+  - {fileID: 21300000, guid: 511c932dc3dc1bd469c0bc47fb9fdf00, type: 3}
   - {fileID: 21300000, guid: 93f9250c58f3bad4ebf6777307e77ed2, type: 3}
   - {fileID: 21300000, guid: 4b29e3f24691c4d4fa441d277567f967, type: 3}
+  guideTexts:
+  - Point Camera to ARTag Marker
+  - Feature Point is shown on the marker
+  - Tap On Center of Marker!
+  finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
+  finishButtonText: I got it!
+  numStep: 3
+  toActivateGameObjects:
+  - {fileID: 1126454187830924}
+  - {fileID: 1474541668297500}
+  calibrator: {fileID: 1576888939412498}
 --- !u!114 &114720347401921420
 MonoBehaviour:
   m_ObjectHideFlags: 1
