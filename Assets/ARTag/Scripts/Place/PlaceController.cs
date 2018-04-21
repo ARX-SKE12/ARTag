@@ -4,6 +4,8 @@ namespace ARTag
     using System.Collections;
     using UnityEngine;
     using UnityEngine.UI;
+    using SocketIO;
+    using SocketIOManager;
 
     public class PlaceController : MonoBehaviour
     {
@@ -15,7 +17,13 @@ namespace ARTag
         // Use this for initialization
         void Start()
         {
-            place = (Place) GameObject.FindObjectOfType<TemporaryDataManager>().Get("currentPlace");
+            GameObject.FindObjectOfType<SocketManager>().On(EventsCollector.PLACE_DATA_UPDATE, OnPlaceUpdate);
+            LoadPlace();
+        }
+
+        void LoadPlace()
+        {
+            place = (Place)GameObject.FindObjectOfType<TemporaryDataManager>().Get("currentPlace");
             nameText.GetComponent<Text>().text = place.name;
             authorText.GetComponent<Text>().text = place.user.name;
             descriptionText.GetComponent<Text>().text = place.description;
@@ -32,6 +40,18 @@ namespace ARTag
             thumbnail.GetComponent<Image>().sprite = sprite;
             background.GetComponent<Image>().sprite = sprite;
         }
+
+        public void OnPlaceUpdate(SocketIOEvent e)
+        {
+            JSONObject placeData = e.data.GetField("place");
+            Place place = new Place(placeData);
+            if (place.id==this.place.id)
+            {
+                GameObject.FindObjectOfType<TemporaryDataManager>().Put("currentPlace", place);
+                LoadPlace();
+            }
+        }
+        
     }
 
 }
