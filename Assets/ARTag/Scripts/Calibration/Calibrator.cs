@@ -5,7 +5,7 @@ namespace ARTag {
     using GoogleARCore;
     using PublisherKit;
 
-    public class Calibration : Publisher
+    public class Calibrator : Publisher
     {
         public Vector3 currentPosition;
         public Quaternion currentRotation;

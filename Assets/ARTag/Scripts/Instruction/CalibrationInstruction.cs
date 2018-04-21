@@ -9,7 +9,7 @@ namespace ARTag
 
         protected override void FinishAction()
         {
-            calibrator.GetComponent<Calibration>().enabled = true;
+            calibrator.GetComponent<Calibrator>().enabled = true;
             base.FinishAction();
         }
         

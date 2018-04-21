@@ -11,7 +11,7 @@ namespace ARTag
         // Use this for initialization
         void Start()
         {
-            GetComponent<Calibration>().Register(gameObject);
+            GetComponent<Calibrator>().Register(gameObject);
         }
 
         void OnFinishCalibration()

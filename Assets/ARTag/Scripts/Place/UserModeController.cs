@@ -10,7 +10,7 @@ namespace ARTag
         // Use this for initialization
         void Start()
         {
-            GameObject.FindObjectOfType<Calibration>().Register(gameObject);
+            GameObject.FindObjectOfType<Calibrator>().Register(gameObject);
         }
 
         void OnFinishCalibration()
