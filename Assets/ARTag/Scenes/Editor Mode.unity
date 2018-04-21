@@ -468,13 +468,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125156129}
+      - m_Target: {fileID: 167525976}
         m_MethodName: ShowForm
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -492,8 +492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a58616b5ec2fe49a2b2935c4f82392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 6
-  selectModal: {fileID: 167525974}
   tagForm: {fileID: 1402129778}
 --- !u!114 &125156130
 MonoBehaviour:
@@ -676,20 +674,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 167525974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fee1139d82e4a94c8a1a56603f34447, type: 3}
+  m_Script: {fileID: 11500000, guid: 58a58616b5ec2fe49a2b2935c4f82392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thumbnail: {fileID: 0}
-  instructionText: {fileID: 0}
-  changeStepButton: {fileID: 0}
-  actionPanel: {fileID: 641653963}
-  cursor: {fileID: 0}
-  finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
-  stepThumbnail:
-  - {fileID: 21300000, guid: e0c6a59642673554897dc8301a154d27, type: 3}
-  - {fileID: 21300000, guid: 919397fe3972df745b62c90290cf0d7b, type: 3}
-  - {fileID: 21300000, guid: c05dc13096f84344dac08150f3effda4, type: 3}
-  - {fileID: 21300000, guid: 9f978233c303b9f4688bdcd9121ff7ca, type: 3}
+  tagForm: {fileID: 1402129778}
 --- !u!114 &167525977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2273,13 +2261,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 627593448}
+      - m_Target: {fileID: 167525976}
         m_MethodName: ShowForm
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2297,8 +2285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a58616b5ec2fe49a2b2935c4f82392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 4
-  selectModal: {fileID: 167525974}
   tagForm: {fileID: 1402129778}
 --- !u!114 &627593449
 MonoBehaviour:
@@ -4147,13 +4133,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1097143980}
+      - m_Target: {fileID: 167525976}
         m_MethodName: ShowForm
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4171,8 +4157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a58616b5ec2fe49a2b2935c4f82392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
-  selectModal: {fileID: 167525974}
   tagForm: {fileID: 1402129778}
 --- !u!114 &1097143981
 MonoBehaviour:
@@ -5438,13 +5422,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1379303988}
+      - m_Target: {fileID: 167525976}
         m_MethodName: ShowForm
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5462,8 +5446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a58616b5ec2fe49a2b2935c4f82392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  selectModal: {fileID: 167525974}
   tagForm: {fileID: 1402129778}
 --- !u!1 &1379388846
 GameObject:
@@ -5672,12 +5654,6 @@ MonoBehaviour:
   range: {fileID: 352357838}
   size: {fileID: 125878168}
   description: {fileID: 449685444}
-  tagPrefabs:
-  - {fileID: 1581157888042792, guid: 7fd56c6e625328246985f6f901e06fd7, type: 2}
-  - {fileID: 1120747236237740, guid: 53e7bb74d722f0a448296cc7bcde65c5, type: 2}
-  - {fileID: 1262863096847368, guid: 4b55a6a438d737b4fb0d6b129034a04b, type: 2}
-  - {fileID: 1075386324356272, guid: 0520cea59dcf2b24eb398a6642a40fcb, type: 2}
-  - {fileID: 1110294347612212, guid: fc52ac3cbb393f94e9fe84cac8ed671a, type: 2}
   defaultThumbnail: {fileID: 21300000, guid: ded5e09445fb3054ab84f3acd8c7cd79, type: 3}
   defaultSize: 30
   defaultRange: 1.5
@@ -6457,6 +6433,7 @@ MonoBehaviour:
   - {fileID: 1262863096847368, guid: 4b55a6a438d737b4fb0d6b129034a04b, type: 2}
   - {fileID: 1075386324356272, guid: 0520cea59dcf2b24eb398a6642a40fcb, type: 2}
   - {fileID: 1110294347612212, guid: fc52ac3cbb393f94e9fe84cac8ed671a, type: 2}
+  distanceFromCam: 0.15
 --- !u!1 &1675851051
 GameObject:
   m_ObjectHideFlags: 0
@@ -6737,13 +6714,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1726338301}
+      - m_Target: {fileID: 167525976}
         m_MethodName: ShowForm
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6761,8 +6738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a58616b5ec2fe49a2b2935c4f82392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 5
-  selectModal: {fileID: 167525974}
   tagForm: {fileID: 1402129778}
 --- !u!114 &1726338302
 MonoBehaviour:
@@ -7071,13 +7046,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1810032851}
+      - m_Target: {fileID: 167525976}
         m_MethodName: ShowForm
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7095,8 +7070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a58616b5ec2fe49a2b2935c4f82392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
-  selectModal: {fileID: 167525974}
   tagForm: {fileID: 1402129778}
 --- !u!114 &1810032852
 MonoBehaviour:

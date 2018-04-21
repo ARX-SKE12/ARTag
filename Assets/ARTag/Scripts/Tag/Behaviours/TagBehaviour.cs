@@ -1,7 +1,6 @@
 ﻿
 namespace ARTag
 {
-    using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
@@ -58,7 +57,7 @@ namespace ARTag
         {
             if (id == "")
             {
-                GameObject.FindObjectOfType<TagLoader>().RegisterTag(GetTagData(e.data).GetField("id").str, this);
+                GameObject.FindObjectOfType<TagManager>().RegisterTag(GetTagData(e.data).GetField("id").str, this);
                 ConstructTag(e.data);
             }
         }

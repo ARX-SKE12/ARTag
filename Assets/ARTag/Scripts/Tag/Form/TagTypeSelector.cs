@@ -5,15 +5,13 @@ namespace ARTag
 
     public class TagTypeSelector : MonoBehaviour
     {
-        public int type;
-        public GameObject selectModal, tagForm;
+        public GameObject tagForm;
         
-        public void ShowForm()
+        public void ShowForm(int type)
         {
             tagForm.SetActive(true);
             tagForm.GetComponent<TagFormController>().SelectType(type);
-            selectModal.SetActive(false);
-            
+            gameObject.SetActive(false);
         }
 
     }
