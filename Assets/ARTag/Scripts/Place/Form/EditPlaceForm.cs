@@ -10,7 +10,7 @@ namespace ARTag
     using SocketIOManager;
     using SocketIO;
 
-    public class CreatePlaceForm : MonoBehaviour
+    public class EditPlaceForm : MonoBehaviour
     {
 
         SocketManager socketManager;

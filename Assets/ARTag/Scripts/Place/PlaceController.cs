@@ -5,7 +5,7 @@ namespace ARTag
     using UnityEngine;
     using UnityEngine.UI;
 
-    public class PlaceInfo : MonoBehaviour
+    public class PlaceController : MonoBehaviour
     {
         public GameObject thumbnail, nameText, authorText, descriptionText, background, moreButton;
         Place place;
