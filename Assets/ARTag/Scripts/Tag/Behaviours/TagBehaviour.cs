@@ -17,6 +17,7 @@ namespace ARTag
         {
             manager = GameObject.FindObjectOfType<SocketManager>();
             manager.On(EventsCollector.TAG_CREATE_SUCCESS, OnCreateSuccess);
+            manager.On(EventsCollector.TAG_ERROR, OnError);
         }
 
         public void Initialize(Dictionary<string, object> data)
@@ -57,8 +58,9 @@ namespace ARTag
         {
             if (id == "")
             {
-                GameObject.FindObjectOfType<TagManager>().RegisterTag(GetTagData(e.data).GetField("id").str, this);
                 ConstructTag(e.data);
+                GameObject.FindObjectOfType<TagManager>().notification.GetComponentInChildren<Text>().text = "New Tag is created!";
+                GameObject.FindObjectOfType<TagManager>().notification.SetActive(true);
             }
         }
 
@@ -67,6 +69,7 @@ namespace ARTag
             Calibrator calibration = GameObject.FindObjectOfType<Calibrator>();
             JSONObject tagData = GetTagData(data);
             id = tagData.GetField("id").str;
+            GameObject.FindObjectOfType<TagManager>().RegisterTag(id, this);
             JSONObject tagDetailData = tagData.GetField("detail");
             float sizeVal = tagDetailData.GetField("size").f * 0.05f;
             transform.localScale = new Vector3(sizeVal, sizeVal, transform.localScale.z);
@@ -88,6 +91,12 @@ namespace ARTag
         protected JSONObject GetTagData(JSONObject data)
         {
             return data.HasField("tag") ? data.GetField("tag") : data;
+        }
+
+        public void OnError(SocketIOEvent e)
+        {
+            GameObject.FindObjectOfType<TagManager>().errorNotification.GetComponentInChildren<Text>().text = e.data.GetField("error").str;
+            GameObject.FindObjectOfType<TagManager>().errorNotification.SetActive(true);
         }
     }
 
