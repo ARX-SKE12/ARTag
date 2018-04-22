@@ -17,7 +17,6 @@ namespace ARTag
         {
             manager = GameObject.FindObjectOfType<SocketManager>();
             manager.On(EventsCollector.TAG_CREATE_SUCCESS, OnCreateSuccess);
-            manager.On(EventsCollector.TAG_ERROR, OnError);
         }
 
         public void Initialize(Dictionary<string, object> data)
@@ -93,11 +92,6 @@ namespace ARTag
             return data.HasField("tag") ? data.GetField("tag") : data;
         }
 
-        public void OnError(SocketIOEvent e)
-        {
-            GameObject.FindObjectOfType<TagManager>().errorNotification.GetComponentInChildren<Text>().text = e.data.GetField("error").str;
-            GameObject.FindObjectOfType<TagManager>().errorNotification.SetActive(true);
-        }
     }
 
 }
