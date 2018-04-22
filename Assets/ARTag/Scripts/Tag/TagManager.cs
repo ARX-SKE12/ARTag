@@ -71,6 +71,7 @@ namespace ARTag
             GameObject.FindObjectOfType<TagManager>().errorNotification.GetComponentInChildren<Text>().text = e.data.GetField("error").str;
             GameObject.FindObjectOfType<TagManager>().errorNotification.SetActive(true);
         }
+        
     }
 
 }

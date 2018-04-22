@@ -10,7 +10,7 @@ namespace ARTag
     public abstract class TagBehaviour : MonoBehaviour
     {
         public GameObject title;
-        protected string id = "";
+        public string id = "";
         SocketManager manager;
 
         void Awake()
