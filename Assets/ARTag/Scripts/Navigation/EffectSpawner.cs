@@ -23,7 +23,7 @@ namespace ARTag
                 if (target != null)
                 {
                     time = 0;
-                    NavigationPather particle = Instantiate(effect, transform).GetComponent<NavigationPather>();
+                    NavigationPather particle = Instantiate(effect, transform.localPosition, Quaternion.identity).GetComponent<NavigationPather>();
                     particle.target = target;
                 }
             }

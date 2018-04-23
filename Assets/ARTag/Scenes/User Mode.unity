@@ -2940,6 +2940,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 1251458862184248, guid: eb268d6492dadc54eafdf73f9b726c2c, type: 2}
-  spawnInterval: 1
+  spawnInterval: 0.5
   time: 0
   target: {fileID: 0}
