@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------
-// <copyright file="ApkInstallationStatus.cs" company="Google">
+// <copyright file="ApiDisplayUvCoordsExtensions.cs" company="Google">
 //
-// Copyright 2017 Google Inc. All Rights Reserved.
+// Copyright 2018 Google Inc. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,22 +18,21 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GoogleARCore
+namespace GoogleARCoreInternal
 {
-    /// <summary>
-    /// Possible statuses for an ARCore APK installation request on a device.
-    /// </summary>
-    public enum ApkInstallationStatus
+    using System.Diagnostics.CodeAnalysis;
+    using System.Runtime.InteropServices;
+    using GoogleARCore;
+    using UnityEngine;
+
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",
+        Justification = "Internal")]
+    internal static class ApiDisplayUvCoordsExtensions
     {
-        Uninitialized = 0,
-        Requested = 1,
-        Success = 100,
-        Error = 200,
-        ErrorDeviceNotCompatible = 201,
-
-        [System.Obsolete("Merged with ErrorDeviceNotCompatible. Use that instead.")]
-        ErrorAndroidVersionNotSupported = 202,
-
-        ErrorUserDeclined = 203,
+        public static DisplayUvCoords ToDisplayUvCoords(this ApiDisplayUvCoords apiCoords)
+        {
+            return new DisplayUvCoords(apiCoords.TopLeft, apiCoords.TopRight,
+                apiCoords.BottomLeft, apiCoords.BottomRight);
+        }
     }
 }

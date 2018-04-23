@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="ApiConstants.cs" company="Google">
+// <copyright file="InstantPreviewEnabledMenuItem.cs" company="Google">
 //
 // Copyright 2017 Google Inc. All Rights Reserved.
 //
@@ -21,27 +21,32 @@
 namespace GoogleARCoreInternal
 {
     using System;
-    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using System.Runtime.InteropServices;
-    using GoogleARCore;
+    using System.IO;
+    using UnityEditor;
     using UnityEngine;
 
+    [InitializeOnLoad]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",
-    Justification = "Internal")]
-    public static class ApiConstants
+     Justification = "Internal")]
+    public static class InstantPreviewEnabledMenuItem
     {
-#if !UNITY_EDITOR
-        public const string ARCoreNativeApi = "arcore_sdk_c";
-        public const string ARCoreShimApi = "arcore_unity_api";
-        public const string MediaNdk = "mediandk";
-#else
-        public const string ARCoreNativeApi = InstantPreviewManager.InstantPreviewNativeApi;
-        public const string ARCoreShimApi = InstantPreviewManager.InstantPreviewNativeApi;
-        public const string MediaNdk = InstantPreviewManager.InstantPreviewNativeApi;
-#endif
+        private const string k_MenuName = "Edit/Project Settings/ARCore/Instant Preview Enabled";
+        private const int k_MenuPriority = 902;
 
-        // NDK camera API is a system API after Android 24.
-        public const string NdkCameraApi = "camera2ndk";
+        [MenuItem(k_MenuName, false, k_MenuPriority)]
+        private static void ToggleARCoreRequiredMenuItem()
+        {
+            ARCoreProjectSettings.Instance.IsInstantPreviewEnabled =
+                !ARCoreProjectSettings.Instance.IsInstantPreviewEnabled;
+            ARCoreProjectSettings.Instance.Save();
+        }
+
+        [MenuItem(k_MenuName, true, k_MenuPriority)]
+        private static bool ValidateARCoreRequiredMenuItem()
+        {
+            Menu.SetChecked(k_MenuName, ARCoreProjectSettings.Instance.IsInstantPreviewEnabled);
+            return true;
+        }
     }
 }

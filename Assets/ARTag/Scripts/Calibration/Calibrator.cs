@@ -22,7 +22,8 @@ namespace ARTag {
             {
                 currentPosition = offsetPosition - Camera.main.transform.position;
                 currentRotation = offsetRotation * Quaternion.Inverse(Camera.main.transform.rotation);
-            } else
+            }
+            else
             {
                 Touch touch;
                 if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began) return;
@@ -38,6 +39,7 @@ namespace ARTag {
                     Broadcast("OnFinishCalibration");
                 }
             }
+
         }
         
         public void Recalibrate()
@@ -52,7 +54,7 @@ namespace ARTag {
 
         public Quaternion GetVirtualRotation(Quaternion rotation)
         {
-            return rotation * Quaternion.Inverse(offsetRotation);
+            return rotation * offsetRotation;
         }
     }
 
