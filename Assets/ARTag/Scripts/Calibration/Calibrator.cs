@@ -11,6 +11,7 @@ namespace ARTag {
         public Quaternion currentRotation;
         public Vector3 offsetPosition = Vector3.zero;
         public Quaternion offsetRotation = Quaternion.identity;
+
         bool isCalibrated;
 
         // Update is called once per frame
@@ -54,8 +55,10 @@ namespace ARTag {
 
         public Quaternion GetVirtualRotation(Quaternion rotation)
         {
-            return rotation * offsetRotation;
+            Vector3 inv = rotation.eulerAngles * -1;
+            return Quaternion.Euler(inv.x,inv.y, inv.z);
         }
+        
     }
 
 }
