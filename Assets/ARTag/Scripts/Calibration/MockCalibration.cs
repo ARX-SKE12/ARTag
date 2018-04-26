@@ -13,15 +13,19 @@ public class MockCalibration : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 position = TransformPosition(transform.position, refPoint.transform.position, refPoint.transform.rotation.eulerAngles);
-        Vector3 zero = TransformPosition(Vector3.zero, refPoint.transform.position, refPoint.transform.rotation.eulerAngles);
+        Vector3 position = TransformPosition(transform.position, refPoint.transform.position, refPoint.transform.rotation.eulerAngles, true);
+        Vector3 revRotation = TransformRevRotation(Quaternion.identity, refPoint.transform.rotation);
+        Vector3 zero = TransformPosition(Vector3.zero, refPoint.transform.position, refPoint.transform.rotation.eulerAngles, true);
+        //Vector3 zero = TransformPosition(Vector3.zero, refPoint.transform.position, Quaternion.identity.eulerAngles);
+        //Vector3 zero2 = TransformPosition(Vector3.zero, refPoint.transform.position, Quaternion.identity.eulerAngles);
 
+        Debug.Log("OOri " + transform.position);
         Debug.Log("Pos " + position);
         Debug.Log("Zero " + zero);
-        Debug.Log("Ori " + TransformPosition(position, zero, TransformRotation(transform.rotation, refPoint.transform.rotation)));
+        Debug.Log("Ori " + TransformPosition(position, zero, refPoint.transform.rotation.eulerAngles));
 	}
 
-    Vector3 TransformPosition(Vector3 obj, Vector3 pos, Vector3 rot)
+    Vector3 TransformPosition(Vector3 obj, Vector3 pos, Vector3 rot, bool isInverse=false)
     {
         Vector3 ori = obj - pos;
 
@@ -29,19 +33,65 @@ public class MockCalibration : MonoBehaviour {
         float y = ori.y;
         float z = ori.z;
 
-        float a = rot.x;
-        float b = rot.y;
-        float g = rot.z;
+        float a = Mathf.Deg2Rad * rot.x;
+        float b = Mathf.Deg2Rad * rot.y;
+        float g = Mathf.Deg2Rad * rot.z;
 
-        float xp = x * Mathf.Cos(g) * Mathf.Cos(b) - y * Mathf.Sin(g) * Mathf.Cos(a) + y * Mathf.Cos(g) * Mathf.Sin(b) * Mathf.Sin(a) + z * Mathf.Sin(g) * Mathf.Sin(a) + z * Mathf.Cos(g) * Mathf.Sin(b) * Mathf.Cos(a);
-        float yp = x * Mathf.Sin(g) * Mathf.Cos(b) + y * Mathf.Cos(g) * Mathf.Cos(a) + y * Mathf.Sin(g) * Mathf.Sin(b) * Mathf.Sin(a) - z * Mathf.Cos(g) * Mathf.Sin(a) + z * Mathf.Sin(g) * Mathf.Sin(b) * Mathf.Cos(a);
-        float zp = -1 * x * Mathf.Sin(b) + y * Mathf.Cos(b) * Mathf.Sin(a) + z * Mathf.Cos(b) * Mathf.Cos(a);
-        return new Vector3(xp, yp, zp);
+        if(isInverse)
+        {
+            a = -a;
+            b = -b;
+            g = -g;
+        }
+
+        float[,] rx = new float[,] {
+            { 1, 0, 0 },
+            { 0, Mathf.Cos(a), -Mathf.Sin(a) },
+            { 0, Mathf.Sin(a), Mathf.Cos(a) }
+        };
+        float[,] ry = new float[,] {
+            { Mathf.Cos(b), 0, Mathf.Sin(b) },
+            { 0, 1, 0 },
+            { -Mathf.Sin(b), 0, Mathf.Cos(b) }
+        };
+        float[,] rz = new float[,] {
+            { Mathf.Cos(g), -Mathf.Sin(g), 0 },
+            { Mathf.Sin(g), Mathf.Cos(g), 0 },
+            { 0, 0, 1 }
+        };
+
+        //return ori;
+        if (!isInverse)
+        {
+            return MatrixMult(rx, MatrixMult(ry, MatrixMult(rz, ori)));
+        } else
+        {
+            return MatrixMult(rz, MatrixMult(ry, MatrixMult(rx, ori)));
+        }
     }
 
-    Vector3 TransformRotation(Quaternion rot, Quaternion refRot)
+    Vector3 TransformRevRotation(Quaternion rot, Quaternion refRot)
     {
         return rot.eulerAngles - refRot.eulerAngles;
     }
     
+    Vector3 MatrixMult(float[,] mat, Vector3 pos)
+    {
+        float[] fuck = new float[3];
+        fuck[0] = pos.x;
+        fuck[1] = pos.y;
+        fuck[2] = pos.z;
+
+        float[] o = new float[] { 0, 0, 0 };
+        for(int r=0; r<3; r++)
+        {
+            o[r] = 0;
+            for(int c=0; c<3; c++)
+            {
+                o[r] += mat[r, c] * fuck[c];
+            }
+        }
+
+        return new Vector3(o[0], o[1], o[2]);
+    }
 }
