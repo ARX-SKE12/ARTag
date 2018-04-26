@@ -12,6 +12,9 @@ namespace ARTag {
         public Vector3 offsetPosition = Vector3.zero;
         public Quaternion offsetRotation = Quaternion.identity;
 
+        public Vector3 refPointPosition = Vector3.zero;
+        public Quaternion refPointRotation = Quaternion.identity;
+
         bool isCalibrated;
 
         // Update is called once per frame
@@ -36,6 +39,8 @@ namespace ARTag {
                 {
                     offsetPosition = hit.Pose.position;
                     offsetRotation = hit.Pose.rotation;
+                    refPointRotation = hit.Pose.rotation;
+                    refPointPosition = hit.Pose.position;
                     isCalibrated = true;
                     Broadcast("OnFinishCalibration");
                 }

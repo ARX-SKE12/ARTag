@@ -59,8 +59,7 @@ public class MockCalibration : MonoBehaviour {
             { Mathf.Sin(g), Mathf.Cos(g), 0 },
             { 0, 0, 1 }
         };
-
-        //return ori;
+        
         if (!isInverse)
         {
             return MatrixMult(rx, MatrixMult(ry, MatrixMult(rz, ori)));
