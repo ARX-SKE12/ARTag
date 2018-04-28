@@ -11,10 +11,13 @@ namespace ARTag
     {
         public GameObject title;
         public string id = "";
+        public string datPos = "";
         SocketManager manager;
+        Calibrator calibrator;
 
         void Awake()
         {
+            calibrator = GameObject.FindObjectOfType<Calibrator>();
             manager = GameObject.FindObjectOfType<SocketManager>();
             manager.On(EventsCollector.TAG_CREATE_SUCCESS, OnCreateSuccess);
         }
@@ -32,13 +35,13 @@ namespace ARTag
         {
             JSONObject jsonData = new JSONObject();
             JSONObject posData = new JSONObject();
-            Vector3 currentPos = transform.position - GameObject.FindObjectOfType<Calibrator>().offsetPosition;
+            Vector3 currentPos = calibrator.GetRealWorldPosition(transform.position);
             posData.AddField("x", currentPos.x);
             posData.AddField("y", currentPos.y);
             posData.AddField("z", currentPos.z);
             jsonData.AddField("position", posData);
             JSONObject rotateData = new JSONObject();
-            Quaternion currentRotate = Quaternion.Inverse(GameObject.FindObjectOfType<Calibrator>().offsetRotation) * transform.rotation;
+            Quaternion currentRotate = calibrator.GetRealWorldRotation(transform.localRotation);
             rotateData.AddField("x", currentRotate.x);
             rotateData.AddField("y", currentRotate.y);
             rotateData.AddField("z", currentRotate.z);
@@ -65,7 +68,6 @@ namespace ARTag
 
         public virtual void ConstructTag(JSONObject data)
         {
-            Calibrator calibration = GameObject.FindObjectOfType<Calibrator>();
             JSONObject tagData = GetTagData(data);
             id = tagData.GetField("id").str;
             GameObject.FindObjectOfType<TagManager>().RegisterTag(id, this);
@@ -76,15 +78,15 @@ namespace ARTag
             float x = tagPosition.GetField("x").f;
             float y = tagPosition.GetField("y").f;
             float z = tagPosition.GetField("z").f;
-            transform.position = new Vector3(x, y, z) + calibration.offsetPosition;
+            datPos = new Vector3(x,y,z).ToString();
+            transform.position = calibrator.GetVirtualPosition(new Vector3(x, y, z));
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
             JSONObject tagRotation = tagData.GetField("rotation");
             float xr = tagRotation.GetField("x").f;
             float yr = tagRotation.GetField("y").f;
             float zr = tagRotation.GetField("z").f;
             float wr = tagRotation.GetField("w").f;
-            /**Debug.Log(transform.localRotation);
-            transform.rotation = new Quaternion(xr, yr, zr, wr) * Quaternion.Inverse(calibration.offsetRotation) * Quaternion.Euler(new Vector3(180, 0, 0));
-            Debug.Log(transform.localRotation);**/
+            transform.rotation = calibrator.GetVirtualRotation(new Quaternion(xr,yr,zr,wr));
         }
 
         protected JSONObject GetTagData(JSONObject data)

@@ -53,7 +53,10 @@ namespace ARTag
 
         public static Vector3 TransformRevRotation(Quaternion rot, Quaternion refRot)
         {
-            return rot.eulerAngles - refRot.eulerAngles;
+            if (Quaternion.Angle(rot, refRot) >= 0)
+                return (rot*Quaternion.Inverse(refRot)).eulerAngles;
+            else
+                return (refRot * Quaternion.Inverse(rot)).eulerAngles;
         }
 
         public static Vector3 MatrixMult(float[,] rotationMatrix, Vector3 position)

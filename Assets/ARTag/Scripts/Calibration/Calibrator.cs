@@ -7,25 +7,26 @@ namespace ARTag {
 
     public class Calibrator : Publisher
     {
-        public Vector3 currentPosition;
-        public Quaternion currentRotation;
-        public Vector3 offsetPosition = Vector3.zero;
-        public Quaternion offsetRotation = Quaternion.identity;
-
+        public GameObject calibrationCube;
+        
         public Vector3 refPointPosition = Vector3.zero;
         public Quaternion refPointRotation = Quaternion.identity;
 
         bool isCalibrated;
 
+        void Start()
+        {
+            GameObject.FindObjectOfType<ARCoreSession>().OnDestroy();
+            GameObject.FindObjectOfType<ARCoreSession>().Start();
+            GameObject.FindObjectOfType<ARCoreSession>().OnEnable();
+        }
+
         // Update is called once per frame
         void Update()
         {
-            currentPosition = Camera.main.transform.position;
-            currentRotation = Camera.main.transform.rotation;
             if (isCalibrated)
             {
-                currentPosition = offsetPosition - Camera.main.transform.position;
-                currentRotation = offsetRotation * Quaternion.Inverse(Camera.main.transform.rotation);
+                
             }
             else
             {
@@ -37,8 +38,7 @@ namespace ARTag {
 
                 if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
                 {
-                    offsetPosition = hit.Pose.position;
-                    offsetRotation = hit.Pose.rotation;
+                    calibrationCube = Instantiate(calibrationCube, hit.Pose.position, hit.Pose.rotation);
                     refPointRotation = hit.Pose.rotation;
                     refPointPosition = hit.Pose.position;
                     isCalibrated = true;
@@ -53,17 +53,29 @@ namespace ARTag {
             isCalibrated = false;
         }
 
+        public Vector3 GetRealWorldPosition(Vector3 position)
+        {
+            return CoordinateUtils.TransformPosition(position, refPointPosition, refPointRotation.eulerAngles, true);
+        }
+
         public Vector3 GetVirtualPosition(Vector3 position)
         {
-            return position - offsetPosition;
+            Vector3 zero = CoordinateUtils.TransformPosition(Vector3.zero, refPointPosition, refPointRotation.eulerAngles, true);
+            return CoordinateUtils.TransformPosition(position, zero, refPointRotation.eulerAngles);
+        }
+
+        public Quaternion GetRealWorldRotation(Quaternion rotation)
+        {
+            Vector3 eulerAngle = CoordinateUtils.TransformRevRotation(rotation, refPointRotation);
+            return Quaternion.Euler(eulerAngle.x, eulerAngle.y, eulerAngle.z);
         }
 
         public Quaternion GetVirtualRotation(Quaternion rotation)
         {
-            Vector3 inv = rotation.eulerAngles * -1;
-            return Quaternion.Euler(inv.x,inv.y, inv.z);
+            Vector3 eulerAngle = CoordinateUtils.TransformRevRotation(refPointRotation, rotation);
+            return Quaternion.Euler(eulerAngle.x, eulerAngle.y, eulerAngle.z);
         }
-        
+
     }
 
 }

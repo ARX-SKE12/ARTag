@@ -26,6 +26,21 @@ namespace ARTag
             socketManager.On(EventsCollector.TAG_ERROR, OnError);
         }
 
+        void Update()
+        {
+            string tag = "";
+            Vector3 camPos = GameObject.FindObjectOfType<Calibrator>().GetRealWorldPosition(Camera.main.transform.localPosition);
+            tag += camPos + "\n" + GameObject.FindObjectOfType<Calibrator>().GetVirtualPosition(camPos)+"\n-\n";
+            foreach (TagBehaviour tagB in GameObject.FindObjectsOfType<TagBehaviour>())
+            {
+                tag += tagB.transform.position
+                        +" "+tagB.datPos
+                        +" "+GameObject.FindObjectOfType<Calibrator>().GetRealWorldPosition(tagB.transform.position)
+                        + "\n-\n";
+            }
+            GameObject.Find("LogText").GetComponent<Text>().text = tag;
+        }
+
         public void LoadTag(SocketIOEvent e)
         {
             JSONObject data = e.data.GetField("tags");

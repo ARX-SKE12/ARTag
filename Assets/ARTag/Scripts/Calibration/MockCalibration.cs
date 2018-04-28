@@ -16,14 +16,16 @@ public class MockCalibration : MonoBehaviour {
         Vector3 position = TransformPosition(transform.position, refPoint.transform.position, refPoint.transform.rotation.eulerAngles, true);
         Vector3 revRotation = TransformRevRotation(Quaternion.identity, refPoint.transform.rotation);
         Vector3 zero = TransformPosition(Vector3.zero, refPoint.transform.position, refPoint.transform.rotation.eulerAngles, true);
+        Vector3 rPos = TransformPosition(position, zero, refPoint.transform.rotation.eulerAngles);
         //Vector3 zero = TransformPosition(Vector3.zero, refPoint.transform.position, Quaternion.identity.eulerAngles);
         //Vector3 zero2 = TransformPosition(Vector3.zero, refPoint.transform.position, Quaternion.identity.eulerAngles);
 
         Debug.Log("OOri " + transform.position);
         Debug.Log("Pos " + position);
         Debug.Log("Zero " + zero);
-        Debug.Log("Ori " + TransformPosition(position, zero, refPoint.transform.rotation.eulerAngles));
-	}
+        Debug.Log("Ori " + rPos);
+        Debug.Log("PP " + TransformPosition(rPos, refPoint.transform.position, refPoint.transform.rotation.eulerAngles, true));
+    }
 
     Vector3 TransformPosition(Vector3 obj, Vector3 pos, Vector3 rot, bool isInverse=false)
     {
