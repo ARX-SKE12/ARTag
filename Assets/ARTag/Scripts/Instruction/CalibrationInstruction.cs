@@ -9,7 +9,7 @@ namespace ARTag
 
         protected override void FinishAction()
         {
-            calibrator.GetComponent<Calibrator>().enabled = true;
+            GameObject.FindObjectOfType<Calibrator>().ChangeCalibrationState(Calibrator.CalibratorState.TRACKING_MARKER);
             base.FinishAction();
         }
         

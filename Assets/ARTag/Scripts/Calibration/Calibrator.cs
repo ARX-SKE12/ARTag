@@ -7,50 +7,54 @@ namespace ARTag {
 
     public class Calibrator : Publisher
     {
-        public GameObject calibrationCube;
+        public GameObject calibrationCube, pointCloud;
         
-        public Vector3 refPointPosition = Vector3.zero;
-        public Quaternion refPointRotation = Quaternion.identity;
+        public Vector3 refPointPosition;
+        public Quaternion refPointRotation;
 
-        bool isCalibrated;
-
-        void Start()
+        public enum CalibratorState
         {
-            GameObject.FindObjectOfType<ARCoreSession>().OnDestroy();
-            GameObject.FindObjectOfType<ARCoreSession>().Start();
-            GameObject.FindObjectOfType<ARCoreSession>().OnEnable();
+            INSTRUCTING,
+            TRACKING_MARKER,
+            ADJUSTING_LOCATION,
+            READY
         }
+
+        CalibratorState state = CalibratorState.INSTRUCTING;
 
         // Update is called once per frame
         void Update()
         {
-            if (isCalibrated)
+            switch (state)
             {
-                
+                case CalibratorState.TRACKING_MARKER:
+                    Touch touch;
+                    if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began) return;
+
+                    TrackableHit hit;
+                    TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon | TrackableHitFlags.FeaturePointWithSurfaceNormal;
+
+                    if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+                    {
+                        calibrationCube = Instantiate(calibrationCube, hit.Pose.position, hit.Pose.rotation);
+                        calibrationCube.transform.LookAt(Camera.main.transform);
+                        pointCloud.SetActive(false);
+                        ChangeCalibrationState(CalibratorState.ADJUSTING_LOCATION);
+                        Broadcast("OnFinishTrackingState");
+                    }
+                    break;
+                case CalibratorState.ADJUSTING_LOCATION:
+                    break;
+                case CalibratorState.READY:
+                    refPointPosition = calibrationCube.transform.localPosition;
+                    refPointRotation = calibrationCube.transform.localRotation;
+                    break;
             }
-            else
-            {
-                Touch touch;
-                if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began) return;
-
-                TrackableHit hit;
-                TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon | TrackableHitFlags.FeaturePointWithSurfaceNormal;
-
-                if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
-                {
-                    calibrationCube = Instantiate(calibrationCube, hit.Pose.position, hit.Pose.rotation);
-                    refPointRotation = hit.Pose.rotation;
-                    refPointPosition = hit.Pose.position;
-                    isCalibrated = true;
-                    Broadcast("OnFinishCalibration");
-                }
-            }
-
         }
         
-        public void Recalibrate()
+        public void ChangeCalibrationState(CalibratorState state)
         {
-            isCalibrated = false;
+            this.state = state;
         }
 
         public Vector3 GetRealWorldPosition(Vector3 position)
@@ -76,6 +80,12 @@ namespace ARTag {
             return Quaternion.Euler(eulerAngle.x, eulerAngle.y, eulerAngle.z);
         }
 
+        public void FinishLocationAdjustment()
+        {
+            Broadcast("OnFinishCalibration");
+            ChangeCalibrationState(CalibratorState.READY);
+            calibrationCube.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 
 }
