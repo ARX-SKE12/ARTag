@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/ARTag/Scenes/Select Place.unity
     guid: 013e206fcadd2e843a37600e2ad0df34
   - enabled: 1
-    path: Assets/ARTag/Scenes/Create Place.unity
+    path: Assets/ARTag/Scenes/Edit Place.unity
     guid: 28491d28947e9994a85ac7e320581755
   - enabled: 1
     path: Assets/ARTag/Scenes/QR Loader.unity

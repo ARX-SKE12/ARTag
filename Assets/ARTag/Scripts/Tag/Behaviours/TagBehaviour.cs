@@ -10,11 +10,14 @@ namespace ARTag
     public abstract class TagBehaviour : MonoBehaviour
     {
         public GameObject title;
-        protected string id = "";
+        public string id = "";
+        public string datPos = "";
         SocketManager manager;
+        Calibrator calibrator;
 
         void Awake()
         {
+            calibrator = GameObject.FindObjectOfType<Calibrator>();
             manager = GameObject.FindObjectOfType<SocketManager>();
             manager.On(EventsCollector.TAG_CREATE_SUCCESS, OnCreateSuccess);
         }
@@ -32,13 +35,13 @@ namespace ARTag
         {
             JSONObject jsonData = new JSONObject();
             JSONObject posData = new JSONObject();
-            Vector3 currentPos = transform.position - GameObject.FindObjectOfType<Calibrator>().offsetPosition;
+            Vector3 currentPos = calibrator.GetRealWorldPosition(transform.position);
             posData.AddField("x", currentPos.x);
             posData.AddField("y", currentPos.y);
             posData.AddField("z", currentPos.z);
             jsonData.AddField("position", posData);
             JSONObject rotateData = new JSONObject();
-            Quaternion currentRotate = Quaternion.Inverse(GameObject.FindObjectOfType<Calibrator>().offsetRotation) * transform.rotation;
+            Quaternion currentRotate = calibrator.GetRealWorldRotation(transform.localRotation);
             rotateData.AddField("x", currentRotate.x);
             rotateData.AddField("y", currentRotate.y);
             rotateData.AddField("z", currentRotate.z);
@@ -57,16 +60,17 @@ namespace ARTag
         {
             if (id == "")
             {
-                GameObject.FindObjectOfType<TagManager>().RegisterTag(GetTagData(e.data).GetField("id").str, this);
                 ConstructTag(e.data);
+                GameObject.FindObjectOfType<TagManager>().notification.GetComponentInChildren<Text>().text = "New Tag is created!";
+                GameObject.FindObjectOfType<TagManager>().notification.SetActive(true);
             }
         }
 
         public virtual void ConstructTag(JSONObject data)
         {
-            Calibrator calibration = GameObject.FindObjectOfType<Calibrator>();
             JSONObject tagData = GetTagData(data);
             id = tagData.GetField("id").str;
+            GameObject.FindObjectOfType<TagManager>().RegisterTag(id, this);
             JSONObject tagDetailData = tagData.GetField("detail");
             float sizeVal = tagDetailData.GetField("size").f * 0.05f;
             transform.localScale = new Vector3(sizeVal, sizeVal, transform.localScale.z);
@@ -74,21 +78,22 @@ namespace ARTag
             float x = tagPosition.GetField("x").f;
             float y = tagPosition.GetField("y").f;
             float z = tagPosition.GetField("z").f;
-            transform.position = new Vector3(x, y, z) + calibration.offsetPosition;
+            datPos = new Vector3(x,y,z).ToString();
+            transform.position = calibrator.GetVirtualPosition(new Vector3(x, y, z));
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
             JSONObject tagRotation = tagData.GetField("rotation");
             float xr = tagRotation.GetField("x").f;
             float yr = tagRotation.GetField("y").f;
             float zr = tagRotation.GetField("z").f;
             float wr = tagRotation.GetField("w").f;
-            /**Debug.Log(transform.localRotation);
-            transform.rotation = new Quaternion(xr, yr, zr, wr) * Quaternion.Inverse(calibration.offsetRotation) * Quaternion.Euler(new Vector3(180, 0, 0));
-            Debug.Log(transform.localRotation);**/
+            transform.rotation = calibrator.GetVirtualRotation(new Quaternion(xr,yr,zr,wr));
         }
 
         protected JSONObject GetTagData(JSONObject data)
         {
             return data.HasField("tag") ? data.GetField("tag") : data;
         }
+
     }
 
 }

@@ -3,19 +3,23 @@ namespace ARTag
 {
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.UI;
     using GoogleARCore;
     using ARCoreToolkit;
     using SocketIOManager;
+    using SocketIO;
 
     public class PlaneEditor : MonoBehaviour
     {
-        public GameObject scanButton, pauseButton;
+        public GameObject scanButton, pauseButton, notification, errorNotification;
         Calibrator calibration;
         bool isScanning;
 
         // Use this for initialization
         void Start()
         {
+            GameObject.FindObjectOfType<SocketManager>().On(EventsCollector.PLANE_UPGRADE, OnPlaneUpdate);
+            GameObject.FindObjectOfType<SocketManager>().On(EventsCollector.PLANE_ERROR, OnPlaneUpdateError);
             calibration = GameObject.FindObjectOfType<Calibrator>();
         }
 
@@ -60,15 +64,18 @@ namespace ARTag
                 planeData.AddField("vertices", new JSONObject(verticesData));
                 planesData[i] = planeData;
             }
+
+            Vector3 realWorldPosition = calibration.GetRealWorldPosition(Vector3.zero);
             JSONObject originData = new JSONObject();
-            originData.SetField("x", calibration.offsetPosition.x);
-            originData.SetField("y", calibration.offsetPosition.y);
-            originData.SetField("z", calibration.offsetPosition.z);
+            originData.SetField("x", realWorldPosition.x);
+            originData.SetField("y", realWorldPosition.y);
+            originData.SetField("z", realWorldPosition.z);
+            Quaternion realWorldRotation = calibration.GetRealWorldRotation(Quaternion.identity);
             JSONObject originRotationData = new JSONObject();
-            originRotationData.SetField("x", calibration.offsetRotation.x);
-            originRotationData.SetField("y", calibration.offsetRotation.y);
-            originRotationData.SetField("z", calibration.offsetRotation.z);
-            originRotationData.SetField("w", calibration.offsetRotation.w);
+            originRotationData.SetField("x", realWorldRotation.x);
+            originRotationData.SetField("y", realWorldRotation.y);
+            originRotationData.SetField("z", realWorldRotation.z);
+            originRotationData.SetField("w", realWorldRotation.w);
             data.AddField("id", id);
             data.SetField("data", new JSONObject(planesData));
             data.SetField("origin", originData);
@@ -83,6 +90,18 @@ namespace ARTag
             scanButton.SetActive(true);
             GameObject.FindObjectOfType<ARCoreSession>().SessionConfig.EnablePlaneFinding = isScanning;
             GameObject.FindObjectOfType<ARCoreSession>().OnEnable();
+        }
+
+        public void OnPlaneUpdate(SocketIOEvent e)
+        {
+            notification.GetComponentInChildren<Text>().text = "Plane has updated!";
+            notification.SetActive(true);
+        }
+
+        public void OnPlaneUpdateError(SocketIOEvent e)
+        {
+            errorNotification.GetComponentInChildren<Text>().text = "Plane Updating Process is failure!";
+            errorNotification.SetActive(true);
         }
     }
 

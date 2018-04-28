@@ -45,10 +45,10 @@ namespace ARTag
         void ClearForm()
         {
             thumbnail.GetComponent<Image>().sprite = defaultThumbnail;
-            title.GetComponent<InputField>().text = "";
-            description.GetComponent<TMP_InputField>().text = "";
-            range.GetComponent<InputField>().text = defaultRange.ToString();
-            size.GetComponent<InputField>().text = defaultSize.ToString();
+            title.GetComponentInChildren<InputField>().text = "";
+            description.GetComponentInChildren<TMP_InputField>().text = "";
+            range.GetComponentInChildren<InputField>().text = defaultRange.ToString();
+            size.GetComponentInChildren<InputField>().text = defaultSize.ToString();
         }
     }
 
