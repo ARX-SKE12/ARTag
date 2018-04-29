@@ -27,6 +27,7 @@ namespace ARTag
             yield return request;
             source = request.texture;
             qrcodeImage.GetComponent<Image>().sprite = Sprite.Create(source, new Rect(0, 0, source.width, source.height), Vector2.zero);
+            qrcodeImage.SetActive(true);
         }
 
         public void SaveQR()
