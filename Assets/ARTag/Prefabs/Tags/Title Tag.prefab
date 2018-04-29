@@ -241,6 +241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 1506853681995050}
+  id: 
+  datPos: 
 --- !u!114 &114917881228142128
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -94,6 +94,9 @@ namespace ARTag
 
         public void OnPlaneUpdate(SocketIOEvent e)
         {
+            JSONObject placeData = e.data.GetField("place");
+            Place place = new Place(placeData);
+            GameObject.FindObjectOfType<TemporaryDataManager>().Put("currentPlace", place);
             notification.GetComponentInChildren<Text>().text = "Plane has updated!";
             notification.SetActive(true);
         }

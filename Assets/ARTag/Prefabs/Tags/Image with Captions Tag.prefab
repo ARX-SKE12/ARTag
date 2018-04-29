@@ -196,6 +196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: {fileID: 1416722687411166}
+  id: 
+  datPos: 
   thumbnail: {fileID: 1677422235502948}
 --- !u!114 &114440548022980632
 MonoBehaviour:
