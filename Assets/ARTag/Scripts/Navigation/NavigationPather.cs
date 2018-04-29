@@ -37,10 +37,12 @@ namespace ARTag
         void CalculatePath()
         {
             AstarPath.active.Scan();
+            Debug.Log(target.name);
             path = seeker.StartPath(transform.position, target.transform.position);
         }
         public void OnPathEnd()
         {
+            Debug.Log("Found");
             ParticleSystem ps = GetComponentInChildren<ParticleSystem>();
             if (ps.isEmitting)
             {
