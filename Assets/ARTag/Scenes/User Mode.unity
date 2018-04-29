@@ -340,10 +340,10 @@ MonoBehaviour:
   instructionText: {fileID: 1431010342}
   changeStepButton: {fileID: 166123087}
   thumbnails:
-  - {fileID: 21300000, guid: ded5e09445fb3054ab84f3acd8c7cd79, type: 3}
-  - {fileID: 21300000, guid: e0c6a59642673554897dc8301a154d27, type: 3}
-  - {fileID: 21300000, guid: efe7eb5b7b8501c469b400c7ff82a4ac, type: 3}
-  - {fileID: 21300000, guid: 9f978233c303b9f4688bdcd9121ff7ca, type: 3}
+  - {fileID: 21300000, guid: 053d6e0a79effc6428003cd2616e5d5f, type: 3}
+  - {fileID: 21300000, guid: 3ae47bfcd79c25f47b43b1d414b73562, type: 3}
+  - {fileID: 21300000, guid: 75fdbbd9a02ab3a4c8eb1387deb22089, type: 3}
+  - {fileID: 21300000, guid: 79aac2b50acdd184ebdcab43d31b0237, type: 3}
   guideTexts:
   - Walk Around The Room
   - Tag Will Appear When You Get Close
@@ -2654,7 +2654,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ded5e09445fb3054ab84f3acd8c7cd79, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 053d6e0a79effc6428003cd2616e5d5f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/ARTag/Scenes/Detail Place.unity
     guid: 0e0645772d5e88947a3c729df669d200
   - enabled: 1
+    path: Assets/ARTag/Scenes/Collaborative.unity
+    guid: 180e51c8d1003a34e8b667baefadf160
+  - enabled: 1
     path: Assets/ARTag/Scenes/Editor Mode.unity
     guid: ea54c285002859f4c84182f29142f549
   - enabled: 1
