@@ -76,7 +76,7 @@ namespace ARTag {
 
         public Quaternion GetVirtualRotation(Quaternion rotation)
         {
-            Vector3 eulerAngle = CoordinateUtils.TransformRevRotation(refPointRotation, rotation);
+            Vector3 eulerAngle = refPointRotation.eulerAngles + rotation.eulerAngles;//CoordinateUtils.TransformRevRotation(refPointRotation, rotation);
             return Quaternion.Euler(eulerAngle.x, eulerAngle.y, eulerAngle.z);
         }
 

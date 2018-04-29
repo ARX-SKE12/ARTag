@@ -1046,7 +1046,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8e31857dc900a344abd5ecbe347231d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8bae0cca492f46f45bd0b4488b571472, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1073,7 +1073,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8e31857dc900a344abd5ecbe347231d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 793762af488b75c409365a11bd678700, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1213,13 +1213,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 511c932dc3dc1bd469c0bc47fb9fdf00, type: 3}
   - {fileID: 21300000, guid: 93f9250c58f3bad4ebf6777307e77ed2, type: 3}
   - {fileID: 21300000, guid: 4b29e3f24691c4d4fa441d277567f967, type: 3}
+  - {fileID: 21300000, guid: d126e9b615811744a9ffd49914984013, type: 3}
   guideTexts:
   - Point Camera to ARTag Marker
   - Feature Point is shown on the marker
   - Tap On Center of Marker!
+  - Rotate the Cube to Match with Marker
   finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
   finishButtonText: I got it!
-  numStep: 3
+  numStep: 4
   toActivateGameObjects:
   - {fileID: 1126454187830924}
   - {fileID: 1474541668297500}
@@ -1398,7 +1400,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0fa13d9000f1c5f4096e70ab0b9cb612, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6bd9f1787b3c3f54ba43fc399c7601d4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1742,8 +1744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000038146973, y: 0.000034332275}
-  m_SizeDelta: {x: -80, y: -80}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 0.000019073486}
+  m_SizeDelta: {x: -80, y: -40}
   m_Pivot: {x: 0.49999994, y: 0.49999955}
 --- !u!224 &224179221372698094
 RectTransform:
@@ -1760,8 +1762,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000038146973, y: 0.000034332275}
-  m_SizeDelta: {x: -80, y: -80}
+  m_AnchoredPosition: {x: 0.0000038146973, y: 0.000019073486}
+  m_SizeDelta: {x: -80, y: -40}
   m_Pivot: {x: 0.49999994, y: 0.49999955}
 --- !u!224 &224245363483835078
 RectTransform:

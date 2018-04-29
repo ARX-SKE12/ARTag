@@ -64,13 +64,13 @@ namespace ARTag
                 planeData.AddField("vertices", new JSONObject(verticesData));
                 planesData[i] = planeData;
             }
-
-            Vector3 realWorldPosition = calibration.GetRealWorldPosition(Vector3.zero);
+            GameObject generator = GameObject.FindObjectOfType<PlaneGenerator>().gameObject;
+            Vector3 realWorldPosition = calibration.GetRealWorldPosition(generator.transform.localPosition);
             JSONObject originData = new JSONObject();
             originData.SetField("x", realWorldPosition.x);
             originData.SetField("y", realWorldPosition.y);
             originData.SetField("z", realWorldPosition.z);
-            Quaternion realWorldRotation = calibration.GetRealWorldRotation(Quaternion.identity);
+            Quaternion realWorldRotation = calibration.GetRealWorldRotation(generator.transform.localRotation);
             JSONObject originRotationData = new JSONObject();
             originRotationData.SetField("x", realWorldRotation.x);
             originRotationData.SetField("y", realWorldRotation.y);
