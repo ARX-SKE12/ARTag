@@ -14,13 +14,12 @@ namespace ARTag
         void Start()
         {
             GameObject.FindObjectOfType<SocketManager>().On(EventsCollector.PLANE_UPGRADE, OnPlaneUpdate);
+            GeneratePlane();
         }
 
         public void GeneratePlane()
         {
             Place place = (Place) GameObject.FindObjectOfType<TemporaryDataManager>().Get("currentPlace");
-            transform.localPosition = GameObject.FindObjectOfType<Calibrator>().GetVirtualPosition(place.origin);
-            transform.localRotation = GameObject.FindObjectOfType<Calibrator>().GetVirtualRotation(place.originRotation);
             RestorePlanes(place);
         }
 
@@ -33,6 +32,8 @@ namespace ARTag
                 ServerPlaneBahviour planeObject = Instantiate(planePrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<ServerPlaneBahviour>();
                 planeObject.Initialize(plane);
             }
+            transform.localPosition = GameObject.FindObjectOfType<Calibrator>().GetVirtualPosition(place.origin);
+            transform.localRotation = GameObject.FindObjectOfType<Calibrator>().GetVirtualRotation(place.originRotation);
         }
         
         public void OnPlaneUpdate(SocketIOEvent e)
