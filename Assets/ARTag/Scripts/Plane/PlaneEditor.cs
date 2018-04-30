@@ -56,30 +56,17 @@ namespace ARTag
                 {
                     JSONObject verticeData = new JSONObject();
                     Vector3 vertice = vertices[j];
-                    verticeData.SetField("x", vertice.x);
-                    verticeData.SetField("y", vertice.y);
-                    verticeData.SetField("z", vertice.z);
+                    Vector3 realWorldVertices = GameObject.FindObjectOfType<Calibrator>().GetRealWorldPosition(vertices[j]);
+                    verticeData.SetField("x", realWorldVertices.x);
+                    verticeData.SetField("y", realWorldVertices.y);
+                    verticeData.SetField("z", realWorldVertices.z);
                     verticesData[j] = verticeData;
                 }
                 planeData.AddField("vertices", new JSONObject(verticesData));
                 planesData[i] = planeData;
             }
-            GameObject generator = GameObject.FindObjectOfType<PlaneGenerator>().gameObject;
-            Vector3 realWorldPosition = calibration.GetRealWorldPosition(generator.transform.localPosition);
-            JSONObject originData = new JSONObject();
-            originData.SetField("x", realWorldPosition.x);
-            originData.SetField("y", realWorldPosition.y);
-            originData.SetField("z", realWorldPosition.z);
-            Quaternion realWorldRotation = calibration.GetRealWorldRotation(generator.transform.localRotation);
-            JSONObject originRotationData = new JSONObject();
-            originRotationData.SetField("x", realWorldRotation.x);
-            originRotationData.SetField("y", realWorldRotation.y);
-            originRotationData.SetField("z", realWorldRotation.z);
-            originRotationData.SetField("w", realWorldRotation.w);
             data.AddField("id", id);
             data.SetField("data", new JSONObject(planesData));
-            data.SetField("origin", originData);
-            data.SetField("origin_rotation", originRotationData);
             GameObject.FindObjectOfType<SocketManager>().Emit(EventsCollector.PLANE_UPDATE, data);
         }
 

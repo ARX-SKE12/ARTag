@@ -6,6 +6,7 @@ namespace ARTag
     using UnityEngine.UI;
     using SocketIO;
     using SocketIOManager;
+    using GoogleARCore;
 
     public class TagManager : MonoBehaviour
     {
@@ -13,7 +14,7 @@ namespace ARTag
         Dictionary<string, TagBehaviour> tags;
         public GameObject[] tagPrefabs;
         public GameObject notification, errorNotification;
-        public float distanceFromCam = 0.15f;
+        public float distanceFromCam = 1f;
 
         Vector3 ROTATE_OFFSET = new Vector3(0, 180);
 
