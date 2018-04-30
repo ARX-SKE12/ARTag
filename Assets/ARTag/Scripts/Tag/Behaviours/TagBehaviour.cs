@@ -19,7 +19,8 @@ namespace ARTag
         {
             calibrator = GameObject.FindObjectOfType<Calibrator>();
             manager = GameObject.FindObjectOfType<SocketManager>();
-            manager.On(EventsCollector.TAG_CREATE_SUCCESS, OnCreateSuccess);
+            if (manager)
+                manager.On(EventsCollector.TAG_CREATE_SUCCESS, OnCreateSuccess);
         }
 
         public void Initialize(Dictionary<string, object> data)
@@ -94,6 +95,10 @@ namespace ARTag
             return data.HasField("tag") ? data.GetField("tag") : data;
         }
 
+        public void OnClick()
+        {
+            Debug.Log("OK");
+        }
     }
 
 }
