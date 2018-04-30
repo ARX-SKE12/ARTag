@@ -21,7 +21,8 @@ namespace ARTag
         {
             WWW www = new WWW(BASE_URL+"me/friends?access_token="+AccessToken.CurrentAccessToken.TokenString);
             yield return www;
-            JSONObject data = JSONObject.CreateStringObject(www.text).GetField("data");
+            JSONObject data = JSONObject.StringObject(www.text).GetField("data");
+            Debug.Log(data); 
             for (int i = 0;i < data.Count;i++) {
                 JSONObject userData = data[i];
                 Instantiate(friendItem, friendList.transform).GetComponent<FriendItem>().Initialize(userData.GetField("id").str, userData.GetField("name").str);

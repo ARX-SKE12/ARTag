@@ -9,7 +9,7 @@ namespace ARTag
     public class TagFormController : MonoBehaviour
     {
         int type;
-        public GameObject thumbnail, title, range, size, description;
+        public GameObject thumbnail, title, size, description;
         public Sprite defaultThumbnail;
         public int defaultSize = 30;
         public float defaultRange = 1.5f;
@@ -47,7 +47,6 @@ namespace ARTag
             thumbnail.GetComponent<Image>().sprite = defaultThumbnail;
             title.GetComponentInChildren<InputField>().text = "";
             description.GetComponentInChildren<TMP_InputField>().text = "";
-            range.GetComponentInChildren<InputField>().text = defaultRange.ToString();
             size.GetComponentInChildren<InputField>().text = defaultSize.ToString();
         }
     }

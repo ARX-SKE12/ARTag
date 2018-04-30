@@ -15,6 +15,7 @@ namespace ARTag
         // Use this for initialization
         void Start()
         {
+            socket = GameObject.FindObjectOfType<SocketManager>();
             socket.On(EventsCollector.COLLABORATE_UPDATE_SUCCESS, OnCollabUpdate);
             Create();
         }
