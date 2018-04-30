@@ -19,6 +19,7 @@ namespace ARTag
         public void AddCollaborator()
         {
             GameObject.FindObjectOfType<CollaborateController>().AddCollaborate(id);
+            GameObject.Find("Add Collab Modal").SetActive(false);
         }
     }
 
