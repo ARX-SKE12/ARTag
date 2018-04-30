@@ -19,7 +19,7 @@ namespace ARTag
         {
             significant = (string)GameObject.FindObjectOfType<TemporaryDataManager>().Get("significant");
             place = (Place)GameObject.FindObjectOfType<TemporaryDataManager>().Get("currentPlace");
-            placeName.GetComponent<Text>().text = place.name;
+            if (placeName) placeName.GetComponent<Text>().text = place.name;
             StartCoroutine(LoadImage());
         }
 

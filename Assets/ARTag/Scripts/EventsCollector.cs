@@ -39,6 +39,9 @@ namespace ARTag
         public static readonly string TAG_LIST= "tag-list";
         public static readonly string TAG_ERROR= "tag-error";
         public static readonly string TAG_DATA_UPDATE = "tag-data-update";
+        public static readonly string COLLABORATE_UPDATE = "collaborate-update";
+        public static readonly string COLLABORATE_UPDATE_SUCCESS = "collaborate-update-success";
+        public static readonly string COLLABORATE_ERROR = "collaborate-error";
     }
 
 }
