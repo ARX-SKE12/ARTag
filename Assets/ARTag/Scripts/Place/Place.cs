@@ -13,6 +13,7 @@ namespace ARTag
         public Quaternion originRotation;
         public List<Plane> planes;
         public User user;
+        public List<string> users;
         
         public Place(JSONObject data)
         {
@@ -28,6 +29,9 @@ namespace ARTag
             user = new User(data.GetField("user"));
             origin = new Vector3(data.GetField("origin").GetField("x").f, data.GetField("origin").GetField("y").f, data.GetField("origin").GetField("z").f);
             originRotation = new Quaternion(data.GetField("origin_rotation").GetField("x").f, data.GetField("origin_rotation").GetField("y").f, data.GetField("origin_rotation").GetField("z").f, data.GetField("origin_rotation").GetField("w").f);
+            users = new List<string>();
+            JSONObject usersField = data.GetField("users");
+            for (int i = 0; i < usersField.Count; i++) users.Add(usersField[i].str);
         }
 
     }
