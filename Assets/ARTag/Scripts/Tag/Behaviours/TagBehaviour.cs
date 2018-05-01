@@ -20,7 +20,10 @@ namespace ARTag
             calibrator = GameObject.FindObjectOfType<Calibrator>();
             manager = GameObject.FindObjectOfType<SocketManager>();
             if (manager)
+            {
                 manager.On(EventsCollector.TAG_CREATE_SUCCESS, OnCreateSuccess);
+                manager.On(EventsCollector.TAG_ERROR, OnError);
+            }
         }
 
         public void Initialize(Dictionary<string, object> data)
@@ -65,6 +68,11 @@ namespace ARTag
                 GameObject.FindObjectOfType<TagManager>().notification.GetComponentInChildren<Text>().text = "New Tag is created!";
                 GameObject.FindObjectOfType<TagManager>().notification.SetActive(true);
             }
+        }
+
+        public void OnError(SocketIOEvent e)
+        {
+            if (id == "") Destroy(gameObject);
         }
 
         public virtual void ConstructTag(JSONObject data)
