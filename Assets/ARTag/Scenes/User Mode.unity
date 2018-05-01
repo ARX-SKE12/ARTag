@@ -345,12 +345,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 75fdbbd9a02ab3a4c8eb1387deb22089, type: 3}
   - {fileID: 21300000, guid: 79aac2b50acdd184ebdcab43d31b0237, type: 3}
   guideTexts:
-  - Walk Around The Room
-  - Tag Will Appear When You Get Close
-  - Navigate to Your Interested Tag
+  - Walk around the room
+  - Tags will appear when you get close
+  - Navigate to any Tag you are interested in
   - Enjoy ARTag!
   finishButtonSprite: {fileID: 21300000, guid: 742d65ac400c8cb4397b264d13893669, type: 3}
-  finishButtonText: Let's Start!
+  finishButtonText: Let's start!
   numStep: 4
   toActivateGameObjects:
   - {fileID: 1717268094}

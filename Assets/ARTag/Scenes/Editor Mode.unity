@@ -774,11 +774,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cd452e1e413c39245b36ebe284c69200, type: 3}
   - {fileID: 21300000, guid: ae02cbd5685ee7148bc81c859b6aecc1, type: 3}
   guideTexts:
-  - Point Cursor to Your Target
-  - Press Tag Button
-  - Select Tag Type
-  - Fill the Form
-  - Tag Appear!
+  - Point cursor to your target
+  - Press Tag button
+  - Select Tag type
+  - Fill the form
+  - Your Tag will appear!
   finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
   finishButtonText: I got it!
   numStep: 5
@@ -4103,70 +4103,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 224524302507314472, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224524302507314472, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224524302507314472, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224524302507314472, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224730231624189032, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224730231624189032, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224730231624189032, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224730231624189032, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224604653506286352, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224604653506286352, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224604653506286352, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224604653506286352, guid: 343b852ec177c634dacd7b1d57958a97,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1780829686159736, guid: 343b852ec177c634dacd7b1d57958a97, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 343b852ec177c634dacd7b1d57958a97, type: 2}
   m_IsPrefabParent: 0
@@ -5072,9 +5008,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8d108d828a598a34585f0210a91ca85f, type: 3}
   - {fileID: 21300000, guid: abe42b306fb869d4aa3720eb9890d8df, type: 3}
   guideTexts:
-  - Activate Room Scanning Mode for Create Room Map
+  - Activate Room Scanning Mode for creating map for the room
   - Pause Room Scanning Mode
-  - Upload Scanned Room to Server
+  - Upload scanned room to server
   finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
   finishButtonText: I got it!
   numStep: 3

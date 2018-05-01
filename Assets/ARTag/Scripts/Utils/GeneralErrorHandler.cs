@@ -13,6 +13,7 @@ namespace ARTag
         // Use this for initialization
         void Start()
         {
+            socketManager = GameObject.FindObjectOfType<SocketManager>();
             socketManager.On(EventsCollector.AUTH_ERROR, OnError);
             socketManager.On(EventsCollector.COLLABORATE_ERROR, OnError);
             socketManager.On(EventsCollector.PLACE_CREATE_ERROR, OnError);
