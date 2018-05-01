@@ -44,6 +44,10 @@ namespace FBAuthKit
         {
             List<string> permissions = new List<string>() { "public_profile" };
             Broadcast("OnAuthRequest");
+            if (FB.IsLoggedIn)
+            {
+                Broadcast("OnAuthSuccess", AccessToken.CurrentAccessToken);
+            }
             FB.LogInWithReadPermissions(permissions, AuthCallback);
         }
 

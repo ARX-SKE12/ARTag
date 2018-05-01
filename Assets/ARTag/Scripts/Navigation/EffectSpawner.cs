@@ -3,12 +3,18 @@ namespace ARTag
 {
     using System.Collections;
     using UnityEngine;
+    using Pathfinding;
 
     public class EffectSpawner : MonoBehaviour
     {
         public GameObject effect;
         public float spawnInterval, time;
         public GameObject target;
+
+        void Start()
+        {
+            AstarPath.active.Scan();
+        }
 
         // Update is called once per frame
         void Update()

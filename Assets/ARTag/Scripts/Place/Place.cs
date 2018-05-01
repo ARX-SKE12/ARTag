@@ -9,8 +9,6 @@ namespace ARTag
         public string id, name, description;
         public long timestamp;
         public bool isPublic, isActive;
-        public Vector3 origin;
-        public Quaternion originRotation;
         public List<Plane> planes;
         public User user;
         public List<string> users;
@@ -27,8 +25,6 @@ namespace ARTag
             planes = new List<Plane>();
             for (int i = 0; i < planesField.list.Count; i++) planes.Add(new Plane(planesField[i]));
             user = new User(data.GetField("user"));
-            origin = new Vector3(data.GetField("origin").GetField("x").f, data.GetField("origin").GetField("y").f, data.GetField("origin").GetField("z").f);
-            originRotation = new Quaternion(data.GetField("origin_rotation").GetField("x").f, data.GetField("origin_rotation").GetField("y").f, data.GetField("origin_rotation").GetField("z").f, data.GetField("origin_rotation").GetField("w").f);
             users = new List<string>();
             JSONObject usersField = data.GetField("users");
             for (int i = 0; i < usersField.Count; i++) users.Add(usersField[i].str);

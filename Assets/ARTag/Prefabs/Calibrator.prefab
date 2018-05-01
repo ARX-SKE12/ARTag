@@ -1215,10 +1215,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4b29e3f24691c4d4fa441d277567f967, type: 3}
   - {fileID: 21300000, guid: d126e9b615811744a9ffd49914984013, type: 3}
   guideTexts:
-  - Point Camera to ARTag Marker
+  - Point camera to ARTag Marker
   - Feature Point is shown on the marker
-  - Tap On Center of Marker!
-  - Rotate the Cube to Match with Marker
+  - Tap on center of Marker!
+  - Rotate Calibrator Cube to match with Marker
   finishButtonSprite: {fileID: 21300000, guid: f95bf2b4a041671438d9b3b21e29cf6a, type: 3}
   finishButtonText: I got it!
   numStep: 4

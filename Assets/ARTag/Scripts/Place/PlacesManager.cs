@@ -32,7 +32,10 @@ namespace ARTag
         public void LoadPlaces(SocketIOEvent e)
         {
             JSONObject data = e.data.GetField("places");
-            for (int i = 0; i < data.Count; i++) UpdatePlace(data[i]);
+            for (int i = 0; i < data.Count; i++)
+            {
+                UpdatePlace(data[i]);
+            }
         }
 
         public void OnPlaceListError(SocketIOEvent e)
